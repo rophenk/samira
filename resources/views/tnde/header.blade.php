@@ -213,7 +213,7 @@
 
                         if($routes == "dashboard") {
                             $dashboard = ' active open selected';
-                        } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing") {
+                        } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing") {
                             $tndetab = ' active open selected';
                         } else {
                             
