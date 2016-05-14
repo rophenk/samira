@@ -302,47 +302,16 @@
                                     <a href="javascript:;" class="text-uppercase">
                                         <i class="icon-camera"></i> DOKUMENTASI </a>
                                     <ul class="dropdown-menu dropdown-menu-fw">
-                                        <li>
-                                            <a href="#"> Kegiatan </a>
-                                        </li>
-                                        <li>
-                                            <a href="#"> Responsive Tables </a>
-                                        </li>
-                                        <li>
-                                            <a href="#"> Bootstrap Tables </a>
-                                        </li>
-                                        <li class="dropdown more-dropdown-sub">
-                                            <a href="javascript:;"> Datatables </a>
+                                        <a href="javascript:;">
+                                                <i class="fa fa-calendar"></i> Kegiatan </a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <a href="table_datatables_managed.html"> Managed Datatables </a>
+                                                    <a href="#"> Data Kegiatan </a>
                                                 </li>
                                                 <li>
-                                                    <a href="table_datatables_buttons.html"> Buttons Extension </a>
-                                                </li>
-                                                <li>
-                                                    <a href="table_datatables_colreorder.html"> Colreorder Extension </a>
-                                                </li>
-                                                <li>
-                                                    <a href="table_datatables_rowreorder.html"> Rowreorder Extension </a>
-                                                </li>
-                                                <li>
-                                                    <a href="table_datatables_scroller.html"> Scroller Extension </a>
-                                                </li>
-                                                <li>
-                                                    <a href="table_datatables_fixedheader.html"> FixedHeader Extension </a>
-                                                </li>
-                                                <li>
-                                                    <a href="table_datatables_responsive.html"> Responsive Extension </a>
-                                                </li>
-                                                <li>
-                                                    <a href="table_datatables_editable.html"> Editable Datatables </a>
-                                                </li>
-                                                <li>
-                                                    <a href="table_datatables_ajax.html"> Ajax Datatables </a>
+                                                    <a href="#"> Tambah Kegiatan </a>
                                                 </li>
                                             </ul>
-                                        </li>
                                     </ul>
                                 </li>
                                 <!--<li class="dropdown dropdown-fw  ">
