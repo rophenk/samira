@@ -54,6 +54,11 @@ return [
             'visibility' => 'public',
         ],
 
+        'tnde' => [
+        'driver' => 'local',
+        'root'   => public_path() . '/tnde',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => 'your-key',

@@ -14,7 +14,7 @@ class LoginController extends Controller
 
     use RedirectsUsers;
 
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     public function __construct()
     {

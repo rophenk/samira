@@ -58,7 +58,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="login-content">
                         <h1>TANDEM Login</h1>
                         <p> Tata Naskah Dokumen Elektronik Mandiri</p>
-                        <form action="/login" class="login-form" method="post">
+                        <form action="/login2" class="login-form" method="post">
                             <div class="alert alert-danger display-hide">
                                 <button class="close" data-close="alert"></button>
                                 <span>Enter any username and password. </span>
@@ -80,6 +80,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="forgot-password">
                                         <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
                                     </div>
+                                    <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                                     <button class="btn blue" type="submit">Sign In</button>
                                 </div>
                             </div>
@@ -120,7 +121,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="col-xs-7 bs-reset">
                                 <div class="login-copyright text-right">
-                                    <p>Copyright &copy; Keenthemes 2015</p>
+                                    <p>Copyright &copy; 2016</p>
                                 </div>
                             </div>
                         </div>

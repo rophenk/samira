@@ -8,8 +8,9 @@ use App\Http\Requests;
 
 class DashboardController extends Controller
 {
-  public function dashboard()
+  public function dashboard(Request $request)
   {
-    return view("tnde.dashboard");
+    $user       = $request->user();
+    return view('tnde.dashboard', ['user' => $user]);
   }
 }
