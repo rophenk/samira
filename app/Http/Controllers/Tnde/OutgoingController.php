@@ -185,6 +185,19 @@ class OutgoingController extends Controller
         return view('tnde.outgoing-attachment', ['user' => $user, 'outgoing' => $outgoing, 'attachment' => $attachment]);
     }
 
+    public function attachmentlist(Request $request)
+    {
+        $user       = $request->user();
+
+        $outgoing = Outgoing::where('uuid', $request->uuid)
+                                    ->get();
+
+        $attachment = AttachmentOutgoing::where('outgoing_uuid', $request->uuid)
+                                    ->get();
+
+        return view('tnde.outgoing-attachment-list', ['user' => $user, 'outgoing' => $outgoing, 'attachment' => $attachment]);
+    }
+
     public function uploadattachment(Request $request)
     {
         $user       = $request->user();
@@ -220,5 +233,17 @@ class OutgoingController extends Controller
                                     ->first();
         $storagePath  = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
         return view('tnde.outgoing-attachment-show', ['user' => $user, 'attachment' => $attachment, 'file' => $storagePath]);                          
+    }
+
+    public function attachmentdelete(Request $request)
+    {
+        $attachmentOutgoing = AttachmentOutgoing::where('uuid', $request->uuid)
+                                    ->first();
+
+        Storage::disk('tnde')->delete($attachmentOutgoing->outgoing_uuid.'/'.$attachmentOutgoing->name);
+
+        $deleteAttachmet = AttachmentOutgoing::where('uuid', $request->uuid)->delete();
+
+        return redirect("/attachment-outgoing/".$attachmentOutgoing->outgoing_uuid);
     }
 }

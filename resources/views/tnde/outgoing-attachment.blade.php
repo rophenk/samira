@@ -35,10 +35,10 @@
                                                     <span class="caption-subject bold uppercase"> Lampiran Surat</span>
                                                 </div>
                                                 <div class="actions">
-                                                    <!--<a class="btn btn-circle btn-icon-only blue" href="javascript:;">
-                                                        <i class="icon-cloud-upload"></i>
+                                                    <a class="btn btn-circle btn-icon-only blue" href="javascript:;">
+                                                        <i class="icon-refresh"></i>
                                                     </a>
-                                                    <a class="btn btn-circle btn-icon-only green" href="javascript:;">
+                                                    <!--<a class="btn btn-circle btn-icon-only green" href="javascript:;">
                                                         <i class="icon-wrench"></i>
                                                     </a>
                                                     <a class="btn btn-circle btn-icon-only red" href="javascript:;">
@@ -106,12 +106,15 @@
                                                         <div class="tab-pane" id="tab_15_2">
                                                             <p> Berkas Lampiran </p>
                                                             <p> 
-                                                              <ul>
-                                                                @forelse ($attachment as $lampiran)
-                                                                <li><a href="/attachment-show-outgoing/{{ $lampiran->uuid }}">{{ $lampiran->name }}</a></li>
-                                                                @empty
-                                                                @endforelse
-                                                              </ul>
+                                                                <div id="list">
+                                                                    <ul>
+                                                                        @forelse ($attachment as $lampiran)
+                                                                        <li><a href="/attachment-show-outgoing/{{ $lampiran->uuid }}">{{ $lampiran->name }}</a> &nbsp; <a href="/attachment-outgoing-delete/{{ $lampiran->uuid }}"><span class="label label-sm label-danger"> <i class="fa fa-times"></i> Hapus </span></a></li>
+                                                                        @empty
+                                                                        @endforelse
+                                                                    </ul>
+                                                                </div>
+                                                              
                                                             </p>
                                                             <!--<p>
                                                                 <a class="btn green" href="ui_tabs_accordions_navs.html#tab_15_2" target="_blank"> Activate this tab via URL </a>
@@ -243,6 +246,8 @@
           var request = new XMLHttpRequest();
 
           form.addEventListener('submit', function(e){
+            document.getElementById('message').innerHTML = "Uploading .. Please Wait"; 
+
             e.preventDefault();
             var formdata = new FormData(form);
 
@@ -256,6 +261,9 @@
             response = JSON.parse(data.currentTarget.response);
             if(response.success){
               document.getElementById('message').innerHTML = "Berkas Lampiran Berhasil Diunggah";
+              $('#list').load('/attachment-outgoing-list/{{ $outgoing->uuid }}');
+            } else {
+
             }
           }
         </script>
