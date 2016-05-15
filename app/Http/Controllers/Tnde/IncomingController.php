@@ -185,6 +185,19 @@ class IncomingController extends Controller
         return view('tnde.incoming-attachment', ['user' => $user, 'incoming' => $incoming, 'attachment' => $attachment]);
     }
 
+    public function attachmentlist(Request $request)
+    {
+        $user       = $request->user();
+
+        $incoming = Incoming::where('uuid', $request->uuid)
+                                    ->get();
+
+        $attachment = AttachmentIncoming::where('incoming_uuid', $request->uuid)
+                                    ->get();
+
+        return view('tnde.incoming-attachment', ['user' => $user, 'incoming' => $incoming, 'attachment' => $attachment]);
+    }
+
     public function uploadattachment(Request $request)
     {
         $user       = $request->user();
@@ -220,5 +233,17 @@ class IncomingController extends Controller
                                     ->first();
         $storagePath  = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
         return view('tnde.incoming-attachment-show', ['user' => $user, 'attachment' => $attachment, 'file' => $storagePath]);                          
+    }
+
+    public function attachmentdelete(Request $request)
+    {
+        $attachmentIncoming = AttachmentIncoming::where('uuid', $request->uuid)
+                                    ->first();
+
+        Storage::disk('tnde')->delete($attachmentIncoming->outgoing_uuid.'/'.$attachmentIncoming->name);
+
+        $deleteAttachmet = AttachmentIncoming::where('uuid', $request->uuid)->delete();
+
+        return redirect("/attachment-outgoing/".$attachmentIncoming->outgoing_uuid);
     }
 }

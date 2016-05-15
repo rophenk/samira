@@ -243,6 +243,8 @@
           var request = new XMLHttpRequest();
 
           form.addEventListener('submit', function(e){
+            document.getElementById('message').innerHTML = "Uploading .. Please Wait"; 
+            
             e.preventDefault();
             var formdata = new FormData(form);
 
@@ -256,6 +258,7 @@
             response = JSON.parse(data.currentTarget.response);
             if(response.success){
               document.getElementById('message').innerHTML = "Berkas Lampiran Berhasil Diunggah";
+              $('#list').load('/attachment-outgoing-list/{{ $outgoing->uuid }}');
             }
           }
         </script>

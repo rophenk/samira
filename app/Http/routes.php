@@ -46,8 +46,10 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('/attribute-incoming/{uuid?}', 'Tnde\IncomingController@attribute');
   Route::post('/attribute-incoming/{uuid?}', 'Tnde\IncomingController@storeattribute');
   Route::get('/attachment-incoming/{uuid?}', 'Tnde\IncomingController@attachment');
+  Route::get('/attachment-incoming-list/{uuid?}', 'Tnde\IncomingController@attachmentlist');
   Route::post('/attachment-incoming/{uuid?}', 'Tnde\IncomingController@uploadattachment');
   Route::get('/attachment-show-incoming/{uuid?}', 'Tnde\IncomingController@showattachment');
+  Route::get('/attachment-incoming-delete/{uuid?}', 'Tnde\IncomingController@attachmentdelete');
 
   Route::get('/list-outgoing', 'Tnde\OutgoingController@index');
   Route::get('/add-outgoing', 'Tnde\OutgoingController@create');
