@@ -105,13 +105,15 @@
                                                         </div>
                                                         <div class="tab-pane" id="tab_15_2">
                                                             <p> Berkas Lampiran </p>
-                                                            <p> 
+                                                            <p>
+                                                              <div id="list"> 
                                                               <ul>
                                                                 @forelse ($attachment as $lampiran)
-                                                                <li><a href="/attachment-show-incoming/{{ $lampiran->uuid }}">{{ $lampiran->name }}</a></li>
+                                                                <li><a href="/attachment-show-incoming/{{ $lampiran->uuid }}">{{ $lampiran->name }}</a>&nbsp; <a href="/attachment-incoming-delete/{{ $lampiran->uuid }}"><span class="label label-sm label-danger"> <i class="fa fa-times"></i> Hapus </span></a></li>
                                                                 @empty
                                                                 @endforelse
                                                               </ul>
+                                                              </div>
                                                             </p>
                                                             <!--<p>
                                                                 <a class="btn green" href="ui_tabs_accordions_navs.html#tab_15_2" target="_blank"> Activate this tab via URL </a>
@@ -244,7 +246,7 @@
 
           form.addEventListener('submit', function(e){
             document.getElementById('message').innerHTML = "Uploading .. Please Wait"; 
-            
+
             e.preventDefault();
             var formdata = new FormData(form);
 
@@ -258,7 +260,7 @@
             response = JSON.parse(data.currentTarget.response);
             if(response.success){
               document.getElementById('message').innerHTML = "Berkas Lampiran Berhasil Diunggah";
-              $('#list').load('/attachment-outgoing-list/{{ $outgoing->uuid }}');
+              $('#list').load('/attachment-incoming-list/{{ $incoming->uuid }}');
             }
           }
         </script>

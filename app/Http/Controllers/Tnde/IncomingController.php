@@ -195,7 +195,7 @@ class IncomingController extends Controller
         $attachment = AttachmentIncoming::where('incoming_uuid', $request->uuid)
                                     ->get();
 
-        return view('tnde.incoming-attachment', ['user' => $user, 'incoming' => $incoming, 'attachment' => $attachment]);
+        return view('tnde.incoming-attachment-list', ['user' => $user, 'incoming' => $incoming, 'attachment' => $attachment]);
     }
 
     public function uploadattachment(Request $request)
@@ -240,10 +240,10 @@ class IncomingController extends Controller
         $attachmentIncoming = AttachmentIncoming::where('uuid', $request->uuid)
                                     ->first();
 
-        Storage::disk('tnde')->delete($attachmentIncoming->outgoing_uuid.'/'.$attachmentIncoming->name);
+        Storage::disk('tnde')->delete($attachmentIncoming->incoming_uuid.'/'.$attachmentIncoming->name);
 
         $deleteAttachmet = AttachmentIncoming::where('uuid', $request->uuid)->delete();
 
-        return redirect("/attachment-outgoing/".$attachmentIncoming->outgoing_uuid);
+        return redirect("/attachment-incoming/".$attachmentIncoming->incoming_uuid);
     }
 }
