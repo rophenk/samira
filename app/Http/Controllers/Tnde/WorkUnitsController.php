@@ -51,6 +51,30 @@ class WorkUnitsController extends Controller
 
         $setjen->makeSiblingOf($irjen);
 
+            $biro_perencanaan = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Biro Perencanaan']);
+            $biro_perencanaan->makeChildOf($setjen);
+
+            $biro_ok = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Biro Organisasi dan Kepegawaian']);
+            $biro_ok->makeChildOf($setjen);
+
+            $biro_hip = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Biro Hukum dan Informasi Publik']);
+            $biro_hip->makeChildOf($setjen);
+
+            $biro_kp = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Biro Keuangan dan Perlengkapan']);
+            $biro_kp->makeChildOf($setjen);
+
+            $biro_humas = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Biro Umum dan Hubungan Masyarakat']);
+            $biro_humas->makeChildOf($setjen);
+
+            $pkln = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Pusat Kerjasama Luar Negeri']);
+            $pkln->makeChildOf($setjen);
+
+            $ppvtpp = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Pusat Perlindungan Varietas Tanaman dan Perizinan Pertanian']);
+            $ppvtpp->makeChildOf($setjen);
+
+            $pusdatin = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Pusat Data dan Sistem Informasi Pertanian']);
+            $pusdatin->makeChildOf($setjen);
+
         $dirjen_psp = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Direktorat Jenderal Prasarana dan Sarana Pertanian']);
         $dirjen_psp->makeChildOf($menteri);
 
@@ -117,32 +141,119 @@ class WorkUnitsController extends Controller
         $dirjen_perkebunan = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Direktorat Jenderal Perkebunan']);
         $dirjen_perkebunan->makeChildOf($menteri);
 
+            $kebun_setjen = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Sekretariat Ditjen Perkebunan']);
+            $kebun_setjen->makeChildOf($dirjen_perkebunan);
+
+            $kebun_setjen = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Sekretariat Ditjen Perkebunan']);
+            $kebun_setjen->makeChildOf($dirjen_perkebunan);
+
+            $kebun_benih = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Direktorat Perbenihan Perkebunan']);
+            $kebun_benih->makeChildOf($dirjen_perkebunan);
+
+            $kebun_semusim = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Direktorat Tanaman Semusim dan Rempah']);
+            $kebun_semusim->makeChildOf($dirjen_perkebunan);
+
+            $kebun_tahunan = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Direktorat Tanaman Tahunan dan Penyegar']);
+            $kebun_tahunan->makeChildOf($dirjen_perkebunan);
+
+            $kebun_lindung = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Direktorat Perlindungan Perkebunan']);
+            $kebun_lindung->makeChildOf($dirjen_perkebunan);
+
+            $kebun_olah = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Direktorat Pengolahan dan Pemasaran Hasil Perkebunan']);
+            $kebun_olah->makeChildOf($dirjen_perkebunan);
+
+            $kebun_bbp2tp_medan = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Besar Perbenihan dan Proteksi Tanaman Perkebunan (BBPPTP) Medan']);
+            $kebun_bbp2tp_medan->makeChildOf($dirjen_perkebunan);
+
+            $kebun_bbp2tp_ambon = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Besar Perbenihan dan Proteksi Tanaman Perkebunan (BBPPTP) Ambon']);
+            $kebun_bbp2tp_ambon->makeChildOf($dirjen_perkebunan);
+
+            $kebun_bbp2tp_surabaya = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Besar Perbenihan dan Proteksi Tanaman Perkebunan (BBPPTP) Surabaya']);
+            $kebun_bbp2tp_surabaya->makeChildOf($dirjen_perkebunan);
+
+            $kebun_bptp_pontianak = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Proteksi Tanaman Perkebunan (BPTP) Pontianak']);
+            $kebun_bptp_pontianak->makeChildOf($dirjen_perkebunan);
+
         $dirjen_pkh = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Direktorat Jenderal Peternakan dan Kesehatan Hewan']);
         $dirjen_pkh->makeChildOf($menteri);
 
-            $biro_perencanaan = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Biro Perencanaan']);
-            $biro_perencanaan->makeChildOf($setjen);
+            $pkh_setjen = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Sekretariat Ditjen Peternakan dan Kesehatan Hewan']);
+            $pkh_setjen->makeChildOf($dirjen_pkh);
 
-            $biro_ok = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Biro Organisasi dan Kepegawaian']);
-            $biro_ok->makeChildOf($setjen);
+            $pkh_bitpro = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Direktorat Pembibitan dan Produksi Ternak']);
+            $pkh_bitpro->makeChildOf($dirjen_pkh);
 
-            $biro_hip = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Biro Hukum dan Informasi Publik']);
-            $biro_hip->makeChildOf($setjen);
+            $pkh_pakan = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Direktorat Pakan']);
+            $pkh_pakan->makeChildOf($dirjen_pkh);
 
-            $biro_kp = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Biro Keuangan dan Perlengkapan']);
-            $biro_kp->makeChildOf($setjen);
+            $pkh_keswan = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Direktorat Kesehatan Hewan']);
+            $pkh_keswan->makeChildOf($dirjen_pkh);
 
-            $biro_humas = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Biro Umum dan Hubungan Masyarakat']);
-            $biro_humas->makeChildOf($setjen);
+            $pkh_kesmavet = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Direktorat Kesehatan Masyarakat Veteriner']);
+            $pkh_kesmavet->makeChildOf($dirjen_pkh);
 
-            $pkln = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Pusat Kerjasama Luar Negeri']);
-            $pkln->makeChildOf($setjen);
+            $pkh_pvf = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Pusat Veteriner Farma Surabaya']);
+            $pkh_pvf->makeChildOf($dirjen_pkh);
 
-            $ppvtpp = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Pusat Perlindungan Varietas Tanaman dan Perizinan Pertanian']);
-            $ppvtpp->makeChildOf($setjen);
+            $pkh_bptuhpt_indrapuri = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Pembibitan Ternak Unggul dan Hijauan Pakan Ternak Indrapuri']);
+            $pkh_bptuhpt_indrapuri->makeChildOf($dirjen_pkh);
 
-            $pusdatin = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Pusat Data dan Sistem Informasi Pertanian']);
-            $pusdatin->makeChildOf($setjen);
+            $pkh_bptuhpt_siborong = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Pembibitan Ternak Unggul dan Hijauan Pakan Ternak Siborong Borong']);
+            $pkh_bptuhpt_siborong->makeChildOf($dirjen_pkh);
+
+            $pkh_bptuhpt_padang = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Pembibitan Ternak Unggul dan Hijauan Pakan Ternak Padang Mangatas']);
+            $pkh_bptuhpt_padang->makeChildOf($dirjen_pkh);
+
+            $pkh_bptuhpt_sembawa = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Pembibitan Ternak Unggul dan Hijauan Pakan Ternak Sembawa']);
+            $pkh_bptuhpt_sembawa->makeChildOf($dirjen_pkh);
+
+            $pkh_bet = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Embrio Ternak Cipelang Bogor']);
+            $pkh_bet->makeChildOf($dirjen_pkh);
+
+            $pkh_bbptuhpt_baturraden = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Besar Pembibitan Ternak Unggul dan Hijauan Pakan Ternak Baturraden']);
+            $pkh_bbptuhpt_baturraden->makeChildOf($dirjen_pkh);
+
+            $pkh_bptuhpt_pelaihari = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Pembibitan Ternak Unggul dan Hijauan Pakan Ternak Pelaihari']);
+            $pkh_bptuhpt_pelaihari->makeChildOf($dirjen_pkh);
+
+            $pkh_bv_medan = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Veteriner Medan']);
+            $pkh_bv_medan->makeChildOf($dirjen_pkh);
+
+            $pkh_bv_bandarlampung = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Veteriner Bandar Lampung']);
+            $pkh_bv_bandarlampung->makeChildOf($dirjen_pkh);
+
+            $pkh_bbv_wates = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Besar Veteriner Wates']);
+            $pkh_bbv_wates->makeChildOf($dirjen_pkh);
+
+            $pkh_bv_banjarbaru = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Veteriner Banjarbaru']);
+            $pkh_bv_banjarbaru->makeChildOf($dirjen_pkh);
+
+            $pkh_bbv_denpasar = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Besar Veteriner Denpasar']);
+            $pkh_bbv_denpasar->makeChildOf($dirjen_pkh);
+
+            $pkh_bbv_maros = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Besar Veteriner Maros']);
+            $pkh_bbv_maros->makeChildOf($dirjen_pkh);
+
+            $pkh_bv_subang = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Veteriner Subang']);
+            $pkh_bv_subang->makeChildOf($dirjen_pkh);
+
+            $pkh_bbpmsoh = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Besar Pengujian Mutu dan Sertifikasi Obat Hewan Gunung Sindur']);
+            $pkh_bbpmsoh->makeChildOf($dirjen_pkh);
+
+            $pkh_bpmsph = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Pengujian Mutu dan Sertifikasi Produk Hewan Bogor']);
+            $pkh_bpmsph->makeChildOf($dirjen_pkh);
+
+            $pkh_bib = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Inseminasi Buatan Lembang']);
+            $pkh_bib->makeChildOf($dirjen_pkh);
+
+            $pkh_bbib = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Besar Inseminasi Buatan Singosari']);
+            $pkh_bbib->makeChildOf($dirjen_pkh);
+
+            $pkh_bpmsp = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Pengujian Mutu dan Sertifikasi Pakan Bekasi']);
+            $pkh_bpmsp->makeChildOf($dirjen_pkh);
+
+            $pkh_bptuhpt_denpasar = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Balai Pembibitan Ternak Unggul dan Hijauan Pakan Ternak Denpasar']);
+            $pkh_bptuhpt_denpasar->makeChildOf($dirjen_pkh);
         
         $satker = WorkUnit::where('parent_id', '=', NULL)->first()->getDescendantsAndSelf()->toHierarchy();
         

@@ -13,6 +13,14 @@
 @endsection
 
 @section('content')
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="margin-bottom-10" id="nestable_list_menu">
+                                                    <button type="button" class="btn green btn-outline sbold uppercase" data-action="expand-all">Expand All</button>
+                                                    <button type="button" class="btn red btn-outline sbold uppercase" data-action="collapse-all">Collapse All</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                   <div class="row">
                                     <div class="col-md-12">
                                         <div class="portlet light bordered">
