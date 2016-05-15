@@ -286,7 +286,7 @@
                                                 <i class="icon-settings"></i> Setting </a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <a href="/list-satker"> Satuan Kerja </a>
+                                                    <a href="/list-workunit"> Satuan Kerja </a>
                                                 </li>
                                                 <li>
                                                     <a href="#"> Template </a>
