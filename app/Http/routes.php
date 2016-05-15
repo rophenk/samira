@@ -60,6 +60,9 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('/attachment-outgoing/{uuid?}', 'Tnde\OutgoingController@uploadattachment');
   Route::get('/attachment-show-outgoing/{uuid?}', 'Tnde\OutgoingController@showattachment');
 
+  Route::get('/test-workunit', 'Tnde\WorkUnitsController@test');
+  Route::get('/list-workunit', 'Tnde\WorkUnitsController@index');
+
 });
 
 /*Route::get('home', 'DashboardController@dashboard');*/
