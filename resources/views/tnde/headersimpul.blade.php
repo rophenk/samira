@@ -305,7 +305,7 @@
                                     <a href="javascript:;" class="text-uppercase">
                                         <i class="icon-envelope-open"></i> Chart </a>
                                     <ul class="dropdown-menu dropdown-menu-fw">
-                                        <li class="dropdown more-dropdown-sub">
+                                        <!--<li class="dropdown more-dropdown-sub">
                                             <a href="javascript:;">
                                                 <i class="fa fa-download"></i> Surat Masuk </a>
                                             <ul class="dropdown-menu">
@@ -341,7 +341,7 @@
                                                     <a href="#"> Data Disposisi </a>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li>-->
                                         <li class="dropdown more-dropdown-sub">
                                             <a href="?p=">
                                                 <i class="icon-settings"></i> Setting </a>
