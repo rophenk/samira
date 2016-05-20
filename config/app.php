@@ -157,7 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Baum\Providers\BaumServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
-        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        /*Tymon\JWTAuth\Providers\LaravelServiceProvider::class,*/
         /*'Barryvdh\Cors\ServiceProvider',*/
 
     ],
@@ -206,7 +206,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'MyFunctions' => App\Helpers\MyFunctions::class,
-        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        /*'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,*/
 
     ],
 
