@@ -17,6 +17,10 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
+    /*'defaults' => [
+        'guard' => 'api',
+        'passwords' => 'users',
+    ],*/
 
     /*
     |--------------------------------------------------------------------------
@@ -43,8 +47,13 @@ return [
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'usersAPI',
         ],
+
+        /*'api' => [
+            'driver' => 'jwt',
+            'provider' => 'usersAPI',
+        ],*/
     ],
 
     /*
@@ -70,10 +79,10 @@ return [
             'model' => App\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'usersAPI' => [
+             'driver' => 'database',
+             'table' => 'users',
+        ],
     ],
 
     /*

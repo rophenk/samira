@@ -15,7 +15,11 @@
     return view('welcome');
 });*/
 
-
+$options = [
+    'prefix' => 'api/v1', 
+    'namespace' => 'Api', 
+    'middleware' => 'auth.api',
+];
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +70,24 @@ Route::group(['middleware' => ['web']], function () {
 
   Route::get('/test-workunit', 'Tnde\WorkUnitsController@test');
   Route::get('/list-workunit', 'Tnde\WorkUnitsController@index');
+
+  /* Route For Simpulpadi Mockup */
+  Route::get('/simpul-login', 'Simpul\MockupController@login');
+  Route::get('/simpul-dashboard', 'Simpul\MockupController@dashboard');
+  Route::post('/simpul-dashboard', 'Simpul\MockupController@dashboard');
+
+});
+
+Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api'], function () {
+
+  Route::resource('/list-incoming', 'Tnde\APIIncoming@index');
+
+});
+
+Route::group(['middleware' => 'cors'], function () {
+
+  Route::post('api/authenticate', 'Tnde\AuthenticationController@authenticate');
+  Route::get('api/authenticate', 'Tnde\AuthenticationController@index');
 
 });
 

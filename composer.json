@@ -10,7 +10,10 @@
         "laravelcollective/html": "5.2.*",
         "ramsey/uuid": "3.4.*",
         "moontoast/math": "1.1.*",
-        "baum/baum": "~1.1"
+        "baum/baum": "~1.1",
+        "tymon/jwt-auth": "dev-develop",
+        "phpseclib/phpseclib": "2.0.*",
+        "barryvdh/laravel-cors": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
