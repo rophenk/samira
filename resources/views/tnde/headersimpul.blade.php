@@ -13,8 +13,8 @@
                             </button>
                             <!-- End Toggle Button -->
                             <!-- BEGIN LOGO -->
-                            <a id="index" class="page-logo" href="index.html">
-                                <img src="../assets/layouts/layout5/img/logo.png" alt="Logo"> </a>
+                            <a id="index" class="page-logo" href="/simpul-dashboard">
+                                <img src="../assets/layouts/layout5/img/logo-simpulpadi.png" alt="Logo"> </a>
                             <!-- END LOGO -->
                             <!-- BEGIN SEARCH -->
                             <form class="search" action="extra_search.html" method="GET">
@@ -159,7 +159,7 @@
                                 <div class="btn-group-img btn-group">
                                     <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                         <span>Hi, Administrator</span>
-                                        <img src="../assets/layouts/layout5/img/avatar1.jpg" alt=""> </button>
+                                        <img src="../assets/layouts/layout5/img/foto.jpg" alt=""> </button>
                                     <ul class="dropdown-menu-v2" role="menu">
                                         <<!--li>
                                             <a href="page_user_profile_1.html">
