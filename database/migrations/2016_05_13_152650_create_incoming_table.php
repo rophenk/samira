@@ -17,12 +17,14 @@ class CreateIncomingTable extends Migration
             $table->increments('id');
             $table->string('uuid', 36);
             $table->date('input_date');
-            $table->text('agenda_number')->nullable();
-            $table->text('letter_number')->nullable();
+            $table->string('type')->nullable();
+            $table->string('agenda_number')->nullable();
+            $table->string('letter_number')->nullable();
             $table->date('letter_date');
             $table->text('sender')->nullable();
             $table->text('receiver')->nullable();
             $table->integer('attachment_count')->nullable();
+            $table->integer('page_count')->nullable();
             $table->text('subject')->nullable();
             $table->text('description')->nullable();
             $table->integer('user_id')->nullable();

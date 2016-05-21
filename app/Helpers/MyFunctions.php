@@ -31,4 +31,23 @@ class MyFunctions {
 
       return $html;
     }
+
+    public static function renderNodeSelect($node) {
+      if( $node->isLeaf() ) {
+
+        return '<option value="' . $node->name . '">' . $node->name . '</option>';
+
+      } else {
+        
+        $html = '<optgroup label="' . $node->name. '">';
+
+        foreach($node->children as $child)
+
+          $html .= MyFunctions::renderNodeSelect($child);
+
+        $html .= '</optgroup>';
+      }
+
+      return $html;
+    }
 }

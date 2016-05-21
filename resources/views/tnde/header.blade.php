@@ -161,7 +161,13 @@
                                         <span>Hi, {{ $user->name }}</span>
                                         <img src="../assets/layouts/layout5/img/avatar1.jpg" alt=""> </button>
                                     <ul class="dropdown-menu-v2" role="menu">
-                                        <<!--li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon-envelope-open"></i> My Inbox
+                                                <span class="badge badge-danger"> 3 </span>
+                                            </a>
+                                        </li>
+                                        <!--li>
                                             <a href="page_user_profile_1.html">
                                                 <i class="icon-user"></i> My Profile
                                                 <span class="badge badge-danger">1</span>
@@ -170,12 +176,6 @@
                                         <li>
                                             <a href="app_calendar.html">
                                                 <i class="icon-calendar"></i> My Calendar </a>
-                                        </li>
-                                        <li>
-                                            <a href="app_inbox.html">
-                                                <i class="icon-envelope-open"></i> My Inbox
-                                                <span class="badge badge-danger"> 3 </span>
-                                            </a>
                                         </li>
                                         <li>
                                             <a href="app_todo_2.html">
@@ -213,7 +213,7 @@
 
                         if($routes == "dashboard") {
                             $dashboard = ' active open selected';
-                        } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing" || $routes == "list-workunit") {
+                        } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing" || $routes == "list-workunit" || $routes == "list-users" || $routes == "receiver-incoming") {
                             $tndetab = ' active open selected';
                         } else {
                             
@@ -232,7 +232,7 @@
                                         </li>
                                         <li class="active">
                                             <a href="#">
-                                                <i class="icon-bulb"></i> Dokumentasi</a>
+                                                <i class="icon-bulb"></i> EVICENTER</a>
                                         </li>
                                         <!--<li>
                                             <a href="dashboard_3.html">
@@ -248,7 +248,6 @@
                                             <a href="javascript:;">
                                                 <i class="fa fa-download"></i> Surat Masuk </a>
                                             <ul class="dropdown-menu">
-                                                <li><a>AGENDA</a></li>
                                                 <li>
                                                     <a href="/list-incoming"> Data Surat Masuk </a>
                                                 </li>
@@ -262,7 +261,6 @@
                                             <a href="javascript:;">
                                                 <i class="fa fa-upload"></i> Surat Keluar </a>
                                             <ul class="dropdown-menu">
-                                                <li><a>AGENDA</a></li>
                                                 <li>
                                                     <a href="/list-outgoing"> Data Surat Keluar </a>
                                                 </li>
@@ -298,7 +296,7 @@
                                                 <i class="icon-users"></i> Pengguna </a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <a href="#"> Data Pengguna </a>
+                                                    <a href="/list-users"> Data Pengguna </a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -306,7 +304,7 @@
                                 </li>
                                 <li class="dropdown dropdown-fw  ">
                                     <a href="javascript:;" class="text-uppercase">
-                                        <i class="icon-camera"></i> DOKUMENTASI </a>
+                                        <i class="icon-camera"></i> EVICENTER </a>
                                     <ul class="dropdown-menu dropdown-menu-fw">
                                         <li class="dropdown more-dropdown-sub">
                                             <a href="javascript:;">

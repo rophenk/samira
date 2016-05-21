@@ -1,5 +1,5 @@
 @extends('tnde.master')
-@section('title', 'Data Surat Masuk' )
+@section('title', 'Data Pengguna' )
 
 @section('pagestyle')
         <link href="../assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
@@ -9,7 +9,7 @@
 @section('breadcrumb')
 
                         <li>
-                            <a href="/home" class="active">Data Surat Masuk</a>
+                            <a href="/home" class="active">Data Pengguna</a>
                         </li>
 @endsection
 
@@ -37,7 +37,7 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="btn-group">
-                                                                <a href="/add-incoming">
+                                                                <a href="/add-users">
                                                                   <button id="sample_editable_1_new" class="btn sbold green"> Add New
                                                                     <i class="fa fa-plus"></i>
                                                                   </button>
@@ -70,25 +70,32 @@
                                                 <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                                                     <thead>
                                                         <tr>
-                                                            <th> Nomor Agenda </th>
-                                                            <th> Perihal </th>
-                                                            <th> Status </th>
-                                                            <th> Tanggal </th>
+                                                            <th> Nama </th>
+                                                            <th> Role </th>
                                                             <th> Actions </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                      @forelse ($incoming as $incoming)
+                                                      @forelse ($users as $users)
                                                       <tr class="odd gradeX">
-                                                            <td width="25%" class="left"> {{ $incoming->agenda_number }} </td>
-                                                            <td>
-                                                              {{ $incoming->sender }}<br />
-                                                                <a href="/edit-incoming/{{ $incoming->uuid }}">  {{ $incoming->subject }} </a>
+                                                            <td width="50%">
+                                                                <div class="mt-comments">
+                                                                    <div class="mt-comment">   
+                                                                        <div class="mt-comment-img">
+                                                                            <img src="../assets/layouts/layout5/img/{{ $users->avatar }}" height="50px"/> 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mt-comment-body">
+                                                                    <div class="mt-comment-info">
+                                                                        <span class="mt-comment-author"><a href="/edit-users/{{ $users->id }}">  {{ $users->name }} </a></span><br />
+                                                                        <span class="label label-sm label-success"> {{ $users->satker }} </span>
+                                                                    </div>
+                                                                </div>
+
+                                                                
                                                             </td>
-                                                            <td>
-                                                                <span class="label label-sm label-success"> Approved </span>
-                                                            </td>
-                                                            <td class="center"> {{ $incoming->letter_date }} </td>
+                                                            <td class="center"> {{ $users->role_name }} </td>
                                                             <td>
                                                                 <div class="btn-group">
                                                                     <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
@@ -96,20 +103,20 @@
                                                                     </button>
                                                                     <ul class="dropdown-menu" role="menu">
                                                                         <li>
-                                                                            <a href="/edit-incoming/{{ $incoming->uuid }}">
+                                                                            <a href="/edit-users/{{ $users->id }}">
                                                                                 <i class="fa fa-edit"></i> Edit </a>
                                                                         </li>
                                                                         <li>
-                                                                            <a href="/attachment-incoming/{{ $incoming->uuid }}">
+                                                                            <a href="/attachment-users/{{ $users->id }}">
                                                                                 <i class="fa fa-paperclip"></i> Lampiran </a>
                                                                         </li>
                                                                         <li>
-                                                                            <a href="/receiver-incoming/{{ $incoming->uuid }}">
+                                                                            <a href="javascript:;">
                                                                                 <i class="icon-user"></i> Penerima </a>
                                                                         </li>
                                                                         <!--<li class="divider"> </li>-->
                                                                         <li>
-                                                                            <a href="/attribute-incoming/{{ $incoming->uuid }}">
+                                                                            <a href="/attribute-users/{{ $users->id }}">
                                                                                 <i class="icon-tag"></i> Atribut
                                                                             </a>
                                                                         </li>

@@ -134,6 +134,11 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group form-md-line-input">
+                                                            <label class="control-label col-md-2">Halaman</label>
+                                                            <div class="col-md-10">
+                                                                <input id="touchspin_13" type="text" value="{{ $incoming->page_count }}" name="page_count"> </div>
+                                                        </div>
+                                                        <div class="form-group form-md-line-input">
                                                             <label class="control-label col-md-2">Lampiran</label>
                                                             <div class="col-md-10">
                                                                 <input id="touchspin_3" type="text" value="{{ $incoming->attachment_count }}" name="attachment_count"> </div>
@@ -199,7 +204,7 @@
         <script src="../assets/global/plugins/fuelux/js/spinner.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript">
         </script>
-        <script src="../assets/pages/scripts/components-bootstrap-touchspin.min.js" type="text/javascript"></script>
+        <script src="../assets/pages/scripts/components-bootstrap-touchspin.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-summernote/summernote.min.js" type="text/javascript"></script>

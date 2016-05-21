@@ -6,6 +6,8 @@
                                     $detail = '';
                                     $attribute = '';
                                     $attachment = '';
+                                    $receiver = '';
+
                                      $routes = $_SERVER['REQUEST_URI'];
                         
                                      $explode_routes = explode("/",$routes);
@@ -17,13 +19,15 @@
                                         $attribute = ' class="active"';
                                      } elseif($routes == "attachment-incoming") {
                                         $attachment = ' class="active"';
-                                     }else {
+                                     } elseif($routes == "receiver-incoming") {
+                                        $receiver = ' class="active"';
+                                     } else {
 
                                      }
                                     ?>
                                     <ul class="nav navbar-nav margin-bottom-35 tabs">
                                         <li<?php echo $detail; ?> data-tab="tab-1">
-                                            <a href="#">
+                                            <a href="/edit-incoming/{{ $incoming->uuid }}">
                                                 <i class="icon-envelope-letter"></i> Detail Surat </a>
                                         </li>
                                         <?php 
@@ -33,13 +37,13 @@
                                             <a href="/attribute-incoming/{{ $incoming->uuid }}">
                                                 <i class="icon-tag "></i> Atribut Surat </a>
                                         </li>
-                                        <li data-tab="tab-3">
-                                            <a href="/receiver-incoming/{{ $incoming->uuid }}">
-                                                <i class="icon-user"></i> Penerima </a>
-                                        </li>
                                         <li<?php echo $attachment; ?> data-tab="tab-5">
                                             <a href="/attachment-incoming/{{ $incoming->uuid }}">
                                                 <i class="fa fa-paperclip"></i> Lampiran </a>
+                                        </li>
+                                        <li<?php echo $receiver; ?>  data-tab="tab-3">
+                                            <a href="/receiver-incoming/{{ $incoming->uuid }}">
+                                                <i class="icon-user"></i> Penerima </a>
                                         </li>
                                         <?php 
                                         }

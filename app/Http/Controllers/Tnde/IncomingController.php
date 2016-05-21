@@ -16,6 +16,8 @@ use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use App\AuthTraits\RedirectsUsers;
 use App\Incoming;
 use App\AttachmentIncoming;
+use App\WorkUnit;
+use App\IncomingActivities;
 use DB;
 
 class IncomingController extends Controller
@@ -28,6 +30,8 @@ class IncomingController extends Controller
     public function index(Request $request)
     {
         $user       = $request->user();
+
+
 
         // Tampilkan semua data Surat Masuk
         $incoming = Incoming::all();
@@ -43,7 +47,12 @@ class IncomingController extends Controller
     public function create(Request $request)
     {
         $user       = $request->user();
-        return view('tnde.incoming-add', ['user' => $user]);
+        $root = WorkUnit::where('parent_id', '=', NULL)->first();
+        $satker = DB::table('workUnits')
+                  ->select('id', 'name')
+                  ->get();
+        
+        return view('tnde.incoming-add', ['user' => $user, 'satker' => $satker]);
     }
 
     /**
@@ -61,14 +70,26 @@ class IncomingController extends Controller
         $explode_letter_date = explode("-",$request->letter_date);
         $letter_date = $explode_letter_date[2]."-".$explode_letter_date[1]."-".$explode_letter_date[0];
         
+        $type = $request->type;
+
+        if($type === 'internal') {
+            $sender = $request->internal_sender;
+        } elseif($type === 'eksternal') {
+            $sender = $request->external_sender;
+        } else {
+            $sender = 'Pengirim Tidak Diketahui';
+        }
+
         $incoming = new Incoming;
         $incoming->uuid = Uuid::uuid4();
         $incoming->input_date = $input_date;
         $incoming->agenda_number = $request->agenda_number;
         $incoming->letter_number = $request->letter_number;
         $incoming->letter_date = $letter_date;
-        $incoming->sender = $request->sender;
+        $incoming->type = $type;
+        $incoming->sender = $sender;
         $incoming->receiver = $request->receiver;
+        $incoming->page_count = $request->page_count;
         $incoming->attachment_count = $request->attachment_count;
         $incoming->subject = $request->subject;
         $incoming->description = $request->description;
@@ -246,4 +267,103 @@ class IncomingController extends Controller
 
         return redirect("/attachment-incoming/".$attachmentIncoming->incoming_uuid);
     }
+
+    public function receiver(Request $request)
+    {
+        $user       = $request->user();
+        // Tampilka data Incoming
+        $incoming = Incoming::where('uuid', $request->uuid)
+                                    ->first();
+
+        $incoming_id = $incoming->id;
+
+        $receiver = DB::table('IncomingActivities')
+                    ->leftJoin('users', 'users.id', '=', 'IncomingActivities.userID')
+                    ->leftJoin('workUnits', 'workUnits.id', '=', 'users.workUnitsID')
+                    ->select('IncomingActivities.*', 'users.name AS name', 'users.avatar AS avatar', 'workUnits.name AS satker')
+                    ->where('incomingID', '=', $incoming_id)
+                    ->get();
+        //return $receiver;
+
+        $satker = DB::table('workUnits')
+                  ->select('id', 'name')
+                  ->get();
+
+        return view('tnde.incoming-receiver', ['user' => $user, 'incoming' => $incoming, 'receiver' => $receiver, 'satker' => $satker]);
+    }
+
+    public function storereceiver(Request $request)
+    {
+        $user       = $request->user();
+
+        $receiver = $request->receiver;
+        $tembusan = $request->tembusan;
+
+        if(!empty($request->receiver)) {
+            
+            foreach ($receiver as $rec) {
+            
+            $users = DB::table('users')
+                     ->select('id')
+                     ->where('workUnitsID', '=', $rec)
+                     ->get();
+
+                if(!empty($users)) {
+                    
+                    foreach ($users as $usr) {
+                      $time = date("Y-m-d H:i:s");
+
+                        DB::table('incomingActivities')->insert([
+                            [
+                                'incomingID' => $request->incoming_id, 
+                                'userID' => $usr->id,
+                                'receiverStatus' => 'receiver',
+                                'read' => 0,
+                                'dateSend' => $time,
+                                'action' => NULL
+                            ]
+                        ]);
+
+                    }
+
+                }     
+                
+            }
+        }
+
+        if(!empty($request->tembusan)) {
+
+            foreach ($tembusan as $tbs) {
+            
+            $users = DB::table('users')
+                     ->select('id')
+                     ->where('workUnitsID', '=', $tbs)
+                     ->get();
+
+                if(!empty($users)) {
+
+                    foreach ($users as $usr) {
+                      $time = date("Y-m-d H:i:s");
+
+                        DB::table('incomingActivities')->insert([
+                            [
+                                'incomingID' => $request->incoming_id, 
+                                'userID' => $usr->id,
+                                'receiverStatus' => 'tembusan',
+                                'read' => 0,
+                                'dateSend' => $time,
+                                'action' => NULL
+                            ]
+                        ]);
+                        
+                    }
+                }
+                
+            }
+        }
+        
+        return redirect("/receiver-incoming/".$request->incoming_uuid);
+
+    }
+
 }

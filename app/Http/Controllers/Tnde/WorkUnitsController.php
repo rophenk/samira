@@ -66,6 +66,42 @@ class WorkUnitsController extends Controller
             $biro_humas = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Biro Umum dan Hubungan Masyarakat']);
             $biro_humas->makeChildOf($setjen);
 
+                $humas = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Bagian Hubungan Masyarakat']);
+                $humas->makeChildOf($biro_humas);
+
+                    $humas_sub_apu = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Sub Bagian Analisis Pendapat Umum']);
+                    $humas_sub_apu->makeChildOf($humas);
+
+                    $humas_sub_kpme = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Sub Bagian Komunikasi dan Pemberitaan Media Elektronik']);
+                    $humas_sub_kpme->makeChildOf($humas);
+
+                    $humas_sub_kpmc = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Sub Bagian Komunikasi dan Pemberitaan Media Cetak']);
+                    $humas_sub_kpmc->makeChildOf($humas);
+
+                $humas_pip = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Bagian Pengelolaan Informasi Publik']);
+                $humas_pip->makeChildOf($biro_humas);
+
+                    $humas_sub_pim = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Sub Bagian Pelayanan Informasi dan Multi Media']);
+                    $humas_sub_pim->makeChildOf($humas_pip);
+
+                    $humas_sub_pdp = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Sub Bagian Pameran dan Peragaan']);
+                    $humas_sub_pdp->makeChildOf($humas_pip);
+
+                    $humas_sub_tubiro = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Sub Bagian Tata Usaha Biro']);
+                    $humas_sub_tubiro->makeChildOf($humas_pip);
+
+                $humas_phal = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Bagian Protokol dan Hubungan Antar Lembaga']);
+                $humas_phal->makeChildOf($biro_humas);
+
+                    $humas_sub_promen = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Sub Bagian Protokol Menteri']);
+                    $humas_sub_promen->makeChildOf($humas_phal);
+
+                    $humas_sub_prokemen = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Sub Bagian Protokol Kementerian']);
+                    $humas_sub_prokemen->makeChildOf($humas_phal);
+
+                    $humas_sub_hal = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Sub Bagian Hubungan Antar Lembaga']);
+                    $humas_sub_hal->makeChildOf($humas_phal);
+
             $pkln = WorkUnit::create(['uuid' => Uuid::uuid4(), 'name' => 'Pusat Kerjasama Luar Negeri']);
             $pkln->makeChildOf($setjen);
 
@@ -260,6 +296,15 @@ class WorkUnitsController extends Controller
         return $satker;
     }
 
+    public function select()
+    {
+        $root = WorkUnit::where('parent_id', '=', NULL)->first();
+        $satker = WorkUnit::where('parent_id', '=', NULL)->first()->getDescendantsAndSelf()->toHierarchy();
+        $satkerSelect = DB::table('workUnits')
+                        ->select('id', 'name')
+                        ->get();
+        return $satkerSelect;
+    }
     /**
      * Display a listing of the resource.
      *

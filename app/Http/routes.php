@@ -54,6 +54,8 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('/attachment-incoming/{uuid?}', 'Tnde\IncomingController@uploadattachment');
   Route::get('/attachment-show-incoming/{uuid?}', 'Tnde\IncomingController@showattachment');
   Route::get('/attachment-incoming-delete/{uuid?}', 'Tnde\IncomingController@attachmentdelete');
+  Route::get('/receiver-incoming/{uuid?}', 'Tnde\IncomingController@receiver');
+  Route::post('/receiver-incoming', 'Tnde\IncomingController@storereceiver');
 
   Route::get('/list-outgoing', 'Tnde\OutgoingController@index');
   Route::get('/add-outgoing', 'Tnde\OutgoingController@create');
@@ -70,6 +72,9 @@ Route::group(['middleware' => ['web']], function () {
 
   Route::get('/test-workunit', 'Tnde\WorkUnitsController@test');
   Route::get('/list-workunit', 'Tnde\WorkUnitsController@index');
+  Route::get('/select-workunit', 'Tnde\WorkUnitsController@select');
+
+  Route::get('/list-users', 'Tnde\UserController@index');
 
   /* Route For Simpulpadi Mockup */
   Route::get('/simpul-login', 'Simpul\MockupController@login');

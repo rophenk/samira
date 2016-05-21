@@ -60,6 +60,14 @@ var ComponentsBootstrapTouchSpin = function() {
             buttonup_class: "btn red"
         });
 
+        $("#touchspin_12").TouchSpin({
+            verticalbuttons: true
+        });
+
+        $("#touchspin_13").TouchSpin({
+            verticalbuttons: true
+        });
+
     }
 
     return {
