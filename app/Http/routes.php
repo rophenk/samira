@@ -86,13 +86,14 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api'], function () {
 
   Route::resource('/list-incoming', 'Tnde\APIIncoming@index');
+  Route::get('/inbox/{uuid?}', 'Tnde\APIIncoming@index');
 
 });
 
 Route::group(['middleware' => 'cors'], function () {
 
   Route::post('api/authenticate', 'Tnde\AuthenticationController@authenticate');
-  Route::get('api/authenticate', 'Tnde\AuthenticationController@index');
+  Route::get('api/authenticate', 'Tnde\AuthenticationController@userInbox');
 
 });
 

@@ -33,6 +33,19 @@ class APIIncoming extends Controller
         return $incoming;
     }
 
+    public function userInbox(Request $request)
+    {
+        $user_id = $request->id();
+
+        $userInbox = DB::table('incomingActivities')
+                    ->leftJoin('incoming', 'incoming.id', '=', 'incomingActivities.incomingID')
+                    ->leftJoin('workUnits', 'workUnits.id', '=', 'incomingActivities.workUnitsID')
+                    ->select('incomingActivities.*', 'incoming.sender', 'incoming.perihal', 'workUnits.name AS satker')
+                    ->where('userID', '=', $user_id)
+                    ->get();
+        return $userInbox;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
