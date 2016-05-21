@@ -47,12 +47,15 @@ class IncomingController extends Controller
     public function create(Request $request)
     {
         $user       = $request->user();
+
         $root = WorkUnit::where('parent_id', '=', NULL)->first();
         $satker = DB::table('workUnits')
                   ->select('id', 'name')
                   ->get();
+
+        $incoming = Incoming::where('uuid', $request->uuid)->first();
         
-        return view('tnde.incoming-add', ['user' => $user, 'satker' => $satker]);
+        return view('tnde.incoming-add', ['user' => $user, 'satker' => $satker, 'incoming' => $incoming]);
     }
 
     /**
@@ -309,7 +312,7 @@ class IncomingController extends Controller
                      ->get();
 
                 if(!empty($users)) {
-                    
+
                     foreach ($users as $usr) {
                       $time = date("Y-m-d H:i:s");
 

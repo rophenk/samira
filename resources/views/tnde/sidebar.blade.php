@@ -26,13 +26,14 @@
                                      }
                                     ?>
                                     <ul class="nav navbar-nav margin-bottom-35 tabs">
+                                        <?php 
+                                        if(isset($incoming->uuid)) {
+                                        ?>
                                         <li<?php echo $detail; ?> data-tab="tab-1">
                                             <a href="/edit-incoming/{{ $incoming->uuid }}">
                                                 <i class="icon-envelope-letter"></i> Detail Surat </a>
                                         </li>
-                                        <?php 
-                                        if(isset($incoming->uuid)) {
-                                        ?>
+                                        
                                         <li<?php echo $attribute; ?> data-tab="tab-2">
                                             <a href="/attribute-incoming/{{ $incoming->uuid }}">
                                                 <i class="icon-tag "></i> Atribut Surat </a>
@@ -46,6 +47,13 @@
                                                 <i class="icon-user"></i> Penerima </a>
                                         </li>
                                         <?php 
+                                        } else {
+                                        ?>
+                                        <li<?php echo $detail; ?> data-tab="tab-1">
+                                            <a href="">
+                                                <i class="icon-envelope-letter"></i> Detail Surat </a>
+                                        </li>
+                                        <?php
                                         }
                                         ?>
                                     </ul>
