@@ -33,17 +33,19 @@ class APIIncoming extends Controller
         return $incoming;
     }
 
-    public function userInbox(Request $request)
+    public function userInbox($id)
     {
-        $user_id = $request->id();
+        $user_id = $id;
 
         $userInbox = DB::table('incomingActivities')
                     ->leftJoin('incoming', 'incoming.id', '=', 'incomingActivities.incomingID')
-                    ->leftJoin('workUnits', 'workUnits.id', '=', 'incomingActivities.workUnitsID')
-                    ->select('incomingActivities.*', 'incoming.sender', 'incoming.perihal', 'workUnits.name AS satker')
+                    ->leftJoin('users', 'users.id', '=', 'incomingActivities.userID')
+                    ->leftJoin('workUnits', 'workUnits.id', '=', 'users.workUnitsID')
+                    ->select('incomingActivities.*', 'incoming.sender', 'incoming.subject', 'workUnits.name AS satker')
                     ->where('userID', '=', $user_id)
-                    ->get();
-        return $userInbox;
+                    ->simplePaginate(10);
+        
+        return response()->json(['success' => 'auth-authorized', 'inbox' => $userInbox]);
     }
 
     /**
