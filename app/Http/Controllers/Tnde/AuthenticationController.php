@@ -16,6 +16,7 @@ class AuthenticationController extends Controller
     {
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) { 
+          
           $user = Auth::user();
 
           return response()->json(['success' => 'auth-authorized', 'token' => $user->api_token, 'user' => $user], 200);
@@ -32,7 +33,7 @@ class AuthenticationController extends Controller
     {
       
       $auth = auth()->guard('api');
-      var_dump($auth);die();
+      
         if ($auth->check()) {
             /*return $next($request);*/
             return response()->json(['success' => 'auth-authorized', 'user' => $user], 200);
