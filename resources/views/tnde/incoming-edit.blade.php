@@ -146,17 +146,14 @@
                                                         <div class="form-group form-md-line-input has-success">
                                                             <label class="col-md-2 control-label" for="form_control_1">Perihal</label>
                                                             <div class="col-md-10">
-                                                                <textarea class="form-control" name="subject" rows="3" placeholder="Enter more text">
-                                                                {{ $incoming->subject }}</textarea>
+                                                                <textarea class="form-control" name="subject" rows="3" placeholder="Enter more text">{{ $incoming->subject }}</textarea>
                                                                 <div class="form-control-focus"> </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group form-md-line-input has-success">
                                                             <label class="control-label col-md-2" for="form_control_1">Ringkasan</label>
                                                             <div class="col-md-10">
-                                                                <textarea class="wysihtml5 form-control" name="description" rows="6">
-                                                                {{ $incoming->description }}
-                                                                </textarea>
+                                                                <textarea class="wysihtml5 form-control" name="description" rows="6">{{ $incoming->description }}</textarea>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -177,7 +177,7 @@
                                                         <div class="form-group form-md-line-input has-success">
                                                             <label class="col-md-2 control-label" for="form_control_1">Perihal</label>
                                                             <div class="col-md-10">
-                                                                <textarea class="form-control" name="subject" rows="3" placeholder="Enter more text"></textarea>
+                                                                <textarea class="form-control" name="subject" rows="3"></textarea>
                                                                 <div class="form-control-focus"> </div>
                                                             </div>
                                                         </div>
