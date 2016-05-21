@@ -159,7 +159,7 @@
                                 <div class="btn-group-img btn-group">
                                     <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                         <span>Hi, {{ $user->name }}</span>
-                                        <img src="../assets/layouts/layout5/img/avatar1.jpg" alt=""> </button>
+                                        <img src="../assets/layouts/layout5/img/{{ $user->avatar }}" alt=""> </button>
                                     <ul class="dropdown-menu-v2" role="menu">
                                         <li>
                                             <a href="#">
