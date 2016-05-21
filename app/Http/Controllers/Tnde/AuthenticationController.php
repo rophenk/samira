@@ -32,8 +32,8 @@ class AuthenticationController extends Controller
     public function index()
     {
       
-      $auth = auth()->guard('api');
-      
+        $auth = auth()->guard('api');
+
         if ($auth->check()) {
             /*return $next($request);*/
             return response()->json(['success' => 'auth-authorized', 'user' => $user], 200);
