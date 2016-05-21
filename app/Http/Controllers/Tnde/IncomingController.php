@@ -54,7 +54,7 @@ class IncomingController extends Controller
                   ->get();
 
         $incoming = Incoming::where('uuid', $request->uuid)->first();
-        
+
         return view('tnde.incoming-add', ['user' => $user, 'satker' => $satker, 'incoming' => $incoming]);
     }
 
@@ -280,10 +280,10 @@ class IncomingController extends Controller
 
         $incoming_id = $incoming->id;
 
-        $receiver = DB::table('IncomingActivities')
-                    ->leftJoin('users', 'users.id', '=', 'IncomingActivities.userID')
+        $receiver = DB::table('incomingActivities')
+                    ->leftJoin('users', 'users.id', '=', 'incomingActivities.userID')
                     ->leftJoin('workUnits', 'workUnits.id', '=', 'users.workUnitsID')
-                    ->select('IncomingActivities.*', 'users.name AS name', 'users.avatar AS avatar', 'workUnits.name AS satker')
+                    ->select('incomingActivities.*', 'users.name AS name', 'users.avatar AS avatar', 'workUnits.name AS satker')
                     ->where('incomingID', '=', $incoming_id)
                     ->get();
         //return $receiver;
