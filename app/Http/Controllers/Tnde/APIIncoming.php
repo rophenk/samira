@@ -79,9 +79,9 @@ class APIIncoming extends Controller
     {
         // Tampilkan semua data Surat Masuk
         $incoming = Incoming::find($request->id)->first();
-
+        $attachment = AttachmentIncoming::where('incoming_id', $request->id)->get();
         
-        return response()->json(['success' => 'auth-authorized', 'incoming' => $incoming]);
+        return response()->json(['success' => 'auth-authorized', 'incoming' => $incoming, 'attachment' => $attachment]);
     }
 
     /**
