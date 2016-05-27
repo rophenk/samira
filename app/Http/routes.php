@@ -87,6 +87,7 @@ Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api'], function () {
 
   Route::resource('/list-incoming', 'Tnde\APIIncoming@index');
   Route::get('/inbox/{id?}', 'Tnde\APIIncoming@userInbox');
+  Route::get('/view-incoming/{id?}', 'Tnde\APIIncoming@show');
 
 });
 
