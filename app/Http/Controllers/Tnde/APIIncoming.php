@@ -80,7 +80,8 @@ class APIIncoming extends Controller
         // Tampilkan semua data Surat Masuk
         $incoming = Incoming::find($request->id)->first();
 
-        return $incoming;    
+        
+        return response()->json(['success' => 'auth-authorized', 'incoming' => $incoming]);
     }
 
     /**
