@@ -231,6 +231,7 @@ class IncomingController extends Controller
         
         $files = $request->file('file');
 
+        $url = config('app.url');
         if(!empty($files)) {
             foreach ($files as $file) {
                 Storage::disk('tnde')->put($request->uuid."/".$file->getClientOriginalName(), file_get_contents($file));
@@ -241,7 +242,7 @@ class IncomingController extends Controller
                 $attachment->name = $file->getClientOriginalName();
                 $attachment->size = $file->getSize();
                 $attachment->type = $file->getMimeType();
-;
+                $attachment->url = $url."/".$request->uuid."/".$file->getClientOriginalName();
                 $attachment->save();
             }
         }
