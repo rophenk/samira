@@ -242,7 +242,7 @@ class IncomingController extends Controller
                 $attachment->name = $file->getClientOriginalName();
                 $attachment->size = $file->getSize();
                 $attachment->type = $file->getMimeType();
-                $attachment->url = $url."/".$request->uuid."/".$file->getClientOriginalName();
+                $attachment->url = $url."/tnde/".$request->uuid."/".$file->getClientOriginalName();
                 $attachment->save();
             }
         }
