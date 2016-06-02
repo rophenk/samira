@@ -256,8 +256,10 @@ class IncomingController extends Controller
         $user       = $request->user();
         $attachment = AttachmentIncoming::where('uuid', $request->uuid)
                                     ->first();
+        $incoming = Incoming::where('uuid', $attachment->incoming_uuid)
+                                    ->first();
         $storagePath  = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
-        return view('tnde.incoming-attachment-show', ['user' => $user, 'attachment' => $attachment, 'file' => $storagePath]);                          
+        return view('tnde.incoming-attachment-show', ['user' => $user, 'attachment' => $attachment, 'incoming' => $incoming, 'file' => $storagePath]);                          
     }
 
     public function attachmentdelete(Request $request)

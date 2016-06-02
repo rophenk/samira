@@ -5,8 +5,20 @@
                                     <?php
                                     $detail = '';
                                     $attribute = '';
-                                    $attachment = '';
+                                    $attachment_route = '';
                                     $receiver = '';
+
+                                    if(isset($incoming->uuid)) {
+                                        $incoming_uuid = $incoming->uuid;
+                                    } else {
+                                        $incoming_uuid = '';
+                                    }
+
+                                    if(isset($attachment->uuid)) {
+                                        $attachment_uuid = $attachment->uuid;
+                                    } else {
+                                        $attachment_uuid = '';
+                                    }
 
                                      $routes = $_SERVER['REQUEST_URI'];
                         
@@ -17,8 +29,8 @@
                                         $detail = '  class="active"';
                                      } elseif($routes == "attribute-incoming") {
                                         $attribute = ' class="active"';
-                                     } elseif($routes == "attachment-incoming") {
-                                        $attachment = ' class="active"';
+                                     } elseif($routes == "attachment-incoming" || $routes == "attachment-show-incoming") {
+                                        $attachment_route = ' class="active"';
                                      } elseif($routes == "receiver-incoming") {
                                         $receiver = ' class="active"';
                                      } else {
@@ -27,7 +39,7 @@
                                     ?>
                                     <ul class="nav navbar-nav margin-bottom-35 tabs">
                                         <?php 
-                                        if(isset($incoming->uuid)) {
+                                        if(isset($incoming_uuid) || isset($attachment_uuid) ) {                
                                         ?>
                                         <li<?php echo $detail; ?> data-tab="tab-1">
                                             <a href="/edit-incoming/{{ $incoming->uuid }}">
@@ -38,7 +50,7 @@
                                             <a href="/attribute-incoming/{{ $incoming->uuid }}">
                                                 <i class="icon-tag "></i> Atribut Surat </a>
                                         </li>
-                                        <li<?php echo $attachment; ?> data-tab="tab-5">
+                                        <li<?php echo $attachment_route; ?> data-tab="tab-5">
                                             <a href="/attachment-incoming/{{ $incoming->uuid }}">
                                                 <i class="fa fa-paperclip"></i> Lampiran </a>
                                         </li>

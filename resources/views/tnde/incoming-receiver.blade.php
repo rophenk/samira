@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-<div class="page-content-container">
+    <div class="page-content-container">
                         <div class="page-content-row">
                             <!-- BEGIN PAGE SIDEBAR -->
                             @include('tnde.sidebar')
