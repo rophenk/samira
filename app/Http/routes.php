@@ -80,6 +80,13 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('/simpul-login', 'Simpul\MockupController@login');
   Route::get('/simpul-dashboard', 'Simpul\MockupController@dashboard');
   Route::post('/simpul-dashboard', 'Simpul\MockupController@dashboard');
+  /* End OfRoute For Simpulpadi Mockup */
+
+  /* Route For Simpulpadi Mockup */
+  Route::get('/events-timeline', 'Evicenter\EventsController@index');
+  Route::get('/events-list', 'Evicenter\EventsController@eventsList');
+
+  /* End of Route For Simpulpadi Mockup */
 
 });
 

@@ -61,7 +61,7 @@
                                                                         ?>
                                                                         <tr>
                                                                           <td class="fit">
-                                                                              <img class="user-pic" src="../assets/layouts/layout5/img/{{ $receiver->avatar }}"> </td>
+                                                                              <img class="user-pic" src="{{ $receiver->avatar }}"> </td>
                                                                           <td>
                                                                               <a href="javascript:;" class="primary-link">{{ $receiver->name }}</a>
                                                                           </td>

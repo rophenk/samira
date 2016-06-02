@@ -159,7 +159,7 @@
                                 <div class="btn-group-img btn-group">
                                     <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                         <span>Hi, {{ $user->name }}</span>
-                                        <img src="../assets/layouts/layout5/img/{{ $user->avatar }}" alt=""> </button>
+                                        <img src="{{ $user->avatar }}" alt=""> </button>
                                     <ul class="dropdown-menu-v2" role="menu">
                                         <li>
                                             <a href="#">
@@ -210,13 +210,16 @@
                         
                         $explode_routes = explode("/",$routes);
                         $routes = $explode_routes[1];
-
+                        $evicentertab = '';
+                        $tndetab = '';
                         if($routes == "dashboard") {
                             $dashboard = ' active open selected';
                         } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing" || $routes == "list-workunit" || $routes == "list-users" || $routes == "receiver-incoming") {
                             $tndetab = ' active open selected';
+                        } elseif($routes == "events-list" || $routes == "events-timeline") {
+                            $evicentertab = ' active open selected';
                         } else {
-                            
+
                         }
                         
                         ?>
@@ -302,7 +305,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="dropdown dropdown-fw  ">
+                                <li class="dropdown dropdown-fw<?php echo $evicentertab; ?>">
                                     <a href="javascript:;" class="text-uppercase">
                                         <i class="icon-camera"></i> EVICENTER </a>
                                     <ul class="dropdown-menu dropdown-menu-fw">
@@ -311,7 +314,10 @@
                                                 <i class="fa fa-calendar"></i> Kegiatan </a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <a href="#"> Data Kegiatan </a>
+                                                    <a href="/events-timeline"> Timeline Kegiatan </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/events-list"> Data Kegiatan </a>
                                                 </li>
                                                 <li>
                                                     <a href="#"> Tambah Kegiatan </a>
