@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class IncomingActivities extends Model
 {
-    protected $table = 'IncomingActivities';
+    protected $table = 'incomingActivities';
 
      /**
      * Get the user that owns the phone.
