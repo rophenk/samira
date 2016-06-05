@@ -42,9 +42,9 @@ class InboxController extends Controller
       $attachment = AttachmentIncoming::where('incoming_id', '=', $incomingActivities->incoming->id)->get();
 
       IncomingActivities::where('id', '=', $incomingID)
-        ->update([
-            'read' => 1
-            ]);
+                          ->update([
+                              'read' => 1
+                              ]);
 
       return view('tnde.inbox-incoming-view', ['user' => $user, 'incoming' => $incomingActivities, 'attachment' => $attachment]);
     }

@@ -44,8 +44,11 @@ class APIIncoming extends Controller
                     ->select('incomingActivities.*', 'incoming.sender', 'incoming.subject', 'workUnits.name AS satker')
                     ->where('userID', '=', $user_id)
                     ->simplePaginate(10);
+
+        $myFuncs = new \App\Helpers\MyFunctions;
+        $unread = ($myFuncs->getUnreadInbox($user->id));
         
-        return response()->json(['success' => 'auth-authorized', 'inbox' => $userInbox]);
+        return response()->json(['success' => 'auth-authorized', 'inbox' => $userInbox, 'unread' => $unread]);
     }
 
     /**
