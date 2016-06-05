@@ -41,7 +41,8 @@ class APIIncoming extends Controller
                     ->leftJoin('incoming', 'incoming.id', '=', 'incomingActivities.incomingID')
                     ->leftJoin('users', 'users.id', '=', 'incomingActivities.userID')
                     ->leftJoin('workUnits', 'workUnits.id', '=', 'users.workUnitsID')
-                    ->select('incomingActivities.*', DB::raw("DATE_FORMAT(dateSend, '%d-%m-%Y %H:%i:%s') AS dateSend"), 'incoming.sender', 'incoming.subject', 'workUnits.name AS satker')
+                    ->leftJoin('attachmentIncoming', 'incoming.id', '=', 'attachmentIncoming.incoming_id')
+                    ->select('incomingActivities.*', DB::raw("DATE_FORMAT(dateSend, '%d-%m-%Y %H:%i:%s') AS dateSend"), 'incoming.sender', 'incoming.receiver', 'incoming.subject', 'incoming.description', 'incoming.attachment_count', 'workUnits.name AS satker', 'attachmentIncoming.name AS filename', 'attachmentIncoming.type', 'attachmentIncoming.size', 'attachmentIncoming.url')
                     ->where('userID', '=', $user_id)
                     ->orderBy('dateSend', 'desc')
                     ->simplePaginate(10);
