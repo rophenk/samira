@@ -46,7 +46,7 @@ class APIIncoming extends Controller
                     ->simplePaginate(10);
 
         $myFuncs = new \App\Helpers\MyFunctions;
-        $unread = ($myFuncs->getUnreadInbox($user->id));
+        $unread = ($myFuncs->getUnreadInbox($user_id));
         
         return response()->json(['success' => 'auth-authorized', 'inbox' => $userInbox, 'unread' => $unread]);
     }
