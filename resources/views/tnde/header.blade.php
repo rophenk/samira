@@ -127,15 +127,18 @@
                                 </div>-->
                                 <!-- END GROUP NOTIFICATION -->
                                 <!-- BEGIN GROUP INFORMATION -->
-                                <!--<div class="btn-group-red btn-group">
+                                <?php
+                                if($user->role_id == 1 || $user->role_id == 2) {
+                                ?>
+                                <div class="btn-group-red btn-group">
                                     <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                     <ul class="dropdown-menu-v2" role="menu">
                                         <li class="active">
-                                            <a href="#">New Post</a>
+                                            <a href="/add-incoming">Tambah Surat Masuk</a>
                                         </li>
-                                        <li>
+                                        <!--<li>
                                             <a href="#">New Comment</a>
                                         </li>
                                         <li>
@@ -151,9 +154,13 @@
                                             <a href="#">Feedbacks
                                                 <span class="badge badge-danger">2</span>
                                             </a>
-                                        </li>
+                                        </li>-->
                                     </ul>
-                                </div>-->
+                                </div>
+
+                                <?php
+                                }
+                                ?>
                                 <!-- END GROUP INFORMATION -->
                                 <!-- BEGIN USER PROFILE -->
                                 <div class="btn-group-img btn-group">
@@ -162,9 +169,14 @@
                                         <img src="{{ $user->avatar }}" alt=""> </button>
                                     <ul class="dropdown-menu-v2" role="menu">
                                         <li>
-                                            <a href="#">
+                                            <a href="/list-inbox">
                                                 <i class="icon-envelope-open"></i> My Inbox
-                                                <span class="badge badge-danger"> 3 </span>
+                                                <span class="badge badge-danger">
+                                                 <?php
+                                                 $myFuncs = new \App\Helpers\MyFunctions;
+                                                 echo ($myFuncs->getUnreadInbox($user->id));
+                                                 ?> 
+                                                </span>
                                             </a>
                                         </li>
                                         <!--li>
@@ -214,7 +226,7 @@
                         $tndetab = '';
                         if($routes == "dashboard") {
                             $dashboard = ' active open selected';
-                        } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing" || $routes == "list-workunit" || $routes == "list-users" || $routes == "receiver-incoming") {
+                        } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing" || $routes == "list-workunit" || $routes == "list-users" || $routes == "receiver-incoming" || $routes == "list-inbox" || $routes == "list-inbox-view") {
                             $tndetab = ' active open selected';
                         } elseif($routes == "events-list" || $routes == "events-timeline") {
                             $evicentertab = ' active open selected';
@@ -251,13 +263,24 @@
                                             <a href="javascript:;">
                                                 <i class="fa fa-download"></i> Surat Masuk </a>
                                             <ul class="dropdown-menu">
+                                                <?php
+                                                if($user->role_id == 1 || $user->role_id == 2) {
+                                                ?>
                                                 <li>
                                                     <a href="/list-incoming"> Data Surat Masuk </a>
                                                 </li>
+                                                
                                                 <li>
                                                     <a href="/add-incoming"> Tambah Surat Masuk </a>
                                                 </li>
+                                                
                                                 <li class="divider"></li>
+                                                <?php
+                                                }
+                                                ?>
+                                                <li>
+                                                    <a href="/list-inbox"> Kotak Surat (Inbox) </a>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li class="dropdown more-dropdown-sub">

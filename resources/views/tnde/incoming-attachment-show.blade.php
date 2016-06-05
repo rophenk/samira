@@ -2,7 +2,7 @@
 @section('title', 'Tinjau Berkas Lampiran' )
 
 @section('pagestyle')
-        
+        <link href="../assets/pages/css/document-viewer-style.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('breadcrumb')
@@ -40,6 +40,7 @@
                                                         <div class="portlet-body">
                                                             <a href="../tnde/{{ $attachment->incoming_uuid }}/{{ $attachment->name }}"><button class="btn blue">Unduh Berkas</button></a><br />
                                                             <a class="media" href="../tnde/{{ $attachment->incoming_uuid }}/{{ $attachment->name }}">Unduh Berkas</a>
+                                                            <!--<div id="container"></div>-->
                                                         </div>
                                                     </div>
                                                     <!-- END PORTLET -->
@@ -61,5 +62,45 @@
                 $('a.media').media({width:800, height:800});
             });
         </script>
+        <script src="../assets/pages/scripts/yepnope.1.5.3-min.js" type="text/javascript"></script>
+        <script src="../assets/pages/scripts/ttw-document-viewer.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(function() {
 
+
+
+
+                var documentList =  [
+                    {
+                        "path": "../tnde/{{ $attachment->incoming_uuid }}/{{ $attachment->name }}"
+                    },
+                    {
+                        "path": "sample-files/sintel_trailer-720p.mp4"
+                    },
+                    {
+                        "path": "sample-files/Finding_the_Balance.mp3"
+                    },
+                    {
+                        "path": "sample-files/1.jpg"
+                    },
+                    {
+                        "path": "sample-files/two-cities.txt"
+                    },
+                    {
+                        "path": "sample-files/zippy.zip"
+                    }
+                ];
+
+
+
+                var viewer = new DocumentViewer({
+                    $anchor: $('#container'),
+                    width:600
+                });
+
+                viewer.load('../tnde/{{ $attachment->incoming_uuid }}/{{ $attachment->name }}');
+
+            });
+
+        </script>
 @endsection

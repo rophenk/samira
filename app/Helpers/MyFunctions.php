@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Helpers;
+use App\IncomingActivities;
+use DB;
 
 class MyFunctions {
 
@@ -8,12 +10,13 @@ class MyFunctions {
         return $first_name . ', '. $last_name;   
     }
 
-    public static function calendar_time($value) {  
-    $explode_date = explode("-",$value);
-    $new_date = $explode_date[1]."-".$explode_date[2]."-".$explode_date[0];
+    public static function calendar_time($value) {
+    $dateonly = explode(" ",$value);
+    $explode_date = explode("-",$dateonly[0]);
+    $new_date = $explode_date[2]."-".$explode_date[1]."-".$explode_date[0]." ".$dateonly[1];
     
     return $new_date;
-  }
+    }
   
   public static function tanggalIndo($date){
     $explode_date = explode("-",$date);
@@ -78,5 +81,14 @@ class MyFunctions {
       }
 
       return $html;
+    }
+
+    public static function getUnreadInbox($userID){
+
+      $incomingActivities = IncomingActivities::where('userID', '=', $userID)
+                              ->where('read', '=', 0)
+                              ->get();
+      return $incomingActivities->count();
+
     }
 }

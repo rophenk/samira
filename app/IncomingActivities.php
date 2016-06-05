@@ -13,6 +13,7 @@ class IncomingActivities extends Model
      */
     public function incoming() 
     {
-    return $this->belongsTo('App\Incoming'); 
+    return $this->belongsTo('App\Incoming', 'incomingID', 'id'); 
     }
+
 }

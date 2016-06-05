@@ -39,7 +39,7 @@
                                     ?>
                                     <ul class="nav navbar-nav margin-bottom-35 tabs">
                                         <?php 
-                                        if(isset($incoming_uuid) || isset($attachment_uuid) ) {                
+                                        if(!empty($incoming_uuid) || !empty($attachment_uuid) ) {                
                                         ?>
                                         <li<?php echo $detail; ?> data-tab="tab-1">
                                             <a href="/edit-incoming/{{ $incoming->uuid }}">

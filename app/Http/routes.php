@@ -74,13 +74,23 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('/list-workunit', 'Tnde\WorkUnitsController@index');
   Route::get('/select-workunit', 'Tnde\WorkUnitsController@select');
 
+  /* Route For User Management */
   Route::get('/list-users', 'Tnde\UserController@index');
+
+  /* End Of Route For User Management */
+
+  /* Route For TNDE Inbox */
+  Route::get('/list-inbox', 'Tnde\InboxController@index');
+  Route::get('/list-inbox-incoming', 'Tnde\InboxController@listIncoming');
+  Route::get('/list-inbox-view/{incomingId?}', 'Tnde\InboxController@viewIncoming');
+
+  /* End Of Route For TNDE Inbox */
 
   /* Route For Simpulpadi Mockup */
   Route::get('/simpul-login', 'Simpul\MockupController@login');
   Route::get('/simpul-dashboard', 'Simpul\MockupController@dashboard');
   Route::post('/simpul-dashboard', 'Simpul\MockupController@dashboard');
-  /* End OfRoute For Simpulpadi Mockup */
+  /* End Of Route For Simpulpadi Mockup */
 
   /* Route For Simpulpadi Mockup */
   Route::get('/events-timeline', 'Evicenter\EventsController@index');
