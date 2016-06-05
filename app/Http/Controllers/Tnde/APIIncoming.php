@@ -41,7 +41,7 @@ class APIIncoming extends Controller
                     ->leftJoin('incoming', 'incoming.id', '=', 'incomingActivities.incomingID')
                     ->leftJoin('users', 'users.id', '=', 'incomingActivities.userID')
                     ->leftJoin('workUnits', 'workUnits.id', '=', 'users.workUnitsID')
-                    ->select('incomingActivities.*', 'incoming.sender', 'incoming.subject', 'workUnits.name AS satker')
+                    ->select('incomingActivities.*', DB::raw("DATE_FORMAT(dateSend, '%d-%m-%Y %H:%i:%s') AS dateSend,"), 'incoming.sender', 'incoming.subject', 'workUnits.name AS satker')
                     ->where('userID', '=', $user_id)
                     ->simplePaginate(10);
 
