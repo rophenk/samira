@@ -40,6 +40,7 @@ class APIIncoming extends Controller
         $userInbox = DB::table('incomingActivities')
                     ->leftJoin('incoming', 'incoming.id', '=', 'incomingActivities.incomingID')
                     ->leftJoin('users', 'users.id', '=', 'incomingActivities.userID')
+                    ->leftJoin('workUnits', 'workUnits.id', '=', 'users.workUnitsID')
                     ->select('incomingActivities.*', DB::raw("DATE_FORMAT(dateSend, '%d-%m-%Y %H:%i:%s') AS dateSend"), 'incoming.sender', 'incoming.receiver', 'incoming.subject', 'incoming.description', 'incoming.attachment_count', 'workUnits.name AS satker')
                     ->where('userID', '=', $user_id)
                     ->orderBy('dateSend', 'desc')
