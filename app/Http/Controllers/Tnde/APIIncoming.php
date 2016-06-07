@@ -40,17 +40,24 @@ class APIIncoming extends Controller
         $userInbox = DB::table('incomingActivities')
                     ->leftJoin('incoming', 'incoming.id', '=', 'incomingActivities.incomingID')
                     ->leftJoin('users', 'users.id', '=', 'incomingActivities.userID')
-                    ->leftJoin('workUnits', 'workUnits.id', '=', 'users.workUnitsID')
-                    ->leftJoin('attachmentIncoming', 'incoming.id', '=', 'attachmentIncoming.incoming_id')
-                    ->select('incomingActivities.*', DB::raw("DATE_FORMAT(dateSend, '%d-%m-%Y %H:%i:%s') AS dateSend"), 'incoming.sender', 'incoming.receiver', 'incoming.subject', 'incoming.description', 'incoming.attachment_count', 'workUnits.name AS satker', 'attachmentIncoming.name AS filename', 'attachmentIncoming.type', 'attachmentIncoming.size', 'attachmentIncoming.url')
+                    ->select('incomingActivities.*', DB::raw("DATE_FORMAT(dateSend, '%d-%m-%Y %H:%i:%s') AS dateSend"), 'incoming.sender', 'incoming.receiver', 'incoming.subject', 'incoming.description', 'incoming.attachment_count', 'workUnits.name AS satker')
                     ->where('userID', '=', $user_id)
                     ->orderBy('dateSend', 'desc')
                     ->simplePaginate(10);
 
         $myFuncs = new \App\Helpers\MyFunctions;
         $unread = ($myFuncs->getUnreadInbox($user_id));
-        
+
         return response()->json(['success' => 'auth-authorized', 'inbox' => $userInbox, 'unread' => $unread]);
+    }
+
+    public function attachmentIncoming($incomingID)
+    {
+        $attachmentIncoming = DB::table('attachmentIncoming')
+                              ->select('attachmentIncoming.*')
+                              ->where('incoming_id', '=', $incomingID)
+                              ->get();
+        return response()->json(['success' => 'auth-authorized', 'attachmentIncoming' => $attachmentIncoming]);
     }
 
     /**
