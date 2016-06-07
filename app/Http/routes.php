@@ -106,6 +106,7 @@ Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api'], function () {
   Route::get('/inbox/{id?}', 'Tnde\APIIncoming@userInbox');
   Route::get('/view-incoming/{id?}', 'Tnde\APIIncoming@show');
   Route::get('/attachment-incoming/{incomingID?}', 'Tnde\APIIncoming@attachmentIncoming');
+  Route::get('/read/{id?}', 'Tnde\APIIncoming@markRead');
 
 });
 

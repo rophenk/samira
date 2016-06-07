@@ -15,6 +15,7 @@ use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use App\AuthTraits\RedirectsUsers;
 use App\Incoming;
+use App\IncomingActivities;
 use App\AttachmentIncoming;
 use DB;
 
@@ -49,7 +50,7 @@ class APIIncoming extends Controller
         $myFuncs = new \App\Helpers\MyFunctions;
         $unread = ($myFuncs->getUnreadInbox($user_id));
 
-        return response()->json(['success' => 'auth-authorized', 'inbox' => $userInbox, 'unread' => $unread]);
+        return response()->json(['success' => 'inbox-request-processed', 'inbox' => $userInbox, 'unread' => $unread]);
     }
 
     public function attachmentIncoming($incomingID)
@@ -58,7 +59,16 @@ class APIIncoming extends Controller
                               ->select('attachmentIncoming.*')
                               ->where('incoming_id', '=', $incomingID)
                               ->get();
-        return response()->json(['success' => 'auth-authorized', 'attachmentIncoming' => $attachmentIncoming]);
+        return response()->json(['success' => 'attachment-request-processed', 'attachmentIncoming' => $attachmentIncoming]);
+    }
+
+    public function markRead($id)
+    {
+        IncomingActivities::where('id' ,$id)
+        ->update([
+            'read' => 1
+            ]);
+        return response()->json(['success' => 'inbox-read']);
     }
 
     /**
