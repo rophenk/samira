@@ -62,13 +62,16 @@ class APIIncoming extends Controller
         return response()->json(['success' => 'attachment-request-processed', 'attachmentIncoming' => $attachmentIncoming]);
     }
 
-    public function markRead($id)
+    public function markRead($id,$user_id)
     {
         IncomingActivities::where('id' ,$id)
         ->update([
             'read' => 1
             ]);
-        return response()->json(['success' => 'inbox-read']);
+        $myFuncs = new \App\Helpers\MyFunctions;
+        $unread = ($myFuncs->getUnreadInbox($user_id));
+
+        return response()->json(['success' => 'inbox-read', 'unread' => $unread]);
     }
 
     /**
