@@ -99,6 +99,13 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('/simpul-dashboard', 'Simpul\MockupController@dashboard');
   /* End Of Route For Simpulpadi Mockup */
 
+  /* Route For e-HAL Mockup */
+  Route::get('/login-ehal', 'LoginController@loginEhal');
+  Route::post('/login-ehal', 'LoginController@postLogin');
+  Route::get('/speakers-list', 'Ehal\SpeakersController@index');
+  Route::get('/speaker-view/{uuid?}', 'Ehal\SpeakersController@show');
+  /* End Of Route For e-HAL Mockup */
+
   /* Route For Simpulpadi Mockup */
   Route::get('/events-timeline', 'Evicenter\EventsController@index');
   Route::get('/events-list', 'Evicenter\EventsController@eventsList');

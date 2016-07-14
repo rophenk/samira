@@ -30,6 +30,10 @@ class LoginController extends Controller
         return view("tnde.login");
     }
 
+    public function loginEhal()
+    {
+        return view("tnde.loginehal");
+    }
     /**
      * Handle a login request to the application.
      *

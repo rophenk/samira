@@ -224,13 +224,16 @@
                         $routes = $explode_routes[1];
                         $evicentertab = '';
                         $tndetab = '';
+                        $ehaltab = '';
                         if($routes == "dashboard") {
                             $dashboard = ' active open selected';
                         } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing" || $routes == "list-workunit" || $routes == "list-users" || $routes == "receiver-incoming" || $routes == "list-inbox" || $routes == "list-inbox-view") {
                             $tndetab = ' active open selected';
                         } elseif($routes == "events-list" || $routes == "events-timeline") {
                             $evicentertab = ' active open selected';
-                        } else {
+                        } elseif($routes == "speakers-list" || $routes == "speaker-view" ||$routes == "workmeeting-list") {
+                            $ehaltab = ' active open selected';
+                        }else {
 
                         }
                         
@@ -248,6 +251,10 @@
                                         <li class="active">
                                             <a href="#">
                                                 <i class="icon-bulb"></i> EVICENTER</a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="#">
+                                                <i class="icon-size-fullscreen"></i> e-HAL</a>
                                         </li>
                                         <!--<li>
                                             <a href="dashboard_3.html">
@@ -353,6 +360,37 @@
                                                 </li>
                                                 <li>
                                                     <a href="#"> Tambah Kegiatan </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <?php
+                                }
+                                ?>
+
+                                <?php
+                                if (strpos($user->modules,'ehal') !== false) {
+                                ?>
+                                <li class="dropdown dropdown-fw<?php echo $ehaltab; ?>">
+                                    <a href="javascript:;" class="text-uppercase">
+                                        <i class="icon-size-fullscreen"></i> e-HAL</a>
+                                    <ul class="dropdown-menu dropdown-menu-fw">
+                                        <li class="dropdown more-dropdown-sub">
+                                            <a href="javascript:;">
+                                                <i class="fa fa-file-pdf-o"></i> Data Raker </a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="/workmeeting-list"> Tabel Raker </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown more-dropdown-sub">
+                                            <a href="javascript:;">
+                                                <i class="fa fa-users"></i> Data Anggota </a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="/speakers-list"> Tabel Anggota </a>
                                                 </li>
                                             </ul>
                                         </li>

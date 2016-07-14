@@ -31,8 +31,6 @@ class IncomingController extends Controller
     {
         $user       = $request->user();
 
-
-
         // Tampilkan semua data Surat Masuk
         $incoming = Incoming::all();
 

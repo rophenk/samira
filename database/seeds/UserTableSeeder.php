@@ -18,8 +18,8 @@ class UserTableSeeder extends Seeder
         'password' => bcrypt('rahasia'),
         'workUnitsID' => '14',
         'role_id' => '1',
-        'avatar' => 'Administrator.jpg',
-        'modules' => 'tnde,evicenter',
+        'avatar' => 'http://tnde.local/assets/layouts/layout5/img/Administrator.jpg',
+        'modules' => 'tnde,evicenter,ehal',
         'api_token' => str_random(60),
         ]);
 
@@ -30,8 +30,8 @@ class UserTableSeeder extends Seeder
         'password' => bcrypt('rahasia'),
         'workUnitsID' => '15',
         'role_id' => '5',
-        'avatar' => 'Riki Rokhman Azis.jpg',
-        'modules' => 'tnde,evicenter',
+        'avatar' => 'http://tnde.local/assets/layouts/layout5/img/Riki Rokhman Azis.jpg',
+        'modules' => 'tnde,evicenter,ehal',
         'api_token' => str_random(60),
         ]);
 
@@ -42,8 +42,8 @@ class UserTableSeeder extends Seeder
         'password' => bcrypt('rahasia'),
         'workUnitsID' => '17',
         'role_id' => '3',
-        'avatar' => 'Irfan Boniran.jpg',
-        'modules' => 'tnde,evicenter',
+        'avatar' => 'http://tnde.local/assets/layouts/layout5/img/Irfan Boniran.jpg',
+        'modules' => 'tnde,evicenter,ehal',
         'api_token' => str_random(60),
         ]);
 
@@ -55,6 +55,17 @@ class UserTableSeeder extends Seeder
         'workUnitsID' => '22',
         'role_id' => '2',
         'modules' => 'tnde',
+        'api_token' => str_random(60),
+        ]);
+
+        // Seed data untuk table users
+        DB::table('users')->insert([
+        'name' => 'Lili',
+        'email' => 'lili@ehal.com',
+        'password' => bcrypt('rahasia'),
+        'workUnitsID' => '14',
+        'role_id' => '2',
+        'modules' => 'ehal',
         'api_token' => str_random(60),
         ]);
     }
