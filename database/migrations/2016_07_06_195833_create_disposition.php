@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIncomingActivitieTables extends Migration
+class CreateDisposition extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,20 @@ class CreateIncomingActivitieTables extends Migration
      */
     public function up()
     {
-        Schema::create('incomingActivities', function (Blueprint $table) {
+        Schema::create('disposition', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('uuid', 36);
-            $table->integer('incomingID')->unsigned()->nullable();
+            $table->integer('incoming_activities_id')->unsigned()->nullable();
             $table->integer('userID')->unsigned()->nullable();
-            $table->string('receiverStatus')->nullable();
-            $table->integer('read')->unsigned()->nullable();
+            $table->integer('receiver_user_id')->nullable();
+            $table->integer('disposition_trait_id')->nullable();
+            $table->text('disposition_instruction')->nullable();
+            $table->text('note')->nullable();
             $table->timestamp('dateSend');
-            $table->string('action')->nullable();
+            $table->integer('read')->unsigned()->nullable();
+            $table->timestamp('dateRead');
+            $table->text('report')->nullable();
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });
@@ -34,6 +38,6 @@ class CreateIncomingActivitieTables extends Migration
      */
     public function down()
     {
-        Schema::drop('incomingActivities');
+        Schema::drop('disposition');
     }
 }

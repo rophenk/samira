@@ -82,9 +82,16 @@ Route::group(['middleware' => ['web']], function () {
   /* Route For TNDE Inbox */
   Route::get('/list-inbox', 'Tnde\InboxController@index');
   Route::get('/list-inbox-incoming', 'Tnde\InboxController@listIncoming');
-  Route::get('/list-inbox-view/{incomingId?}', 'Tnde\InboxController@viewIncoming');
+  Route::get('/list-inbox-view/{uuid?}', 'Tnde\InboxController@viewIncoming');
+  Route::get('/list-inbox-action/{uuid?}/{action}', 'Tnde\InboxController@action');
 
   /* End Of Route For TNDE Inbox */
+
+  /* Route For TNDE Disposition */
+  Route::get('/add-disposition/{incomingId?}', 'Tnde\DispositionController@create');
+  Route::post('/add-disposition', 'Tnde\DispositionController@store');
+  Route::get('/receiver-disposition/{uuid?}', 'Tnde\DispositionController@receiver');
+  /* End Of Route For TNDE Disposition */
 
   /* Route For Simpulpadi Mockup */
   Route::get('/simpul-login', 'Simpul\MockupController@login');
@@ -97,6 +104,7 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('/events-list', 'Evicenter\EventsController@eventsList');
 
   /* End of Route For Simpulpadi Mockup */
+  Route::get('/notification', 'PushNotificationController@sendNotificationToDevice');
 
 });
 
@@ -107,6 +115,7 @@ Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api'], function () {
   Route::get('/view-incoming/{id?}', 'Tnde\APIIncoming@show');
   Route::get('/attachment-incoming/{incomingID?}', 'Tnde\APIIncoming@attachmentIncoming');
   Route::get('/read/{id?}/{user_id?}', 'Tnde\APIIncoming@markRead');
+  Route::get('/action/{id?}/{action?}', 'Tnde\APIIncoming@action');
 
 });
 

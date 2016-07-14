@@ -14,7 +14,7 @@
                             <!-- End Toggle Button -->
                             <!-- BEGIN LOGO -->
                             <a id="index" class="page-logo" href="index.html">
-                                <img src="../assets/layouts/layout5/img/logo.png" alt="Logo"> </a>
+                                <img src="/assets/layouts/layout5/img/logo.png" alt="Logo"> </a>
                             <!-- END LOGO -->
                             <!-- BEGIN SEARCH -->
                             <form class="search" action="extra_search.html" method="GET">
@@ -255,6 +255,9 @@
                                         </li>-->
                                     </ul>
                                 </li>
+                                <?php
+                                if (strpos($user->modules,'tnde') !== false) {
+                                ?>
                                 <li class="dropdown dropdown-fw<?php echo $tndetab; ?>">
                                     <a href="javascript:;" class="text-uppercase">
                                         <i class="icon-envelope-open"></i> TANDEM </a>
@@ -328,6 +331,12 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <?php
+                                }
+                                ?>
+                                <?php
+                                if (strpos($user->modules,'evicenter') !== false) {
+                                ?>
                                 <li class="dropdown dropdown-fw<?php echo $evicentertab; ?>">
                                     <a href="javascript:;" class="text-uppercase">
                                         <i class="icon-camera"></i> EVICENTER </a>
@@ -349,6 +358,10 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <?php
+                                }
+                                ?>
+                                
                             </ul>
                         </div>
                         <!-- END HEADER MENU -->

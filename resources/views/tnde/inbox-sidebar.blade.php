@@ -13,10 +13,10 @@
                                                             </span>
                                                         </a>
                                                     </li>
-                                                    <!--<li>
-                                                        <a href="javascript:;" data-type="important" data-title="Inbox"> Important </a>
-                                                    </li>
                                                     <li>
+                                                        <a href="/list-disposisi" data-type="disposisi" data-title="Disposisi"> Disposisi </a>
+                                                    </li>
+                                                    <!--<li>
                                                         <a href="javascript:;" data-type="sent" data-title="Sent"> Sent </a>
                                                     </li>
                                                     <li>

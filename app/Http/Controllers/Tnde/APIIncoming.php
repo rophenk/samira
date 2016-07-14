@@ -74,6 +74,15 @@ class APIIncoming extends Controller
         return response()->json(['success' => 'inbox-read', 'unread' => $unread]);
     }
 
+    public function action($id,$action)
+    {
+        IncomingActivities::where('id' ,$id)
+        ->update([
+            'action' => $action
+            ]);
+        return response()->json(['success' => 'inbox-action', 'action' => $action]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -19,6 +19,7 @@ class UserTableSeeder extends Seeder
         'workUnitsID' => '14',
         'role_id' => '1',
         'avatar' => 'Administrator.jpg',
+        'modules' => 'tnde,evicenter',
         'api_token' => str_random(60),
         ]);
 
@@ -30,6 +31,7 @@ class UserTableSeeder extends Seeder
         'workUnitsID' => '15',
         'role_id' => '5',
         'avatar' => 'Riki Rokhman Azis.jpg',
+        'modules' => 'tnde,evicenter',
         'api_token' => str_random(60),
         ]);
 
@@ -41,6 +43,7 @@ class UserTableSeeder extends Seeder
         'workUnitsID' => '17',
         'role_id' => '3',
         'avatar' => 'Irfan Boniran.jpg',
+        'modules' => 'tnde,evicenter',
         'api_token' => str_random(60),
         ]);
 
@@ -51,6 +54,7 @@ class UserTableSeeder extends Seeder
         'password' => bcrypt('rahasia'),
         'workUnitsID' => '22',
         'role_id' => '2',
+        'modules' => 'tnde',
         'api_token' => str_random(60),
         ]);
     }

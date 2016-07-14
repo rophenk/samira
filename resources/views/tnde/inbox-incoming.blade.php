@@ -106,8 +106,8 @@
             <td class="inbox-small-cells">
                 <i class="fa fa-star"></i>
             </td>-->
-            <td class=""> <a href="/list-inbox-view/{{ $incoming->id }}">{{ $incoming->incoming->sender }}</a></td>
-            <td class=""> {{ $incoming->incoming->subject }} </td>
+            <td class=""> <a href="/list-inbox-view/{{ $incoming->uuid }}">{{ $incoming->incoming->sender }}</a></td>
+            <td class=""> <a href="/list-inbox-view/{{ $incoming->uuid }}">{{ $incoming->incoming->subject }}</a></td>
             <td class="view-message inbox-small-cells">
               <?php echo $attachment; ?>
                 

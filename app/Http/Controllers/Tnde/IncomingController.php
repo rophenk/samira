@@ -321,12 +321,13 @@ class IncomingController extends Controller
 
                         DB::table('incomingActivities')->insert([
                             [
-                                'incomingID' => $request->incoming_id, 
-                                'userID' => $usr->id,
+                                'uuid'           => Uuid::uuid4(),
+                                'incomingID'     => $request->incoming_id, 
+                                'userID'         => $usr->id,
                                 'receiverStatus' => 'receiver',
-                                'read' => 0,
-                                'dateSend' => $time,
-                                'action' => NULL
+                                'read'           => 0,
+                                'dateSend'       => $time,
+                                'action'         => NULL
                             ]
                         ]);
 
@@ -349,16 +350,18 @@ class IncomingController extends Controller
                 if(!empty($users)) {
 
                     foreach ($users as $usr) {
+
                       $time = date("Y-m-d H:i:s");
 
                         DB::table('incomingActivities')->insert([
                             [
-                                'incomingID' => $request->incoming_id, 
-                                'userID' => $usr->id,
+                                'uuid'           => Uuid::uuid4(),
+                                'incomingID'     => $request->incoming_id, 
+                                'userID'         => $usr->id,
                                 'receiverStatus' => 'tembusan',
-                                'read' => 0,
-                                'dateSend' => $time,
-                                'action' => NULL
+                                'read'           => 0,
+                                'dateSend'       => $time,
+                                'action'         => NULL
                             ]
                         ]);
                         

@@ -92,4 +92,25 @@ class MyFunctions {
       return $incomingActivities->count();
 
     }
+
+    public static function human_filesize($size, $precision = 2) {
+        static $units = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+        $step = 1024;
+        $i = 0;
+        while (($size / $step) > 0.9) {
+            $size = $size / $step;
+            $i++;
+        }
+        return round($size, $precision).$units[$i];
+    }
+
+    public static function checkModule($moduledb, $module) {
+
+      if (strpos($moduledb,$module) !== false) {
+        return true;
+      } else {
+        return false;
+      }
+
+    }
 }
