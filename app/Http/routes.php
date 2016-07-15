@@ -104,6 +104,9 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('/login-ehal', 'LoginController@postLogin');
   Route::get('/speakers-list', 'Ehal\SpeakersController@index');
   Route::get('/speaker-view/{uuid?}', 'Ehal\SpeakersController@show');
+  Route::get('/workmeeting-list', 'Ehal\WorkmeetingController@index');
+  Route::get('/workmeeting-view/{uuid?}', 'Ehal\WorkmeetingController@show');
+  Route::get('/workmeeting-questions', 'Ehal\WorkmeetingController@questions');
   /* End Of Route For e-HAL Mockup */
 
   /* Route For Simpulpadi Mockup */

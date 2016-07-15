@@ -231,7 +231,7 @@
                             $tndetab = ' active open selected';
                         } elseif($routes == "events-list" || $routes == "events-timeline") {
                             $evicentertab = ' active open selected';
-                        } elseif($routes == "speakers-list" || $routes == "speaker-view" ||$routes == "workmeeting-list") {
+                        } elseif($routes == "speakers-list" || $routes == "speaker-view" || $routes == "workmeeting-list" || $routes == "workmeeting-view" || $routes == "workmeeting-questions") {
                             $ehaltab = ' active open selected';
                         }else {
 
@@ -382,6 +382,9 @@
                                             <ul class="dropdown-menu">
                                                 <li>
                                                     <a href="/workmeeting-list"> Tabel Raker </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/workmeeting-questions"> Pertanyaan Raker </a>
                                                 </li>
                                             </ul>
                                         </li>
