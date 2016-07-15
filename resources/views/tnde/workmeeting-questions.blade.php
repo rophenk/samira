@@ -105,7 +105,7 @@
                                                     <h3 class="todo-blue">Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI RKA-KL Dalam RUU APBNP 2016 Dan Persiapan Ramadhan Dan Idul Fitri</h3>
                                                     <p>Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI RKA-KL Dalam RUU APBNP 2016 Dan Persiapan Ramadhan Dan Idul Fitri</p>
                                                     <div class="todo-project-item-foot">
-                                                        <p class="todo-red todo-inline"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160608%20APBNP2016%20DAN%20PERSIAPAN%20IDUL%20FITRI-2.pptx">160608 APBNP2016 DAN PERSIAPAN IDUL FITRI-2.pptx</a></p>
+                                                        <p class="todo-red todo-inline"><a target="_blank" href="http://120.89.88.35/ehal/kompilasi/160608%20APBNP2016%20DAN%20PERSIAPAN%20IDUL%20FITRI-2.pptx">160608 APBNP2016 DAN PERSIAPAN IDUL FITRI-2.pptx</a></p>
                                                         <p class="todo-inline todo-float-r">Kirim
                                                             <a class="todo-add-button" href="#todo-members-modal1" data-toggle="modal">+</a>
                                                         </p>
@@ -115,7 +115,7 @@
                                                     <h3>Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI APBN Perubahan 2016 Dan Rancangan Program Dan Anggaran Kementerian Pertanian TA 2017</h3>
                                                     <p>Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI APBN Perubahan 2016 Dan Rancangan Program Dan Anggaran Kementerian Pertanian TA 2017</p>
                                                     <div class="todo-project-item-foot">
-                                                        <p class="todo-red todo-inline"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160613 RANCANGAN APBN-P 2016 DAN RAPBN 2017-rev4.pptx">160613 RANCANGAN APBN-P 2016 DAN RAPBN 2017-rev4.pptx</a></p>
+                                                        <p class="todo-red todo-inline"><a target="_blank" href="http://120.89.88.35/ehal/kompilasi/160613 RANCANGAN APBN-P 2016 DAN RAPBN 2017-rev4.pptx">160613 RANCANGAN APBN-P 2016 DAN RAPBN 2017-rev4.pptx</a></p>
                                                         <p class="todo-inline todo-float-r">Kirim
                                                             <a class="todo-add-button" href="#todo-members-modal1" data-toggle="modal">+</a>
                                                         </p>
@@ -126,7 +126,7 @@
                                                     <h3>Rapat Kerja Menteri Pertanian RI Dengan Komite II DPR RI Pelaksanaan UU NO. 39 Tahun 2014 Dan Kesiapan Pemerintah Menjelang Hari Raya Idul Fitri</h3>
                                                     <p>Rapat Kerja Menteri Pertanian RI Dengan Komite II DPR RI Pelaksanaan UU NO. 39 Tahun 2014 Dan Kesiapan Pemerintah Menjelang Hari Raya Idul Fitri</p>
                                                     <div class="todo-project-item-foot">
-                                                        <p class="todo-red todo-inline"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160621 RAKER DPD PERSIAPAN IDUL FITRI-REV3.pptx">160621 RAKER DPD PERSIAPAN IDUL FITRI-REV3.pptx</a></p>
+                                                        <p class="todo-red todo-inline"><a target="_blank" href="http://120.89.88.35/ehal/kompilasi/160621 RAKER DPD PERSIAPAN IDUL FITRI-REV3.pptx">160621 RAKER DPD PERSIAPAN IDUL FITRI-REV3.pptx</a></p>
                                                         <p class="todo-inline todo-float-r">Kirim
                                                             <a class="todo-add-button" href="#todo-members-modal1" data-toggle="modal">+</a>
                                                         </p>
@@ -137,7 +137,7 @@
                                                     <h3>Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI Perubahan Alokasi TA 2016 Dan Ketersediaan Bahan Pangan Dan Harga Pangan Selama Ramadhan Dan Idul Fitri 1437 H </h3>
                                                     <p>Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI Perubahan Alokasi TA 2016 Dan Ketersediaan Bahan Pangan Dan Harga Pangan Selama Ramadhan Dan Idul Fitri 1437 H </p>
                                                     <div class="todo-project-item-foot">
-                                                        <p class="todo-red todo-inline"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160622 RAKER APBNP 2016 DAN PERSIAPAN HARI RAYA-rev3.pptx">160622 RAKER APBNP 2016 DAN PERSIAPAN HARI RAYA-rev3.pptx</a></p>
+                                                        <p class="todo-red todo-inline"><a target="_blank" href="http://120.89.88.35/ehal/kompilasi/160622 RAKER APBNP 2016 DAN PERSIAPAN HARI RAYA-rev3.pptx">160622 RAKER APBNP 2016 DAN PERSIAPAN HARI RAYA-rev3.pptx</a></p>
                                                         <p class="todo-inline todo-float-r">Kirim
                                                             <a class="todo-add-button" href="#todo-members-modal1" data-toggle="modal">+</a>
                                                         </p>
@@ -148,7 +148,7 @@
                                                     <h3>Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI Evaluasi Hasil Kunjungan Kerja Spesifik Mengenai Ketersediaan Bahan Pangan Dan Harga Pangan Selama Bulan Ramadhan Dan Hari Raya Idul Fitri 1437 H </h3>
                                                     <p>Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI Evaluasi Hasil Kunjungan Kerja Spesifik Mengenai Ketersediaan Bahan Pangan Dan Harga Pangan Selama Bulan Ramadhan Dan Hari Raya Idul Fitri 1437 H </p>
                                                     <div class="todo-project-item-foot">
-                                                        <p class="todo-red todo-inline"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160627 EVALUASI KUNKER SPESIFIK-rev 2.ppt">160627 EVALUASI KUNKER SPESIFIK-rev 2.ppt</a></p>
+                                                        <p class="todo-red todo-inline"><a target="_blank" href="http://120.89.88.35/ehal/kompilasi/160627 EVALUASI KUNKER SPESIFIK-rev 2.ppt">160627 EVALUASI KUNKER SPESIFIK-rev 2.ppt</a></p>
                                                         <p class="todo-inline todo-float-r">Kirim
                                                             <a class="todo-add-button" href="#todo-members-modal1" data-toggle="modal">+</a>
                                                         </p>
