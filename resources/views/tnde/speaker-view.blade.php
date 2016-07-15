@@ -138,7 +138,7 @@
                                                                                     <td>
                                                                                         <a href="javascript:;"> Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI RKA-KL Dalam RUU APBNP 2016 Dan Persiapan Ramadhan Dan Idul Fitri</a>
                                                                                     </td>
-                                                                                    <td class="hidden-xs"> <a target="_blank" href="http://tnde.local/ehal/kompilasi/160608%20APBNP2016%20DAN%20PERSIAPAN%20IDUL%20FITRI-2.pptx">160608 APBNP2016 DAN PERSIAPAN IDUL FITRI-2.pptx</a></td>
+                                                                                    <td class="hidden-xs"> <a target="_blank" href="http://120.89.88.35/ehal/kompilasi/160608%20APBNP2016%20DAN%20PERSIAPAN%20IDUL%20FITRI-2.pptx">160608 APBNP2016 DAN PERSIAPAN IDUL FITRI-2.pptx</a></td>
                                                                                     <td> 10 Juni 2016
                                                                                     </td>
                                                                                     <td>
@@ -149,7 +149,7 @@
                                                                                     <td>
                                                                                         <a href="javascript:;">Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI APBN Perubahan 2016 Dan Rancangan Program Dan Anggaran Kementerian Pertanian TA 2017</a>
                                                                                     </td>
-                                                                                    <td class="hidden-xs"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160613 RANCANGAN APBN-P 2016 DAN RAPBN 2017-rev4.pptx">160613 RANCANGAN APBN-P 2016 DAN RAPBN 2017-rev4.pptx</a></td>
+                                                                                    <td class="hidden-xs"><a target="_blank" href="http://120.89.88.35/ehal/kompilasi/160613 RANCANGAN APBN-P 2016 DAN RAPBN 2017-rev4.pptx">160613 RANCANGAN APBN-P 2016 DAN RAPBN 2017-rev4.pptx</a></td>
                                                                                     <td> 15 Juni 2016
                                                                                     </td>
                                                                                     <td>
@@ -160,7 +160,7 @@
                                                                                     <td>
                                                                                         <a href="javascript:;"> Rapat Kerja Menteri Pertanian RI Dengan Komite II DPR RI Pelaksanaan UU NO. 39 Tahun 2014 Dan Kesiapan Pemerintah Menjelang Hari Raya Idul Fitri </a>
                                                                                     </td>
-                                                                                    <td class="hidden-xs"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160621 RAKER DPD PERSIAPAN IDUL FITRI-REV3.pptx">160621 RAKER DPD PERSIAPAN IDUL FITRI-REV3.pptx</a></td>
+                                                                                    <td class="hidden-xs"><a target="_blank" href="http://120.89.88.35/ehal/kompilasi/160621 RAKER DPD PERSIAPAN IDUL FITRI-REV3.pptx">160621 RAKER DPD PERSIAPAN IDUL FITRI-REV3.pptx</a></td>
                                                                                     <td> 23 Juni 2016
                                                                                     </td>
                                                                                     <td>
@@ -171,7 +171,7 @@
                                                                                     <td>
                                                                                         <a href="javascript:;">Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI Perubahan Alokasi TA 2016 Dan Ketersediaan Bahan Pangan Dan Harga Pangan Selama Ramadhan Dan Idul Fitri 1437 H </a>
                                                                                     </td>
-                                                                                    <td class="hidden-xs"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160622 RAKER APBNP 2016 DAN PERSIAPAN HARI RAYA-rev3.pptx">160622 RAKER APBNP 2016 DAN PERSIAPAN HARI RAYA-rev3.pptx</a></td>
+                                                                                    <td class="hidden-xs"><a target="_blank" href="http://120.89.88.35/ehal/kompilasi/160622 RAKER APBNP 2016 DAN PERSIAPAN HARI RAYA-rev3.pptx">160622 RAKER APBNP 2016 DAN PERSIAPAN HARI RAYA-rev3.pptx</a></td>
                                                                                     <td> 24 Juni 2016
                                                                                     </td>
                                                                                     <td>
@@ -182,7 +182,7 @@
                                                                                     <td>
                                                                                         <a href="javascript:;">Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI Evaluasi Hasil Kunjungan Kerja Spesifik Mengenai Ketersediaan Bahan Pangan Dan Harga Pangan Selama Bulan Ramadhan Dan Hari Raya Idul Fitri 1437 H </a>
                                                                                     </td>
-                                                                                    <td class="hidden-xs"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160627 EVALUASI KUNKER SPESIFIK-rev 2.ppt">160627 EVALUASI KUNKER SPESIFIK-rev 2.ppt</a></td>
+                                                                                    <td class="hidden-xs"><a target="_blank" href="http://120.89.88.35/ehal/kompilasi/160627 EVALUASI KUNKER SPESIFIK-rev 2.ppt">160627 EVALUASI KUNKER SPESIFIK-rev 2.ppt</a></td>
                                                                                     <td> 29 Juni 2016
                                                                                     </td>
                                                                                     <td>
