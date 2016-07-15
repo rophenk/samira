@@ -13,7 +13,8 @@
         "baum/baum": "~1.1",
         "tymon/jwt-auth": "dev-develop",
         "phpseclib/phpseclib": "2.0.*",
-        "barryvdh/laravel-cors": "dev-master"
+        "barryvdh/laravel-cors": "dev-master",
+        "davibennun/laravel-push-notification": "dev-laravel5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
