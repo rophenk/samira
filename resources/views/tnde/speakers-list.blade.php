@@ -37,7 +37,7 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="btn-group">
-                                                                <a href="/add-speaker">
+                                                                <a href="/speaker-view/1#tab_1_3">
                                                                   <button id="sample_editable_1_new" class="btn sbold green"> Tambah Anggota
                                                                     <i class="fa fa-plus"></i>
                                                                   </button>

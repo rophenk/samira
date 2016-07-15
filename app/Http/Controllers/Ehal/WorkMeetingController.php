@@ -26,9 +26,11 @@ class WorkMeetingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $user       = $request->user();
+
+        return view('tnde.workmeeting-add', ['user' => $user]);
     }
 
     /**
@@ -100,5 +102,12 @@ class WorkMeetingController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function attachment(Request $request)
+    {
+        $user       = $request->user();
+
+        return view('tnde.workunit-attachment', ['user' => $user]);
     }
 }

@@ -135,10 +135,10 @@
                                         <i class="fa fa-plus"></i>
                                     </button>
                                     <ul class="dropdown-menu-v2" role="menu">
-                                        <li class="active">
+                                        <!--<li class="active">
                                             <a href="/add-incoming">Tambah Surat Masuk</a>
                                         </li>
-                                        <!--<li>
+                                        <li>
                                             <a href="#">New Comment</a>
                                         </li>
                                         <li>
@@ -231,7 +231,7 @@
                             $tndetab = ' active open selected';
                         } elseif($routes == "events-list" || $routes == "events-timeline") {
                             $evicentertab = ' active open selected';
-                        } elseif($routes == "speakers-list" || $routes == "speaker-view" || $routes == "workmeeting-list" || $routes == "workmeeting-view" || $routes == "workmeeting-questions") {
+                        } elseif($routes == "speakers-list" || $routes == "speaker-view" || $routes == "workmeeting-list" || $routes == "workmeeting-view" || $routes == "workmeeting-questions" || $routes == "add-workmeeting" || $routes == "attachment-workmeeting") {
                             $ehaltab = ' active open selected';
                         }else {
 

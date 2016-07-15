@@ -125,34 +125,21 @@
                                                                             <thead>
                                                                                 <tr>
                                                                                     <th>
-                                                                                        <i class="fa fa-briefcase"></i> Company </th>
+                                                                                        <i class="fa fa-briefcase"></i> Kegiatan</th>
                                                                                     <th class="hidden-xs">
-                                                                                        <i class="fa fa-question"></i> Descrition </th>
+                                                                                        <i class="icon-paper-clip"></i> Berkas </th>
                                                                                     <th>
-                                                                                        <i class="fa fa-bookmark"></i> Amount </th>
+                                                                                        <i class="fa fa-calendar"></i> Tanggal Dikirim </th>
                                                                                     <th> </th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td>
-                                                                                        <a href="javascript:;"> Pixel Ltd </a>
+                                                                                        <a href="javascript:;"> Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI RKA-KL Dalam RUU APBNP 2016 Dan Persiapan Ramadhan Dan Idul Fitri</a>
                                                                                     </td>
-                                                                                    <td class="hidden-xs"> Server hardware purchase </td>
-                                                                                    <td> 52560.10$
-                                                                                        <span class="label label-success label-sm"> Paid </span>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <a href="javascript:;"> Smart House </a>
-                                                                                    </td>
-                                                                                    <td class="hidden-xs"> Office furniture purchase </td>
-                                                                                    <td> 5760.00$
-                                                                                        <span class="label label-warning label-sm"> Pending </span>
+                                                                                    <td class="hidden-xs"> <a target="_blank" href="http://tnde.local/ehal/kompilasi/160608%20APBNP2016%20DAN%20PERSIAPAN%20IDUL%20FITRI-2.pptx">160608 APBNP2016 DAN PERSIAPAN IDUL FITRI-2.pptx</a></td>
+                                                                                    <td> 10 Juni 2016
                                                                                     </td>
                                                                                     <td>
                                                                                         <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
@@ -160,23 +147,10 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
-                                                                                        <a href="javascript:;"> FoodMaster Ltd </a>
+                                                                                        <a href="javascript:;">Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI APBN Perubahan 2016 Dan Rancangan Program Dan Anggaran Kementerian Pertanian TA 2017</a>
                                                                                     </td>
-                                                                                    <td class="hidden-xs"> Company Anual Dinner Catering </td>
-                                                                                    <td> 12400.00$
-                                                                                        <span class="label label-success label-sm"> Paid </span>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <a href="javascript:;"> WaterPure Ltd </a>
-                                                                                    </td>
-                                                                                    <td class="hidden-xs"> Payment for Jan 2013 </td>
-                                                                                    <td> 610.50$
-                                                                                        <span class="label label-danger label-sm"> Overdue </span>
+                                                                                    <td class="hidden-xs"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160613 RANCANGAN APBN-P 2016 DAN RAPBN 2017-rev4.pptx">160613 RANCANGAN APBN-P 2016 DAN RAPBN 2017-rev4.pptx</a></td>
+                                                                                    <td> 15 Juni 2016
                                                                                     </td>
                                                                                     <td>
                                                                                         <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
@@ -184,23 +158,10 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
-                                                                                        <a href="javascript:;"> Pixel Ltd </a>
+                                                                                        <a href="javascript:;"> Rapat Kerja Menteri Pertanian RI Dengan Komite II DPR RI Pelaksanaan UU NO. 39 Tahun 2014 Dan Kesiapan Pemerintah Menjelang Hari Raya Idul Fitri </a>
                                                                                     </td>
-                                                                                    <td class="hidden-xs"> Server hardware purchase </td>
-                                                                                    <td> 52560.10$
-                                                                                        <span class="label label-success label-sm"> Paid </span>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <a href="javascript:;"> Smart House </a>
-                                                                                    </td>
-                                                                                    <td class="hidden-xs"> Office furniture purchase </td>
-                                                                                    <td> 5760.00$
-                                                                                        <span class="label label-warning label-sm"> Pending </span>
+                                                                                    <td class="hidden-xs"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160621 RAKER DPD PERSIAPAN IDUL FITRI-REV3.pptx">160621 RAKER DPD PERSIAPAN IDUL FITRI-REV3.pptx</a></td>
+                                                                                    <td> 23 Juni 2016
                                                                                     </td>
                                                                                     <td>
                                                                                         <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
@@ -208,11 +169,21 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
-                                                                                        <a href="javascript:;"> FoodMaster Ltd </a>
+                                                                                        <a href="javascript:;">Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI Perubahan Alokasi TA 2016 Dan Ketersediaan Bahan Pangan Dan Harga Pangan Selama Ramadhan Dan Idul Fitri 1437 H </a>
                                                                                     </td>
-                                                                                    <td class="hidden-xs"> Company Anual Dinner Catering </td>
-                                                                                    <td> 12400.00$
-                                                                                        <span class="label label-success label-sm"> Paid </span>
+                                                                                    <td class="hidden-xs"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160622 RAKER APBNP 2016 DAN PERSIAPAN HARI RAYA-rev3.pptx">160622 RAKER APBNP 2016 DAN PERSIAPAN HARI RAYA-rev3.pptx</a></td>
+                                                                                    <td> 24 Juni 2016
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <a href="javascript:;">Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI Evaluasi Hasil Kunjungan Kerja Spesifik Mengenai Ketersediaan Bahan Pangan Dan Harga Pangan Selama Bulan Ramadhan Dan Hari Raya Idul Fitri 1437 H </a>
+                                                                                    </td>
+                                                                                    <td class="hidden-xs"><a target="_blank" href="http://tnde.local/ehal/kompilasi/160627 EVALUASI KUNKER SPESIFIK-rev 2.ppt">160627 EVALUASI KUNKER SPESIFIK-rev 2.ppt</a></td>
+                                                                                    <td> 29 Juni 2016
                                                                                     </td>
                                                                                     <td>
                                                                                         <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>

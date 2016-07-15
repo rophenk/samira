@@ -37,7 +37,7 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="btn-group">
-                                                                <a href="/add-speaker">
+                                                                <a href="/add-workmeeting">
                                                                   <button id="sample_editable_1_new" class="btn sbold green"> Tambah Rapat Kerja
                                                                     <i class="fa fa-plus"></i>
                                                                   </button>
@@ -201,7 +201,7 @@
                                                             </td>
                                                             <td class="left"> 1</td>
                                                             <td width="40%" class="left">
-                                                                <a href="/workmeeting-view/1">  Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI RKA-KL Dalam RUU APBNP 2016 Dan Persiapan Ramadhan Dan Idul Fitri  </a>
+                                                                <a href="/workmeeting-questions">  Rapat Kerja Menteri Pertanian RI Dengan Komisi IV DPR RI RKA-KL Dalam RUU APBNP 2016 Dan Persiapan Ramadhan Dan Idul Fitri  </a>
                                                             </td>
                                                             <td width="20%" class="left"> 08 Juni 2016 </td>
                                                             <td width="20%" class="left"> Kementerian Pertanian </td>
@@ -212,7 +212,7 @@
                                                                     </button>
                                                                     <ul class="dropdown-menu" role="menu">
                                                                         <li>
-                                                                            <a href="/workmeeting-view/1">
+                                                                            <a href="/workmeeting-questions">
                                                                                 <i class="fa fa-edit"></i> Edit </a>
                                                                         </li>
                                                                     </ul>
