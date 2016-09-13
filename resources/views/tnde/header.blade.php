@@ -311,7 +311,7 @@
                                                 <i class="fa fa-mail-forward"></i> Disposisi </a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <a href="#"> Data Disposisi </a>
+                                                    <a href="/list-disposition/{{ $user->id }}"> Data Disposisi </a>
                                                 </li>
                                             </ul>
                                         </li>
