@@ -96,7 +96,7 @@ class MyFunctions {
 
     public static function getUnreadDisposition($userID){
 
-      $incomingDisposition = Disposition::where('userID', '=', $userID)
+      $incomingDisposition = Disposition::where('receiver_user_id', '=', $userID)
                               ->where('read', '=', 0)
                               ->get();
       return $incomingDisposition->count();
