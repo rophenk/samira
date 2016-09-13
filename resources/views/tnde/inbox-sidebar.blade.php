@@ -13,7 +13,7 @@
                                                 
                                                 if($routes == "list-inbox" || $routes == "list-inbox-view") {
                                                     $inbox = '  class="active"';
-                                                 } elseif($routes == "receiver-disposition") {
+                                                 } elseif($routes == "receiver-disposition" || $routes == "list-disposition" || $routes == "list-disposition-view") {
                                                     $disposition = ' class="active"';
                                                  }  else {
 

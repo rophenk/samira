@@ -57,7 +57,14 @@ class InboxController extends Controller
       $DispositionInstruction = DispositionInstruction::all();
 
 
-      return view('tnde.inbox-incoming-view', ['user' => $user, 'incoming' => $incomingActivities, 'attachment' => $attachment, 'satker' => $satker, 'DispositionTrait' => $DispositionTrait, 'DispositionInstruction' => $DispositionInstruction]);
+      return view('tnde.inbox-incoming-view', [
+        'user'                   => $user, 
+        'incoming'               => $incomingActivities, 
+        'attachment'             => $attachment, 
+        'satker'                 => $satker, 
+        'DispositionTrait'       => $DispositionTrait, 
+        'DispositionInstruction' => $DispositionInstruction
+        ]);
     }
 
     public function action(Request $request)
@@ -85,6 +92,13 @@ class InboxController extends Controller
 
       var_dump($action);
 
-      return view('tnde.inbox-incoming-view', ['user' => $user, 'incoming' => $incomingActivities, 'attachment' => $attachment, 'satker' => $satker, 'DispositionTrait' => $DispositionTrait, 'DispositionInstruction' => $DispositionInstruction]);
+      return view('tnde.inbox-incoming-view', [
+        'user'                   => $user, 
+        'incoming'               => $incomingActivities, 
+        'attachment'             => $attachment, 
+        'satker'                 => $satker, 
+        'DispositionTrait'       => $DispositionTrait, 
+        'DispositionInstruction' => $DispositionInstruction
+        ]);
     }
 }

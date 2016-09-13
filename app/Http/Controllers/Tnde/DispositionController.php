@@ -14,6 +14,7 @@ use App\Disposition;
 use App\DispositionTrait;
 use App\DispositionInstruction;
 use DB;
+use App\Helpers\MyFunctions;
 
 class DispositionController extends Controller
 {
@@ -55,14 +56,12 @@ class DispositionController extends Controller
                                 where receiver_user_id = '. $user->id 
                                 
                                 );
-                               
-        //var_dump($incomingActivities);die();
+                 
         return view('tnde.inbox-disposition', [
             'user'          => $user, 
             'incoming'      => $incomingDisposition, 
             'disposition'   => $disposition
             ]);
-        //return $incomingDisposition;
     }
 
     /**
@@ -125,6 +124,7 @@ class DispositionController extends Controller
             }
 
             return redirect("/receiver-disposition/".$request->incoming_uuid);
+
         }
     }
 
@@ -134,9 +134,134 @@ class DispositionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $user        = $request->user();
+        $uuid        = $request->uuid;
+        $letter_date = '';
+
+        $disposition = Disposition::where('uuid', '=', $uuid)->first();
+
+        $workUnits   = DB::select("
+                        select
+                            `workUnits`.`name`
+                        from
+                            `workUnits`
+                        right join
+                            `users` on (workUnits.id = users.workUnitsID)
+                        right join
+                            `disposition` on (disposition.receiver_user_id = users.id)
+                        where
+                            `disposition`.`uuid` = '".$uuid."'
+                        ");
+        // Ubah status menjadi sudah dibaca / read
+        Disposition::where('uuid', '=', $uuid)
+                          ->update([
+                              'read' => 1
+                              ]);
+
+        $incomingDisposition = DB::select("
+                                select 
+                                    `disposition`.`id` AS `disposition_id`, 
+                                    `disposition`.`uuid`, 
+                                    `disposition`.`read`,
+                                    `disposition`.`disposition_instruction`,
+                                    `disposition`.`note`, 
+                                    `disposition`.`dateSend`, 
+                                    `incoming_activities_id`,
+                                    `incomingActivities`.`uuid` AS `incoming_activities_uuid`, 
+                                    `incoming`.`uuid` AS `incoming_uuid`, 
+                                    `incoming`.`letter_date`,
+                                    `incoming`.`letter_number`,    
+                                    `incoming`.`sender`,  
+                                    `incoming`.`subject`,
+                                    `disposition_trait`.`trait`,
+                                    `workUnits`.`name` as `work_unit_name`
+                                from disposition 
+                                left join incomingActivities on (incomingActivities.id = incoming_activities_id)
+                                left join incoming on (incoming.id = incomingID)
+                                left join disposition_trait on (disposition_trait_id = disposition_trait.id)
+                                left join users on (users.id = disposition.userID)
+                                left join workUnits on (users.workUnitsID = workUnits.id)
+                                where `disposition`.`uuid` = '". $uuid."'"
+                                
+                                );
+
+        $instruction = json_decode($incomingDisposition[0]->disposition_instruction);
+
+        return view('tnde.inbox-disposition-view', [
+            'user'                => $user, 
+            'disposition'         => $disposition,
+            'workUnits'           => $workUnits,
+            'instruction'         => $instruction,
+            'incomingDisposition' => $incomingDisposition
+            ]);
+
+    }
+
+    public function showPrint(Request $request)
+    {
+        $user        = $request->user();
+        $uuid        = $request->uuid;
+        $letter_date = '';
+
+        $disposition = Disposition::where('uuid', '=', $uuid)->first();
+
+        $workUnits   = DB::select("
+                        select
+                            `workUnits`.`name`
+                        from
+                            `workUnits`
+                        right join
+                            `users` on (workUnits.id = users.workUnitsID)
+                        right join
+                            `disposition` on (disposition.receiver_user_id = users.id)
+                        where
+                            `disposition`.`uuid` = '".$uuid."'
+                        ");
+        // Ubah status menjadi sudah dibaca / read
+        Disposition::where('uuid', '=', $uuid)
+                          ->update([
+                              'read' => 1
+                              ]);
+
+        $incomingDisposition = DB::select("
+                                select 
+                                    `disposition`.`id` AS `disposition_id`, 
+                                    `disposition`.`uuid`, 
+                                    `disposition`.`read`,
+                                    `disposition`.`disposition_instruction`,
+                                    `disposition`.`note`, 
+                                    `disposition`.`dateSend`, 
+                                    `incoming_activities_id`,
+                                    `incomingActivities`.`uuid` AS `incoming_activities_uuid`, 
+                                    `incoming`.`uuid` AS `incoming_uuid`, 
+                                    `incoming`.`letter_date`,
+                                    `incoming`.`letter_number`,    
+                                    `incoming`.`sender`,  
+                                    `incoming`.`subject`,
+                                    `disposition_trait`.`trait`,
+                                    `workUnits`.`name` as `work_unit_name`
+                                from disposition 
+                                left join incomingActivities on (incomingActivities.id = incoming_activities_id)
+                                left join incoming on (incoming.id = incomingID)
+                                left join disposition_trait on (disposition_trait_id = disposition_trait.id)
+                                left join users on (users.id = disposition.userID)
+                                left join workUnits on (users.workUnitsID = workUnits.id)
+                                where `disposition`.`uuid` = '". $uuid."'"
+                                
+                                );
+
+        $instruction = json_decode($incomingDisposition[0]->disposition_instruction);
+
+        return view('tnde.inbox-disposition-print', [
+            'user'                => $user, 
+            'disposition'         => $disposition,
+            'workUnits'           => $workUnits,
+            'instruction'         => $instruction,
+            'incomingDisposition' => $incomingDisposition
+            ]);
+
     }
 
     /**

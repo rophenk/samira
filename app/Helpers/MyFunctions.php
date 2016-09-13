@@ -19,6 +19,13 @@ class MyFunctions {
     
     return $new_date;
     }
+
+    public static function reverse_date($value) {
+    $explode_date = explode("-",$value);
+    $new_date = $explode_date[2]."-".$explode_date[1]."-".$explode_date[0];
+    
+    return $new_date;
+    }
   
   public static function tanggalIndo($date){
     $explode_date = explode("-",$date);
