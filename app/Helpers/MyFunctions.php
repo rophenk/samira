@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\IncomingActivities;
+use App\Disposition;
 use DB;
 
 class MyFunctions {
@@ -90,6 +91,15 @@ class MyFunctions {
                               ->where('read', '=', 0)
                               ->get();
       return $incomingActivities->count();
+
+    }
+
+    public static function getUnreadDisposition($userID){
+
+      $incomingDisposition = Disposition::where('userID', '=', $userID)
+                              ->where('read', '=', 0)
+                              ->get();
+      return $incomingDisposition->count();
 
     }
 

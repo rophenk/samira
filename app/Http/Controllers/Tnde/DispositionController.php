@@ -8,6 +8,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
+use App\IncomingActivities;
+use App\AttachmentIncoming;
+use App\Disposition;
+use App\DispositionTrait;
+use App\DispositionInstruction;
 use DB;
 
 class DispositionController extends Controller
@@ -17,9 +22,47 @@ class DispositionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $user       = $request->user();
+        $incoming_activities_id = '';
+        
+        // cari disposisi berdasarkan user yang login
+        $disposition = Disposition::distinct()
+                        ->select('incoming_activities_id')
+                        ->where('receiver_user_id', '=', $user->id)
+                        ->groupBy('incoming_activities_id')
+                        ->get();
+
+        $incomingDisposition = DB::select('
+                                select 
+                                    `disposition`.`id` AS `disposition_id`, 
+                                    `disposition`.`uuid`, 
+                                    `disposition`.`read`,
+                                    `disposition`.`disposition_instruction`,
+                                    `disposition`.`note`, 
+                                    `disposition`.`dateSend`, 
+                                    `incoming_activities_id`,
+                                    `incomingActivities`.`uuid` AS `incoming_activities_uuid`, 
+                                    `incoming`.`uuid` AS `incoming_uuid`, 
+                                    `incoming`.`letter_date`,  
+                                    `incoming`.`sender`,  
+                                    `incoming`.`subject` 
+                                from disposition 
+                                left join incomingActivities on (incomingActivities.id = incoming_activities_id)
+                                left join incoming on (incoming.id = incomingID)
+
+                                where receiver_user_id = '. $user->id 
+                                
+                                );
+                               
+        //var_dump($incomingActivities);die();
+        return view('tnde.inbox-disposition', [
+            'user'          => $user, 
+            'incoming'      => $incomingDisposition, 
+            'disposition'   => $disposition
+            ]);
+        //return $incomingDisposition;
     }
 
     /**

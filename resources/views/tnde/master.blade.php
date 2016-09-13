@@ -1,6 +1,6 @@
 <?php
 $dashboard = ' ';
-                            $tndetab = ' ';
+$tndetab = ' ';
 ?>
 <!DOCTYPE html>
 <!-- 

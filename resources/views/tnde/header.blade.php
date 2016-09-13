@@ -227,7 +227,7 @@
                         $ehaltab = '';
                         if($routes == "dashboard") {
                             $dashboard = ' active open selected';
-                        } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing" || $routes == "list-workunit" || $routes == "list-users" || $routes == "receiver-incoming" || $routes == "list-inbox" || $routes == "list-inbox-view") {
+                        } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing" || $routes == "list-workunit" || $routes == "list-users" || $routes == "receiver-incoming" || $routes == "list-inbox" || $routes == "list-inbox-view" || $routes == "list-disposition" || $routes == "receiver-disposition") {
                             $tndetab = ' active open selected';
                         } elseif($routes == "events-list" || $routes == "events-timeline") {
                             $evicentertab = ' active open selected';

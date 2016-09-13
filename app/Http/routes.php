@@ -90,7 +90,8 @@ Route::group(['middleware' => ['web']], function () {
   /* Route For TNDE Disposition */
   Route::get('/add-disposition/{incomingId?}', 'Tnde\DispositionController@create');
   Route::post('/add-disposition', 'Tnde\DispositionController@store');
-  Route::get('/receiver-disposition/{uuid?}', 'Tnde\DispositionController@receiver');
+  Route::get('/receiver-disposition/{uuid?}', 'Tnde\DispositionController@index');
+  Route::get('/list-disposition/{uuid?}', 'Tnde\DispositionController@index');
   /* End Of Route For TNDE Disposition */
 
   /* Route For Simpulpadi Mockup */
