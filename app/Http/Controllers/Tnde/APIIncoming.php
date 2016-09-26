@@ -124,20 +124,20 @@ class APIIncoming extends Controller
         $postdata = file_get_contents("php://input");
         if (isset($postdata)) {
             $request = json_decode($postdata);
-            $username = $request->username;
+            $input_date = $request->input_date;
 
-            if ($username != "") {
-                echo "Server returns: " . $username;
+            if ($input_date != "") {
+                echo "Server returns: " . $input_date;
             }
             else {
-                echo "Empty username parameter!";
+                echo "Empty input_date parameter!";
             }
         }
         else {
-            echo "Not called properly with username parameter!";
+            echo "Not called properly with input_date parameter!";
         }
         // Validate the request...
-        $explode_input_date = explode("-",$request->input_date);
+        /*$explode_input_date = explode("-",$request->input_date);
         $input_date = $explode_input_date[2]."-".$explode_input_date[1]."-".$explode_input_date[0];
         
         $explode_letter_date = explode("-",$request->letter_date);
@@ -167,11 +167,10 @@ class APIIncoming extends Controller
         $incoming->subject = $request->subject;
         $incoming->description = $request->description;
         $incoming->user_id = $request->user_id;
-        $incoming->save();
+        $incoming->save();*/
 
         return response()->json([
-            'success' => 'incoming added', 
-            'incoming' => $incoming
+            'success' => 'incoming added'
             ]);
     }
 
