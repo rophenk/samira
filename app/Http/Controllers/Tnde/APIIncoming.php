@@ -122,8 +122,10 @@ class APIIncoming extends Controller
 
         //http://stackoverflow.com/questions/15485354/angular-http-post-to-php-and-undefined
         $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
         return response()->json([
-            'success' => 'incoming added'
+            'success'       => 'incoming added',
+            'input_date'    => $request->input_date
             ]);
         /*if (isset($postdata)) {
             $request = json_decode($postdata);
