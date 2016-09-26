@@ -34,11 +34,12 @@ $options = [
 
 Route::group(['middleware' => ['web']], function () {
   
-  Route::get('/', 'LoginController@login');
+  Route::get('/', 'HomeController@index');
   Route::auth();
   
   Route::get('/dashboard', 'HomeController@index');
   Route::get('/login2', 'LoginController@login');
+  Route::get('/login', 'LoginController@login');
   Route::post('/login2', 'LoginController@postLogin');
   Route::get('/logout2', 'LoginController@logout');
 
@@ -76,6 +77,10 @@ Route::group(['middleware' => ['web']], function () {
 
   /* Route For User Management */
   Route::get('/list-users', 'Tnde\UserController@index');
+  Route::get('/add-users', 'Tnde\UserController@create');
+  Route::post('/add-users', 'Tnde\UserController@store');
+  Route::get('/edit-users/{id?}', 'Tnde\UserController@edit');
+  Route::post('/edit-users', 'Tnde\UserController@update');
 
   /* End Of Route For User Management */
 
@@ -83,7 +88,7 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('/list-inbox', 'Tnde\InboxController@index');
   Route::get('/list-inbox-incoming', 'Tnde\InboxController@listIncoming');
   Route::get('/list-inbox-view/{uuid?}', 'Tnde\InboxController@viewIncoming');
-  Route::get('/list-inbox-action/{uuid?}/{action}', 'Tnde\InboxController@action');
+  Route::get('/list-inbox-action/{id?}/{action}', 'Tnde\InboxController@action');
 
   /* End Of Route For TNDE Inbox */
 
@@ -123,6 +128,9 @@ Route::group(['middleware' => ['web']], function () {
 
 });
 
+/**
+ * Route Untuk Mobile Apps Tandem
+ */
 Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api'], function () {
 
   Route::resource('/list-incoming', 'Tnde\APIIncoming@index');

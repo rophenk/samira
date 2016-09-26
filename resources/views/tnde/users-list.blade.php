@@ -82,7 +82,7 @@
                                                                 <div class="mt-comments">
                                                                     <div class="mt-comment">   
                                                                         <div class="mt-comment-img">
-                                                                            <img src="../assets/layouts/layout5/img/{{ $users->avatar }}" height="50px"/> 
+                                                                            <img src="{{ $users->avatar }}" height="50px"/> 
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -105,20 +105,6 @@
                                                                         <li>
                                                                             <a href="/edit-users/{{ $users->id }}">
                                                                                 <i class="fa fa-edit"></i> Edit </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="/attachment-users/{{ $users->id }}">
-                                                                                <i class="fa fa-paperclip"></i> Lampiran </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="javascript:;">
-                                                                                <i class="icon-user"></i> Penerima </a>
-                                                                        </li>
-                                                                        <!--<li class="divider"> </li>-->
-                                                                        <li>
-                                                                            <a href="/attribute-users/{{ $users->id }}">
-                                                                                <i class="icon-tag"></i> Atribut
-                                                                            </a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
