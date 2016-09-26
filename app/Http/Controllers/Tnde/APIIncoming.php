@@ -122,7 +122,10 @@ class APIIncoming extends Controller
 
         //http://stackoverflow.com/questions/15485354/angular-http-post-to-php-and-undefined
         $postdata = file_get_contents("php://input");
-        if (isset($postdata)) {
+        return response()->json([
+            'success' => 'incoming added'
+            ]);
+        /*if (isset($postdata)) {
             $request = json_decode($postdata);
             $input_date = $request->input_date;
 
@@ -135,7 +138,7 @@ class APIIncoming extends Controller
         }
         else {
             echo "Not called properly with input_date parameter!";
-        }
+        }*/
         // Validate the request...
         /*$explode_input_date = explode("-",$request->input_date);
         $input_date = $explode_input_date[2]."-".$explode_input_date[1]."-".$explode_input_date[0];
@@ -167,11 +170,11 @@ class APIIncoming extends Controller
         $incoming->subject = $request->subject;
         $incoming->description = $request->description;
         $incoming->user_id = $request->user_id;
-        $incoming->save();*/
+        $incoming->save();
 
         return response()->json([
             'success' => 'incoming added'
-            ]);
+            ]);*/
     }
 
     /**
