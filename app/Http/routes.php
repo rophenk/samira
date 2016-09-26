@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin: http://localhost:8100');
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -139,6 +139,7 @@ Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api'], function () {
   Route::get('/attachment-incoming/{incomingID?}', 'Tnde\APIIncoming@attachmentIncoming');
   Route::get('/read/{id?}/{user_id?}', 'Tnde\APIIncoming@markRead');
   Route::get('/action/{id?}/{action?}', 'Tnde\APIIncoming@action');
+  Route::post('/add-incoming/{user_id?}', 'Tnde\APIIncoming@store');
 
 });
 

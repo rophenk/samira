@@ -101,7 +101,78 @@ class APIIncoming extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (isset($_SERVER['HTTP_ORIGIN'])) {
+            header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+            header('Access-Control-Allow-Credentials: true');
+            header('Access-Control-Max-Age: 86400');    // cache for 1 day
+        }
+
+        // Access-Control headers are received during OPTIONS requests
+        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+
+            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+                header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
+
+            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+                header("Access-Control-Allow-Headers:        
+                {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+
+            exit(0);
+        }
+
+        //http://stackoverflow.com/questions/15485354/angular-http-post-to-php-and-undefined
+        $postdata = file_get_contents("php://input");
+        if (isset($postdata)) {
+            $request = json_decode($postdata);
+            $username = $request->username;
+
+            if ($username != "") {
+                echo "Server returns: " . $username;
+            }
+            else {
+                echo "Empty username parameter!";
+            }
+        }
+        else {
+            echo "Not called properly with username parameter!";
+        }
+        // Validate the request...
+        $explode_input_date = explode("-",$request->input_date);
+        $input_date = $explode_input_date[2]."-".$explode_input_date[1]."-".$explode_input_date[0];
+        
+        $explode_letter_date = explode("-",$request->letter_date);
+        $letter_date = $explode_letter_date[2]."-".$explode_letter_date[1]."-".$explode_letter_date[0];
+        
+        $type = $request->type;
+
+        if($type === 'internal') {
+            $sender = $request->internal_sender;
+        } elseif($type === 'eksternal') {
+            $sender = $request->external_sender;
+        } else {
+            $sender = 'Pengirim Tidak Diketahui';
+        }
+
+        $incoming = new Incoming;
+        $incoming->uuid = Uuid::uuid4();
+        $incoming->input_date = $input_date;
+        $incoming->agenda_number = $request->agenda_number;
+        $incoming->letter_number = $request->letter_number;
+        $incoming->letter_date = $letter_date;
+        $incoming->type = $type;
+        $incoming->sender = $sender;
+        $incoming->receiver = $request->receiver;
+        $incoming->page_count = $request->page_count;
+        $incoming->attachment_count = $request->attachment_count;
+        $incoming->subject = $request->subject;
+        $incoming->description = $request->description;
+        $incoming->user_id = $request->user_id;
+        $incoming->save();
+
+        return response()->json([
+            'success' => 'incoming added', 
+            'incoming' => $incoming
+            ]);
     }
 
     /**
