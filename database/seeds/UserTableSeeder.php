@@ -68,5 +68,16 @@ class UserTableSeeder extends Seeder
         'modules' => 'ehal',
         'api_token' => str_random(60),
         ]);
+
+        // Seed data untuk table users
+        DB::table('users')->insert([
+        'name' => 'Yovan',
+        'email' => 'yovan@tnde.com',
+        'password' => bcrypt('rahasia'),
+        'workUnitsID' => '22',
+        'role_id' => '2',
+        'modules' => 'tnde',
+        'api_token' => str_random(60),
+        ]);
     }
 }

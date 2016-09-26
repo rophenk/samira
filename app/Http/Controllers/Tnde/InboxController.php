@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\IncomingActivities;
 use App\AttachmentIncoming;
 use App\DispositionTrait;
+use App\DispositionDegree;
 use App\DispositionInstruction;
 use DB;
 
@@ -54,6 +55,8 @@ class InboxController extends Controller
 
       $DispositionTrait = DispositionTrait::all();
 
+      $DispositionDegree = DispositionDegree::all();
+
       $DispositionInstruction = DispositionInstruction::all();
 
 
@@ -63,6 +66,7 @@ class InboxController extends Controller
         'attachment'             => $attachment, 
         'satker'                 => $satker, 
         'DispositionTrait'       => $DispositionTrait, 
+        'DispositionDegree'      => $DispositionDegree, 
         'DispositionInstruction' => $DispositionInstruction
         ]);
     }
@@ -88,9 +92,9 @@ class InboxController extends Controller
 
       $DispositionTrait = DispositionTrait::all();
 
-      $DispositionInstruction = DispositionInstruction::all();
+      $DispositionDegree = DispositionDegree::all();
 
-      var_dump($action);
+      $DispositionInstruction = DispositionInstruction::all();
 
       return view('tnde.inbox-incoming-view', [
         'user'                   => $user, 
@@ -98,6 +102,7 @@ class InboxController extends Controller
         'attachment'             => $attachment, 
         'satker'                 => $satker, 
         'DispositionTrait'       => $DispositionTrait, 
+        'DispositionDegree'      => $DispositionDegree, 
         'DispositionInstruction' => $DispositionInstruction
         ]);
     }

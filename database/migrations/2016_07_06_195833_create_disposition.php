@@ -20,6 +20,7 @@ class CreateDisposition extends Migration
             $table->integer('userID')->unsigned()->nullable();
             $table->integer('receiver_user_id')->nullable();
             $table->integer('disposition_trait_id')->nullable();
+            $table->integer('disposition_degree_id')->nullable();
             $table->text('disposition_instruction')->nullable();
             $table->text('note')->nullable();
             $table->timestamp('dateSend');

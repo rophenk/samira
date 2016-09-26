@@ -153,6 +153,19 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div id="disposition_degree_id">    
+                                                    <div class="form-group form-md-line-input">
+                                                        <label class="col-md-2 control-label" for="form_control_1">Derajat</label>
+                                                        <div class="col-md-10">
+                                                            <select id="disposition_degree_id" name="disposition_degree_id" class="form-control select2-multiple">
+                                                                @forelse ($DispositionDegree as $DispositionDegree)
+                                                                    <option value="{{ $DispositionDegree->id }}">{{ $DispositionDegree->degree }}</option>
+                                                                @empty
+                                                                @endforelse
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div id="disposition_instruction">    
                                                     <div class="form-group form-md-line-input">
                                                         <label class="col-md-2 control-label" for="form_control_1">Isi Disposisi</label>

@@ -17,19 +17,11 @@ class DispositionTraitSeeder extends Seeder
         ]);
 
         DB::table('disposition_trait')->insert([
-        'trait' => 'Segera',
-        ]);
-
-        DB::table('disposition_trait')->insert([
-        'trait' => 'Sangat Segera',
+        'trait' => 'Penting',
         ]);
 
         DB::table('disposition_trait')->insert([
         'trait' => 'Rahasia',
-        ]);
-
-        DB::table('disposition_trait')->insert([
-        'trait' => 'Sangat Rahasia',
         ]);
 
     }

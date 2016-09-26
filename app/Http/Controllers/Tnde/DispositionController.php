@@ -85,6 +85,7 @@ class DispositionController extends Controller
         $userID                     = $request->userID;
         $receiver                   = $request->receiver;
         $disposition_trait_id       = $request->disposition_trait_id;
+        $disposition_degree_id      = $request->disposition_degree_id;
         $disposition_instruction_id = json_encode($request->disposition_instruction, JSON_FORCE_OBJECT);
         $note                       = $request->note;
 
@@ -109,6 +110,7 @@ class DispositionController extends Controller
                                 'userID'                  => $userID,
                                 'receiver_user_id'        => $usr->id,
                                 'disposition_trait_id'    => $disposition_trait_id,
+                                'disposition_degree_id'   => $disposition_degree_id,
                                 'disposition_instruction' => $disposition_instruction_id,
                                 'note'                    => $note,
                                 'read'                    => 0,
@@ -176,11 +178,13 @@ class DispositionController extends Controller
                                     `incoming`.`sender`,  
                                     `incoming`.`subject`,
                                     `disposition_trait`.`trait`,
+                                    `disposition_degree`.`degree`,
                                     `workUnits`.`name` as `work_unit_name`
                                 from disposition 
                                 left join incomingActivities on (incomingActivities.id = incoming_activities_id)
                                 left join incoming on (incoming.id = incomingID)
                                 left join disposition_trait on (disposition_trait_id = disposition_trait.id)
+                                left join disposition_degree on (disposition_degree_id = disposition_degree.id)
                                 left join users on (users.id = disposition.userID)
                                 left join workUnits on (users.workUnitsID = workUnits.id)
                                 where `disposition`.`uuid` = '". $uuid."'"
@@ -241,11 +245,13 @@ class DispositionController extends Controller
                                     `incoming`.`sender`,  
                                     `incoming`.`subject`,
                                     `disposition_trait`.`trait`,
+                                    `disposition_degree`.`degree`,
                                     `workUnits`.`name` as `work_unit_name`
                                 from disposition 
                                 left join incomingActivities on (incomingActivities.id = incoming_activities_id)
                                 left join incoming on (incoming.id = incomingID)
                                 left join disposition_trait on (disposition_trait_id = disposition_trait.id)
+                                left join disposition_degree on (disposition_degree_id = disposition_degree.id)
                                 left join users on (users.id = disposition.userID)
                                 left join workUnits on (users.workUnitsID = workUnits.id)
                                 where `disposition`.`uuid` = '". $uuid."'"

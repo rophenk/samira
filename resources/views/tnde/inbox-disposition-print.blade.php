@@ -5,7 +5,7 @@ $dateSend = MyFunctions::calendar_time($disposition->dateSend);
 //$letter_date = MyFunctions::calendar_time($incomingDisposition->letter_date);
 $letter_date = MyFunctions::reverse_date($incomingDisposition->letter_date);
 ?>
-<table border="1" align="center" cellpadding="2" cellspacing="0" class="adminlist" width="100%">
+<table border="1" align="center" cellpadding="2" cellspacing="0" class="adminlist" width="100%" style="font-family: Arial, Helvetica, sans-serif;">
 
   <tbody><tr>
     <td colspan="3" width="50%"><p align="center"><b>LEMBAR DISPOSISI</b></p></td>
@@ -26,14 +26,18 @@ $letter_date = MyFunctions::reverse_date($incomingDisposition->letter_date);
 
    <tr>
     <td colspan="3" valign="middle">
-      <img src="{{URL::asset('tnde/template/template-disposisi_files/FormDisposisi_check.png')}}" width="15" height="15" align="middle">
-      <font size="2"> 
-      {{ $incomingDisposition->trait }}
-      </font>
+      
+      <p align="center">
+        <font size="2"> 
+        <img src="{{URL::asset('tnde/template/template-disposisi_files/FormDisposisi_check.png')}}" width="15" height="15" align="middle">{{ $incomingDisposition->trait }}
+        </font>
+      </p>
       </td>
-    <td><p align="center"><font size="2">Segera</font></p></td>
-    <td><p align="center"><font size="2">Sangat Segera</font></p></td>
-    <td><p align="center"><font size="2">Kilat</font></p></td>
+    <td colspan="3" valign="middle">
+      <p align="center">
+        <font size="2"><img src="{{URL::asset('tnde/template/template-disposisi_files/FormDisposisi_check.png')}}" width="15" height="15" align="middle">{{ $incomingDisposition->degree }}</font>
+      </p>
+    </td>
     <td><font size="2">Penyelesaian :</font></td>
   </tr>
 
@@ -43,12 +47,13 @@ $letter_date = MyFunctions::reverse_date($incomingDisposition->letter_date);
   </tr>
  
    <tr>
-    <td colspan="3"><font size="2">Nomor Surat : {{ $incomingDisposition->letter_number }}</font></td>
-    <td colspan="4"><font size="2">Tanggal : {{ $letter_date }}</font></td>
+   <td colspan="3"><font size="2">Tanggal : {{ $letter_date }}</font></td>
+    <td colspan="4"><font size="2">Nomor Surat : {{ $incomingDisposition->letter_number }}</font></td>
+    
   </tr>
 
   <tr>
-    <td colspan="7"><font size="2">Hal : <br>{{ $incomingDisposition->subject }}</font></td>
+    <td colspan="7" valign="middle"><font size="2">Perihal : <br>{{ $incomingDisposition->subject }}</font></td>
   </tr>
 
   <tr>
@@ -84,7 +89,7 @@ $letter_date = MyFunctions::reverse_date($incomingDisposition->letter_date);
     </td>
   </tr>
 
-  <tr>
+  <!--<tr>
     <td colspan="3"><b>TEMBUSAN KEPADA</b></td>
     <td colspan="4">&nbsp;</td>
   </tr>
@@ -92,7 +97,7 @@ $letter_date = MyFunctions::reverse_date($incomingDisposition->letter_date);
   <tr>
     <td colspan="3"><font size="2"> </font></td>
     <td colspan="4">&nbsp;</td>
-  </tr>
+  </tr>-->
   
   <tr>
     <td colspan="7">
@@ -103,7 +108,7 @@ $letter_date = MyFunctions::reverse_date($incomingDisposition->letter_date);
 
   <tr>
     <td colspan="7">
-    	<font size="2">Setelah digunakan harap segera dikembalikan kepada : <br> Tanggal :</font>
+    	<font size="2">Setelah digunakan harap segera dikembalikan kepada : <br> Tanggal :<br /><br /></font>
     </td>
   </tr>
 
