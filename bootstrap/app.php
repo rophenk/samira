@@ -52,8 +52,8 @@ $app->singleton(
 |
 */
 // allow origin
-header('Access-Control-Allow-Origin: http://localhost:8100');
+//header('Access-Control-Allow-Origin: http://localhost:8100');
 // add any additional headers you need to support here
-header('Access-Control-Allow-Headers: Origin, Content-Type,x-access-token,Authorization');
-header('Access-Control-Allow-Credentials: true');
+//header('Access-Control-Allow-Headers: Origin, Content-Type,x-access-token,Authorization');
+//header('Access-Control-Allow-Credentials: true');
 return $app;

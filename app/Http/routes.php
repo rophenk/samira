@@ -1,5 +1,4 @@
 <?php
-header('Access-Control-Allow-Origin: http://localhost:8100');
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -131,7 +130,7 @@ Route::group(['middleware' => ['web']], function () {
 /**
  * Route Untuk Mobile Apps Tandem
  */
-Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api'], function () {
+Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api', 'middleware' => 'cors'], function () {
 
   Route::resource('/list-incoming', 'Tnde\APIIncoming@index');
   Route::get('/inbox/{id?}', 'Tnde\APIIncoming@userInbox');

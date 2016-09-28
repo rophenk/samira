@@ -101,52 +101,12 @@ class APIIncoming extends Controller
      */
     public function store(Request $request)
     {
-        if (isset($_SERVER['HTTP_ORIGIN'])) {
-            header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-            header('Access-Control-Allow-Credentials: true');
-            header('Access-Control-Max-Age: 86400');    // cache for 1 day
-        }
-
-        // Access-Control headers are received during OPTIONS requests
-        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-
-            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-                header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
-
-            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-                header("Access-Control-Allow-Headers:        
-                {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-
-            exit(0);
-        }
-
-        //http://stackoverflow.com/questions/15485354/angular-http-post-to-php-and-undefined
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        /*$input_date = $_POST['input_date'];
         return response()->json([
-            'success'       => 'incoming added',
-            'input_date'    => $request->input_date
-            ]);
-        /*if (isset($postdata)) {
-            $request = json_decode($postdata);
-            $input_date = $request->input_date;
-
-            if ($input_date != "") {
-                echo "Server returns: " . $input_date;
-            }
-            else {
-                echo "Empty input_date parameter!";
-            }
-        }
-        else {
-            echo "Not called properly with input_date parameter!";
-        }*/
+            'success' => 'incoming added',
+            'uuid'    => $input_date
+            ]);*/
         // Validate the request...
-        /*$explode_input_date = explode("-",$request->input_date);
-        $input_date = $explode_input_date[2]."-".$explode_input_date[1]."-".$explode_input_date[0];
-        
-        $explode_letter_date = explode("-",$request->letter_date);
-        $letter_date = $explode_letter_date[2]."-".$explode_letter_date[1]."-".$explode_letter_date[0];
         
         $type = $request->type;
 
@@ -160,10 +120,10 @@ class APIIncoming extends Controller
 
         $incoming = new Incoming;
         $incoming->uuid = Uuid::uuid4();
-        $incoming->input_date = $input_date;
+        $incoming->input_date = $request->input_date;
         $incoming->agenda_number = $request->agenda_number;
         $incoming->letter_number = $request->letter_number;
-        $incoming->letter_date = $letter_date;
+        $incoming->letter_date = $request->letter_date;
         $incoming->type = $type;
         $incoming->sender = $sender;
         $incoming->receiver = $request->receiver;
@@ -175,8 +135,9 @@ class APIIncoming extends Controller
         $incoming->save();
 
         return response()->json([
-            'success' => 'incoming added'
-            ]);*/
+            'success' => 'incoming added',
+            'perihal' => $request->subject
+            ]);
     }
 
     /**
