@@ -136,7 +136,8 @@ class APIIncoming extends Controller
 
         return response()->json([
             'success' => 'incoming added',
-            'perihal' => $request->subject
+            'perihal' => $request->subject,
+            'uuid'    => $incoming->uuid 
             ]);
     }
 
