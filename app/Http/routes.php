@@ -139,6 +139,7 @@ Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api', 'middleware' =>
   Route::get('/read/{id?}/{user_id?}', 'Tnde\APIIncoming@markRead');
   Route::get('/action/{id?}/{action?}', 'Tnde\APIIncoming@action');
   Route::post('/add-incoming/{user_id?}', 'Tnde\APIIncoming@store');
+  Route::post('/attribute-incoming/{uuid?}', 'Tnde\APIIncoming@storeattribute');
 
 });
 

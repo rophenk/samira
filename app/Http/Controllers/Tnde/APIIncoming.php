@@ -141,6 +141,24 @@ class APIIncoming extends Controller
             ]);
     }
 
+    public function storeattribute (Request $request)
+    {
+        Incoming::where('uuid' ,$request->uuid)
+        ->update([
+            'letter_type'           => $request->letter_type,
+            'letter_classification' => $request->letter_classification,
+            'letter_character'      => $request->letter_character,
+            'letter_expedition'     => $request->letter_expedition,
+            'letter_storage'        => $request->letter_storage
+            ]);
+
+        return response()->json([
+            'success' => 'incoming attribute added',
+            'uuid'    => $request->uuid 
+            ]);
+
+    }
+
     /**
      * Display the specified resource.
      *
