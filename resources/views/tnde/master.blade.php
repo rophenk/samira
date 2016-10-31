@@ -39,7 +39,13 @@ $tndetab = ' ';
         <link href="/assets/layouts/layout5/css/layout.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/layouts/layout5/css/custom.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <link rel="shortcut icon" href="favicon.ico" /> 
+        <script language="javascript">
+            function confirmDelete() {
+                return confirm("Yakin akan menghapus data ini ?");
+            }
+        </script>
+        </head>
     <!-- END HEAD -->
 
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-md">
