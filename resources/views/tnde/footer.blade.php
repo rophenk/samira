@@ -1,4 +1,4 @@
-<p class="copyright">2016 © .
+<p class="copyright">2016 © . Kementerian Pertanian Republik Indonesia
                     
                 </p>
                 <a href="#index" class="go2top">
