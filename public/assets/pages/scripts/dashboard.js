@@ -224,15 +224,15 @@ var Dashboard = function() {
             }
 
             var visitors = [
-                ['02/2013', 1500],
-                ['03/2013', 2500],
-                ['04/2013', 1700],
-                ['05/2013', 800],
-                ['06/2013', 1500],
-                ['07/2013', 2350],
-                ['08/2013', 1500],
-                ['09/2013', 1300],
-                ['10/2013', 4600]
+                ['11/2016', 0],
+                ['12/2016', 0],
+                ['01/2017', 0],
+                ['02/2016', 0],
+                ['03/2016', 0],
+                ['04/2016', 0],
+                ['05/2016', 0],
+                ['06/2016', 0],
+                ['07/2016', 0]
             ];
 
 
@@ -306,7 +306,7 @@ var Dashboard = function() {
                             var x = item.datapoint[0].toFixed(2),
                                 y = item.datapoint[1].toFixed(2);
 
-                            showChartTooltip(item.pageX, item.pageY, item.datapoint[0], item.datapoint[1] + ' visits');
+                            showChartTooltip(item.pageX, item.pageY, item.datapoint[0], item.datapoint[1] + '');
                         }
                     } else {
                         $("#tooltip").remove();
@@ -323,16 +323,17 @@ var Dashboard = function() {
                 $('#site_activities_content').show();
 
                 var data1 = [
-                    ['DEC', 300],
-                    ['JAN', 600],
-                    ['FEB', 1100],
-                    ['MAR', 1200],
-                    ['APR', 860],
-                    ['MAY', 1200],
-                    ['JUN', 1450],
-                    ['JUL', 1800],
-                    ['AUG', 1200],
-                    ['SEP', 600]
+                    ['NOV', 0],
+                    ['DES', 0],
+                    ['JAN', 0],
+                    ['FEB', 0],
+                    ['MAR', 0],
+                    ['APR', 0],
+                    ['MAY', 0],
+                    ['JUN', 0],
+                    ['JUL', 0],
+                    ['AUG', 0],
+                    ['SEP', 0]
                 ];
 
 
@@ -410,7 +411,7 @@ var Dashboard = function() {
                             $("#tooltip").remove();
                             var x = item.datapoint[0].toFixed(2),
                                 y = item.datapoint[1].toFixed(2);
-                            showChartTooltip(item.pageX, item.pageY, item.datapoint[0], item.datapoint[1] + ' Juta');
+                            showChartTooltip(item.pageX, item.pageY, item.datapoint[0], item.datapoint[1] + '');
                         }
                     }
                 });

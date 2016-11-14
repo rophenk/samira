@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Incoming;
+use App\Outgoing;
+use App\Disposition;
+use App\Users;
 
 class HomeController extends Controller
 {
@@ -24,7 +28,38 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $user       = $request->user();
-        return view('tnde.dashboard', ['user' => $user]);
+        $user             = $request->user();
+        $totalIncoming    = Incoming::count();
+        $totalOutgoing    = Outgoing::count();
+        $totalDisposition = Disposition::count();
+        $totalUsers       = Users::count();
+        $incomingInternal = Incoming::where('type', 'internal')
+                            ->orderBy('letter_date', 'desc')
+                            ->take(5)
+                            ->get();
+        $incomingExternal = Incoming::where('type', 'external')
+                            ->orderBy('letter_date', 'desc')
+                            ->take(5)
+                            ->get();
+        $outgoingInternal = Outgoing::where('type', 'internal')
+                            ->orderBy('letter_date', 'desc')
+                            ->take(5)
+                            ->get();
+        $outgoingExternal = Outgoing::where('type', 'external')
+                            ->orderBy('letter_date', 'desc')
+                            ->take(5)
+                            ->get();
+
+        return view('tnde.dashboard', [
+            'user'             => $user,
+            'totalIncoming'    => $totalIncoming,
+            'totalOutgoing'    => $totalOutgoing,
+            'totalDisposition' => $totalDisposition,
+            'totalUsers'       => $totalUsers,
+            'incomingInternal' => $incomingInternal,
+            'incomingExternal' => $incomingExternal,
+            'outgoingInternal' => $outgoingInternal,
+            'outgoingExternal' => $outgoingExternal
+        ]);
     }
 }
