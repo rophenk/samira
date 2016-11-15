@@ -6,6 +6,7 @@
                                     $detail = '';
                                     $attribute = '';
                                     $attachment = '';
+                                    $receiver = '';
                                      $routes = $_SERVER['REQUEST_URI'];
                         
                                      $explode_routes = explode("/",$routes);
