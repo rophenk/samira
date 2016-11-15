@@ -9,6 +9,8 @@
         <link href="../assets/global/plugins/clockface/css/clockface.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('breadcrumb')
@@ -107,12 +109,51 @@
                                                                 <!-- /input-group -->
                                                             </div>
                                                         </div>
-                                                        <div class="form-group form-md-line-input">
-                                                            <label class="col-md-2 control-label" for="form_control_1">Pengirim</label>
+                                                        <div class="form-group  form-md-line-input">
+                                                            <label class="col-md-2 control-label" for="form_control_1">Tipe Surat</label>
                                                             <div class="col-md-10">
-                                                                <input type="text" name="sender" class="form-control" id="form_control_1" placeholder="Nama / Institusi Pengirim">
-                                                                <div class="form-control-focus"> </div>
-                                                                <span class="help-block">Some help goes here...</span>
+                                                                <div class="md-radio-inline">
+                                                                        <div class="md-radio has-warning">
+                                                                            <input type="radio" id="internal" name="type" class="md-radiobtn" value="internal">
+                                                                            <label for="internal">
+                                                                                <span></span>
+                                                                                <span class="check"></span>
+                                                                                <span class="box"></span> Internal </label>
+                                                                        </div>
+                                                                        <div class="md-radio has-error">
+                                                                            <input type="radio" id="eksternal" name="type" class="md-radiobtn" value="eksternal">
+                                                                            <label for="eksternal">
+                                                                                <span></span>
+                                                                                <span class="check"></span>
+                                                                                <span class="box"></span> Eksternal </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <div id="external-sender" style="display:none">    
+                                                            <div class="form-group form-md-line-input">
+                                                                <label class="col-md-2 control-label" for="form_control_1">Pengirim</label>
+                                                                <div class="col-md-10">
+                                                                    <input type="text" name="external_sender" class="form-control" id="form_control_1" placeholder="Nama / Institusi Pengirim">
+                                                                    <div class="form-control-focus"> </div>
+                                                                    <span class="help-block">External Sender..</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="internal-sender" style="display:none">    
+                                                            <div class="form-group form-md-line-input">
+                                                                <label class="col-md-2 control-label" for="form_control_1">Pengirim</label>
+                                                                <div class="col-md-10">
+                                                                    <!--<input type="text" name="sender" class="form-control" id="form_control_1" placeholder="Nama / Institusi Pengirim">
+                                                                    <div class="form-control-focus"> </div>
+                                                                    <span class="help-block">Internal Sender...</span>-->
+                                                                    <select id="internal" name="internal_sender" class="form-control select2-multiple" multiple>
+                                                                        @forelse ($satker as $workunit)
+                                                                            <option value="{{ $workunit->name }}">{{ $workunit->name }}</option>
+                                                                        @empty
+                                                                        @endforelse
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group form-md-line-input">
@@ -122,6 +163,11 @@
                                                                 <div class="form-control-focus"> </div>
                                                                 <span class="help-block">Some help goes here...</span>
                                                             </div>
+                                                        </div>
+                                                        <div class="form-group form-md-line-input">
+                                                            <label class="control-label col-md-2">Halaman</label>
+                                                            <div class="col-md-10">
+                                                                <input id="touchspin_4" type="text" value="1" name="page_count"> </div>
                                                         </div>
                                                         <div class="form-group form-md-line-input">
                                                             <label class="control-label col-md-2">Lampiran</label>
@@ -187,5 +233,43 @@
         <script src="../assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-summernote/summernote.min.js" type="text/javascript"></script>
         <script src="../assets/pages/scripts/components-editors.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="../assets/pages/scripts/components-select2.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(function () {
+
+                $("input[name='type']").click(function () {
+
+                    if ($("#internal").is(":checked")) {
+                        $("#internal-sender").show();
+                        $("#external-sender").hide();
+                    } else {
+                        $("#internal-sender").hide();
+                        $("#external-sender").show();
+                    }
+                });
+            });
+        </script>
+        <script type="text/javascript">
+
+                $('#internal-select').select2({
+                    placeholder: 'Ketik Nama Satuan Kerja',
+                    ajax: {
+                        dataType: 'json',
+                        url: '{{ url("/select-workunit") }}',
+                        delay: 100,
+                        data: function(params) {
+                            return {
+                                term: params.term
+                            }
+                        },
+                        processResults: function (data, page) {
+                          return {
+                            results: data
+                          };
+                        },
+                    }
+        });
+        </script>
 
 @endsection

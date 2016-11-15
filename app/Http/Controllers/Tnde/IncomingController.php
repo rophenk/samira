@@ -34,7 +34,10 @@ class IncomingController extends Controller
         // Tampilkan semua data Surat Masuk
         $incoming = Incoming::all();
 
-        return view('tnde.incoming-list', ['user' => $user, 'incoming' => $incoming]);
+        return view('tnde.incoming-list', [
+            'user' => $user, 
+            'incoming' => $incoming
+            ]);
     }
 
     /**
@@ -53,7 +56,11 @@ class IncomingController extends Controller
 
         $incoming = Incoming::where('uuid', $request->uuid)->first();
 
-        return view('tnde.incoming-add', ['user' => $user, 'satker' => $satker, 'incoming' => $incoming]);
+        return view('tnde.incoming-add', [
+            'user' => $user, 
+            'satker' => $satker, 
+            'incoming' => $incoming
+            ]);
     }
 
     /**

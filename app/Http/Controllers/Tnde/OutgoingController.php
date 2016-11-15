@@ -16,6 +16,8 @@ use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use App\AuthTraits\RedirectsUsers;
 use App\Outgoing;
 use App\AttachmentOutgoing;
+use App\WorkUnit;
+use App\OutgoingActivities;
 use DB;
 
 class OutgoingController extends Controller
@@ -32,7 +34,10 @@ class OutgoingController extends Controller
         // Tampilkan semua data Surat Masuk
         $outgoing = Outgoing::all();
 
-        return view('tnde.outgoing-list', ['user' => $user, 'outgoing' => $outgoing]);
+        return view('tnde.outgoing-list', [
+            'user'     => $user, 
+            'outgoing' => $outgoing
+            ]);
     }
 
     /**
@@ -42,8 +47,17 @@ class OutgoingController extends Controller
      */
     public function create(Request $request)
     {
-        $user       = $request->user();
-        return view('tnde.outgoing-add', ['user' => $user]);
+        $user     = $request->user();
+        $satker   = DB::table('workUnits')
+                    ->select('id', 'name')
+                    ->get();
+        $outgoing = Outgoing::where('uuid', $request->uuid)->first();
+
+        return view('tnde.outgoing-add', [
+            'user'     => $user,
+            'satker'   => $satker,
+            'outgoing' => $outgoing 
+            ]);
     }
 
     /**
@@ -60,6 +74,16 @@ class OutgoingController extends Controller
         
         $explode_letter_date = explode("-",$request->letter_date);
         $letter_date = $explode_letter_date[2]."-".$explode_letter_date[1]."-".$explode_letter_date[0];
+
+        $type = $request->type;
+
+        if($type === 'internal') {
+            $sender = $request->internal_sender;
+        } elseif($type === 'eksternal') {
+            $sender = $request->external_sender;
+        } else {
+            $sender = 'Pengirim Tidak Diketahui';
+        }
         
         $outgoing = new Outgoing;
         $outgoing->uuid = Uuid::uuid4();
@@ -67,8 +91,10 @@ class OutgoingController extends Controller
         $outgoing->agenda_number = $request->agenda_number;
         $outgoing->letter_number = $request->letter_number;
         $outgoing->letter_date = $letter_date;
-        $outgoing->sender = $request->sender;
+        $outgoing->type = $type;
+        $outgoing->sender = $sender;
         $outgoing->receiver = $request->receiver;
+        $outgoing->page_count = $request->page_count;
         $outgoing->attachment_count = $request->attachment_count;
         $outgoing->subject = $request->subject;
         $outgoing->description = $request->description;
@@ -245,5 +271,106 @@ class OutgoingController extends Controller
         $deleteAttachmet = AttachmentOutgoing::where('uuid', $request->uuid)->delete();
 
         return redirect("/attachment-outgoing/".$attachmentOutgoing->outgoing_uuid);
+    }
+
+    public function receiver(Request $request)
+    {
+        $user       = $request->user();
+        // Tampilka data Outgoing
+        $outgoing = Outgoing::where('uuid', $request->uuid)
+                                    ->first();
+
+        $outgoing_id = $outgoing->id;
+
+        $receiver = DB::table('outgoingActivities')
+                    ->leftJoin('users', 'users.id', '=', 'outgoingActivities.userID')
+                    ->leftJoin('workUnits', 'workUnits.id', '=', 'users.workUnitsID')
+                    ->select('outgoingActivities.*', 'users.name AS name', 'users.avatar AS avatar', 'workUnits.name AS satker')
+                    ->where('outgoingID', '=', $outgoing_id)
+                    ->get();
+        //return $receiver;
+
+        $satker = DB::table('workUnits')
+                  ->select('id', 'name')
+                  ->get();
+
+        return view('tnde.outgoing-receiver', ['user' => $user, 'outgoing' => $outgoing, 'receiver' => $receiver, 'satker' => $satker]);
+    }
+
+    public function storereceiver(Request $request)
+    {
+        $user       = $request->user();
+
+        $receiver = $request->receiver;
+        $tembusan = $request->tembusan;
+
+        if(!empty($request->receiver)) {
+            
+            foreach ($receiver as $rec) {
+            
+            $users = DB::table('users')
+                     ->select('id')
+                     ->where('workUnitsID', '=', $rec)
+                     ->get();
+
+                if(!empty($users)) {
+
+                    foreach ($users as $usr) {
+                      $time = date("Y-m-d H:i:s");
+
+                        DB::table('outgoingActivities')->insert([
+                            [
+                                'uuid'           => Uuid::uuid4(),
+                                'outgoingID'     => $request->outgoing_id, 
+                                'userID'         => $usr->id,
+                                'receiverStatus' => 'receiver',
+                                'read'           => 0,
+                                'dateSend'       => $time,
+                                'action'         => NULL
+                            ]
+                        ]);
+
+                    }
+
+                }     
+                
+            }
+        }
+
+        if(!empty($request->tembusan)) {
+
+            foreach ($tembusan as $tbs) {
+            
+            $users = DB::table('users')
+                     ->select('id')
+                     ->where('workUnitsID', '=', $tbs)
+                     ->get();
+
+                if(!empty($users)) {
+
+                    foreach ($users as $usr) {
+
+                      $time = date("Y-m-d H:i:s");
+
+                        DB::table('outgoingActivities')->insert([
+                            [
+                                'uuid'           => Uuid::uuid4(),
+                                'outgoingID'     => $request->outgoing_id, 
+                                'userID'         => $usr->id,
+                                'receiverStatus' => 'tembusan',
+                                'read'           => 0,
+                                'dateSend'       => $time,
+                                'action'         => NULL
+                            ]
+                        ]);
+                        
+                    }
+                }
+                
+            }
+        }
+        
+        return redirect("/receiver-outgoing/".$request->outgoing_uuid);
+
     }
 }

@@ -69,6 +69,8 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('/attachment-outgoing/{uuid?}', 'Tnde\OutgoingController@uploadattachment');
   Route::get('/attachment-show-outgoing/{uuid?}', 'Tnde\OutgoingController@showattachment');
   Route::get('/attachment-outgoing-delete/{uuid?}', 'Tnde\OutgoingController@attachmentdelete');
+  Route::get('/receiver-outgoing/{uuid?}', 'Tnde\OutgoingController@receiver');
+  Route::post('/receiver-outgoing', 'Tnde\OutgoingController@storereceiver');
 
   Route::get('/test-workunit', 'Tnde\WorkUnitsController@test');
   Route::get('/list-workunit', 'Tnde\WorkUnitsController@index');

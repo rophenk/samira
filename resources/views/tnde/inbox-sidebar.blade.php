@@ -20,8 +20,8 @@
                                                  }
                                             ?>
                                             <div class="inbox-sidebar">
-                                                <a href="javascript:;" data-title="Compose" class="btn red compose-btn btn-block">
-                                                    <i class="fa fa-edit"></i> Compose </a>
+                                                <!--<a href="javascript:;" data-title="Compose" class="btn red compose-btn btn-block">
+                                                    <i class="fa fa-edit"></i> Compose </a>-->
                                                 <ul class="inbox-nav">
                                                     <li<?php echo $inbox; ?>>
                                                         <a href="/list-inbox" data-type="inbox" data-title="Inbox"> Inbox

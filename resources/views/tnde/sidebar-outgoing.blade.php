@@ -17,7 +17,9 @@
                                         $attribute = ' class="active"';
                                      } elseif($routes == "attachment-outgoing") {
                                         $attachment = ' class="active"';
-                                     }else {
+                                     }elseif($routes == "receiver-outgoing") {
+                                        $receiver = ' class="active"';
+                                     } else {
 
                                      }
                                     ?>
@@ -33,13 +35,13 @@
                                             <a href="/attribute-outgoing/{{ $outgoing->uuid }}">
                                                 <i class="icon-tag "></i> Atribut Surat </a>
                                         </li>
-                                        <li data-tab="tab-3">
-                                            <a href="/receiver-outgoing/{{ $outgoing->uuid }}">
-                                                <i class="icon-user"></i> Penerima </a>
-                                        </li>
                                         <li<?php echo $attachment; ?> data-tab="tab-5">
                                             <a href="/attachment-outgoing/{{ $outgoing->uuid }}">
                                                 <i class="fa fa-paperclip"></i> Lampiran </a>
+                                        </li>
+                                        <li<?php echo $receiver; ?>  data-tab="tab-3">
+                                            <a href="/receiver-outgoing/{{ $outgoing->uuid }}">
+                                                <i class="icon-user"></i> Penerima </a>
                                         </li>
                                         <?php 
                                         }
