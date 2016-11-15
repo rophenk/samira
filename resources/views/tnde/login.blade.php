@@ -57,7 +57,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--<img class="login-logo login-6" src="../assets/pages/img/login/login-invert.png" />-->
                     <div class="login-content">
                         <h1>TANDEM Login</h1>
-                        <p> Tata Naskah Dokumen Elektronik Mandiri</p>
+                        <p> Tata Naskah Dokumen Elektronik Mobile</p>
                         <form action="/login2" class="login-form" method="post">
                             <div class="alert alert-danger display-hide">
                                 <button class="close" data-close="alert"></button>
