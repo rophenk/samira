@@ -50,7 +50,7 @@ class HomeController extends Controller
                             ->take(5)
                             ->get();
 
-        return view('tnde.dashboard', [
+        return view('tnde.dashboard-dummy', [
             'user'             => $user,
             'totalIncoming'    => $totalIncoming,
             'totalOutgoing'    => $totalOutgoing,
