@@ -70,7 +70,7 @@
                                                 <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                                                     <thead>
                                                         <tr>
-                                                            <th> Nomor Template </th>
+                                                            <th> Nama Template </th>
                                                             <th> File </th>
                                                         </tr>
                                                     </thead>
