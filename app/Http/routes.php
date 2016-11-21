@@ -76,6 +76,8 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('/list-workunit', 'Tnde\WorkUnitsController@index');
   Route::get('/select-workunit', 'Tnde\WorkUnitsController@select');
 
+  Route::get('/list-template', 'Tnde\TemplateController@index');
+
   /* Route For User Management */
   Route::get('/list-users', 'Tnde\UserController@index');
   Route::get('/add-users', 'Tnde\UserController@create');

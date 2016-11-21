@@ -228,7 +228,7 @@
                         $ehaltab = '';
                         if($routes == "dashboard" || $routes == "") {
                             $dashboard = ' active open selected';
-                        } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing" || $routes == "list-workunit" || $routes == "list-users" || $routes == "add-users" || $routes == "edit-users" || $routes == "receiver-incoming" || $routes == "receiver-outgoing" || $routes == "list-inbox" || $routes == "list-inbox-view" || $routes == "list-disposition" || $routes == "receiver-disposition" || $routes == "list-disposition-view" ) {
+                        } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing" || $routes == "list-workunit" || $routes == "list-users" || $routes == "add-users" || $routes == "edit-users" || $routes == "receiver-incoming" || $routes == "receiver-outgoing" || $routes == "list-inbox" || $routes == "list-inbox-view" || $routes == "list-disposition" || $routes == "receiver-disposition" || $routes == "list-disposition-view" || $routes == "list-template" ) {
                             $tndetab = ' active open selected';
                         } elseif($routes == "events-list" || $routes == "events-timeline") {
                             $evicentertab = ' active open selected';
@@ -249,7 +249,7 @@
                                             <a href="/dashboard">
                                                 <i class="icon-envelope-open"></i> TANDEM</a>
                                         </li>
-                                        <li class="active">
+                                        <!--<li class="active">
                                             <a href="#">
                                                 <i class="icon-bulb"></i> EVICENTER</a>
                                         </li>
@@ -257,7 +257,7 @@
                                             <a href="#">
                                                 <i class="icon-size-fullscreen"></i> e-HAL</a>
                                         </li>
-                                        <!--<li>
+                                        <li>
                                             <a href="dashboard_3.html">
                                                 <i class="icon-graph"></i> Dashboard 3 </a>
                                         </li>-->
@@ -324,7 +324,7 @@
                                                     <a href="/list-workunit"> Satuan Kerja </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"> Template </a>
+                                                    <a href="/list-template"> Template </a>
                                                 </li>
                                             </ul>
                                         </li>

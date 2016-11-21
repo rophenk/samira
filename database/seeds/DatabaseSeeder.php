@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DispositionTraitSeeder::class);
         $this->call(DispositionDegreeSeeder::class);
         $this->call(DispositionInstructionSeeder::class);
+        $this->call(TemplateSeeder::class);
     }
 }

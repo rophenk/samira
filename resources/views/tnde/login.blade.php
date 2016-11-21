@@ -42,7 +42,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <link href="{{ URL::asset('assets/global/css/plugins-md.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="{{ URL::asset('assets/pages/css/login-5.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ URL::asset('assets/pages/css/login-5.css') }}" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <!-- END THEME LAYOUT STYLES -->
@@ -54,10 +54,11 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="user-login-5">
             <div class="row bs-reset">
                 <div class="col-md-6 login-container bs-reset">
-                    <!--<img class="login-logo login-6" src="../assets/pages/img/login/login-invert.png" />-->
+                    <img class="login-logo login-6" src="../assets/layouts/layout5/img/logo-big.png" height="125px"/>
                     <div class="login-content">
                         <h1>TANDEM Login</h1>
-                        <p> Tata Naskah Dokumen Elektronik Mobile</p>
+                        <p>Tata Naskah Dokumen Elektronik Mobile</p>
+                        <p>Kementerian Pertanian Republik Indonesia</p>
                         <form action="/login2" class="login-form" method="post">
                             <div class="alert alert-danger display-hide">
                                 <button class="close" data-close="alert"></button>
@@ -156,7 +157,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="{{ URL::asset('assets/global/scripts/app.min.js') }}" type="text/javascript"></script>
         <!-- END THEME GLOBAL SCRIPTS -->
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        <script src="{{ URL::asset('assets/pages/scripts/login-5.min.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('assets/pages/scripts/login-5.js') }}" type="text/javascript"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <!-- END THEME LAYOUT SCRIPTS -->
