@@ -50,7 +50,11 @@ class APIIncoming extends Controller
         $myFuncs = new \App\Helpers\MyFunctions;
         $unread = ($myFuncs->getUnreadInbox($user_id));
 
-        return response()->json(['success' => 'inbox-request-processed', 'inbox' => $userInbox, 'unread' => $unread]);
+        return response()->json([
+            'success' => 'inbox-request-processed', 
+            'inbox'   => $userInbox, 
+            'unread'  => $unread
+            ]);
     }
 
     public function attachmentIncoming($incomingID)
@@ -59,7 +63,10 @@ class APIIncoming extends Controller
                               ->select('attachmentIncoming.*')
                               ->where('incoming_id', '=', $incomingID)
                               ->get();
-        return response()->json(['success' => 'attachment-request-processed', 'attachmentIncoming' => $attachmentIncoming]);
+        return response()->json([
+            'success'            => 'attachment-request-processed', 
+            'attachmentIncoming' => $attachmentIncoming
+            ]);
     }
 
     public function markRead($id,$user_id)
@@ -71,7 +78,10 @@ class APIIncoming extends Controller
         $myFuncs = new \App\Helpers\MyFunctions;
         $unread = ($myFuncs->getUnreadInbox($user_id));
 
-        return response()->json(['success' => 'inbox-read', 'unread' => $unread]);
+        return response()->json([
+            'success' => 'inbox-read', 
+            'unread'  => $unread
+            ]);
     }
 
     public function action($id,$action)
@@ -80,7 +90,37 @@ class APIIncoming extends Controller
         ->update([
             'action' => $action
             ]);
-        return response()->json(['success' => 'inbox-action', 'action' => $action]);
+        return response()->json([
+            'success' => 'inbox-action', 
+            'action' => $action
+            ]);
+    }
+
+    public function uploadattachment(Request $request)
+    {
+
+        $incoming = Incoming::where('uuid', $request->uuid)
+                                    ->first();
+
+        $file = $request->file;
+        
+        $url = config('app.url');
+        Storage::disk('tnde')->put($request->uuid."/".$file->getClientOriginalName(), file_get_contents($file));
+                $attachment = new AttachmentIncoming;
+                $attachment->uuid = Uuid::uuid4();
+                $attachment->incoming_id = $incoming->id;
+                $attachment->incoming_uuid = $incoming->uuid;
+                $attachment->name = $file->getClientOriginalName();
+                $attachment->size = $file->getSize();
+                $attachment->type = $file->getMimeType();
+                $attachment->url = $url."/tnde/".$request->uuid."/".$file->getClientOriginalName();
+                $attachment->save();
+
+        return response()->json([
+            'success'            => 'attachment-request-processed', 
+            'attachmentIncoming' => $file->getClientOriginalName()
+            ]);
+
     }
 
     /**
