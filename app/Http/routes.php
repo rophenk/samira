@@ -37,6 +37,7 @@ Route::group(['middleware' => ['web']], function () {
   Route::auth();
   
   Route::get('/dashboard', 'HomeController@index');
+  Route::get('/home', 'HomeController@index');
   Route::get('/login2', 'LoginController@login');
   Route::get('/login', 'LoginController@login');
   Route::post('/login2', 'LoginController@postLogin');
