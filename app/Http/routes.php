@@ -92,7 +92,7 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('/list-inbox', 'Tnde\InboxController@index');
   Route::get('/list-inbox-incoming', 'Tnde\InboxController@listIncoming');
   Route::get('/list-inbox-view/{uuid?}', 'Tnde\InboxController@viewIncoming');
-  Route::get('/list-inbox-action/{id?}/{action}', 'Tnde\InboxController@action');
+  Route::get('/list-inbox-action/{uuid?}/{action}', 'Tnde\InboxController@action');
 
   /* End Of Route For TNDE Inbox */
 
@@ -137,7 +137,7 @@ Route::group(['middleware' => ['web']], function () {
  */
 Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api', 'middleware' => 'cors'], function () {
 
-  Route::resource('/list-incoming', 'Tnde\APIIncoming@index');
+  Route::get('/list-incoming/{user_id?}', 'Tnde\APIIncoming@index');
   Route::get('/inbox/{id?}', 'Tnde\APIIncoming@userInbox');
   Route::get('/view-incoming/{id?}', 'Tnde\APIIncoming@show');
   Route::get('/attachment-incoming/{incomingID?}', 'Tnde\APIIncoming@attachmentIncoming');

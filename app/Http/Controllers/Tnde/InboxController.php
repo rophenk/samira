@@ -25,7 +25,10 @@ class InboxController extends Controller
                               ->simplePaginate(10);
 
         
-        return view('tnde.inbox-incoming', ['user' => $user, 'incoming' => $incomingActivities]);
+        return view('tnde.inbox-incoming', [
+          'user' => $user, 
+          'incoming' => $incomingActivities
+          ]);
     }
 
     /*public function listIncoming(Request $request)
