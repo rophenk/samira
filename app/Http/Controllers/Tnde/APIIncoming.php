@@ -203,7 +203,7 @@ class APIIncoming extends Controller
             ]);
 
         return response()->json([
-            'success' => 'incoming attribute added',
+            'success' => 'incoming-attribute-added',
             'uuid'    => $request->uuid 
             ]);
 
@@ -222,7 +222,11 @@ class APIIncoming extends Controller
         $attachment = AttachmentIncoming::where('incoming_id', $request->id)
                       ->get();
         
-        return response()->json(['success' => 'auth-authorized', 'incoming' => $incoming, 'attachment' => $attachment]);
+        return response()->json([
+            'success' => 'auth-authorized', 
+            'incoming' => $incoming, 
+            'attachment' => $attachment
+            ]);
     }
 
     /**
@@ -257,5 +261,76 @@ class APIIncoming extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function receiver(Request $request)
+    {
+        // Tampilka data Incoming
+        $incoming = Incoming::where('uuid', $request->uuid)
+                                    ->first();
+
+        $incoming_id = $incoming->id;
+
+        $receiver = DB::table('incomingActivities')
+                    ->leftJoin('users', 'users.id', '=', 'incomingActivities.userID')
+                    ->leftJoin('workUnits', 'workUnits.id', '=', 'users.workUnitsID')
+                    ->select('incomingActivities.*', 'users.name AS name', 'users.avatar AS avatar', 'workUnits.name AS satker')
+                    ->where('incomingID', '=', $incoming_id)
+                    ->get();
+
+        return response()->json([
+            'success' => 'incoming-receiver-list',
+            'receiver'    => $receiver 
+            ]);
+    }
+
+    public function storereceiver(Request $request)
+    {
+        $user       = $request->user();
+        if($request->receiverStatus == "receiver") {
+            $receiverStatus = "receiver";
+        } else if($request->receiverStatus == "tembusan") {
+            $receiverStatus = "tembusan";
+        }
+        $receiver = $request->receiver;
+        $tembusan = $request->tembusan;
+
+        if(!empty($request->receiver)) {
+            
+            foreach ($receiver as $rec) {
+            
+            $users = DB::table('users')
+                     ->select('id')
+                     ->where('workUnitsID', '=', $rec)
+                     ->get();
+
+                if(!empty($users)) {
+
+                    foreach ($users as $usr) {
+                      $time = date("Y-m-d H:i:s");
+
+                        DB::table('incomingActivities')->insert([
+                            [
+                                'uuid'           => Uuid::uuid4(),
+                                'incomingID'     => $request->incoming_id, 
+                                'userID'         => $usr->id,
+                                'receiverStatus' => $receiverStatus,
+                                'read'           => 0,
+                                'dateSend'       => $time,
+                                'action'         => NULL
+                            ]
+                        ]);
+
+                    }
+
+                }     
+                
+            }
+        }
+
+        return response()->json([
+            'success' => 'success_add_receiver'
+            ]);
+
     }
 }

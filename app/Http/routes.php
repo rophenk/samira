@@ -146,7 +146,8 @@ Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api', 'middleware' =>
   Route::post('/add-incoming/{user_id?}', 'Tnde\APIIncoming@store');
   Route::post('/attribute-incoming/{uuid?}', 'Tnde\APIIncoming@storeattribute');
   Route::post('/add-attachment-incoming/{uuid?}', 'Tnde\APIIncoming@uploadattachment');
-
+  Route::get('/receiver-incoming/{uuid?}', 'Tnde\APIIncoming@receiver');
+  Route::post('/receiver-incoming', 'Tnde\APIIncoming@storereceiver');
 });
 
 Route::group(['middleware' => 'cors'], function () {
