@@ -32,7 +32,7 @@ class APIIncoming extends Controller
         // Tampilkan semua data Surat Masuk
         $incoming = DB::table('incoming')
                     ->select('id', 'uuid', DB::raw("DATE_FORMAT(input_date, '%d-%m-%Y') AS input_date"), DB::raw("DATE_FORMAT(letter_date, '%d-%m-%Y') AS letter_date"), 'incoming.sender', 'incoming.receiver', 'incoming.type', 'incoming.agenda_number', 'incoming.letter_number', 'incoming.subject', 'incoming.description', 'incoming.page_count', 'incoming.attachment_count', 'incoming.letter_type', 'incoming.letter_classification', 'incoming.letter_character', 'incoming.letter_expedition', 'incoming.letter_storage')
-                    ->where('user_id', '=', $user_id)
+                    /*->where('user_id', '=', $user_id)*/
                     ->orderBy('input_date', 'desc')
                     ->simplePaginate(10);
 
