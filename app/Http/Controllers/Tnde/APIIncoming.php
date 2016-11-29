@@ -286,6 +286,7 @@ class APIIncoming extends Controller
 
     public function storereceiver(Request $request)
     {
+        $rec = '';
         $user       = $request->user();
         if($request->receiverStatus == "receiver") {
             $receiverStatus = "receiver";
@@ -297,13 +298,13 @@ class APIIncoming extends Controller
 
         if(!empty($request->receiver)) {
             
-            foreach ($receiver as $rec) {
+            //foreach ($receiver as $rec) {
             
             $users = DB::table('users')
                      ->select('id')
-                     ->where('workUnitsID', '=', $rec)
+                     ->where('workUnitsID', '=', $receiver)
                      ->get();
-
+                     
                 if(!empty($users)) {
 
                     foreach ($users as $usr) {
@@ -325,7 +326,7 @@ class APIIncoming extends Controller
 
                 }     
                 
-            }
+            //}
         }
 
         return response()->json([
