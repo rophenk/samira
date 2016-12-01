@@ -56,7 +56,7 @@ class DispositionController extends Controller
                                 where receiver_user_id = '. $user->id 
                                 
                                 );
-                 
+        
         return view('tnde.inbox-disposition', [
             'user'          => $user, 
             'incoming'      => $incomingDisposition, 
@@ -192,7 +192,6 @@ class DispositionController extends Controller
                                 );
 
         $instruction = json_decode($incomingDisposition[0]->disposition_instruction);
-
         return view('tnde.inbox-disposition-view', [
             'user'                => $user, 
             'disposition'         => $disposition,

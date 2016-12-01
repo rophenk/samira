@@ -17,6 +17,11 @@ use App\AuthTraits\RedirectsUsers;
 use App\Incoming;
 use App\IncomingActivities;
 use App\AttachmentIncoming;
+use App\Disposition;
+use App\DispositionDegree;
+use App\DispositionInstruction;
+use App\DispositionTrait;
+use App\WorkUnit;
 use DB;
 
 class APIIncoming extends Controller
@@ -134,13 +139,59 @@ class APIIncoming extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
+     * get Disposition Degree     *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getDispositionDegree()
     {
-        //
+        $degree = DispositionDegree::all();
+        return response()->json([
+            'success' => 'disposition-degree-received', 
+            'data'    => $degree
+        ]);
+
+    }
+
+    /**
+     * get Disposition Instruction    *
+     * @return \Illuminate\Http\Response
+     */
+    public function getDispositionInstruction()
+    {
+        $instruction = DispositionInstruction::all();
+        return response()->json([
+            'success' => 'disposition-instruction-received', 
+            'data'    => $instruction
+        ]);
+
+    }
+
+    /**
+     * get Disposition Trait    *
+     * @return \Illuminate\Http\Response
+     */
+    public function getDispositionTrait()
+    {
+        $trait = DispositionTrait::all();
+        return response()->json([
+            'success' => 'disposition-trait-received', 
+            'data'    => $trait
+        ]);
+
+    }
+
+    /**
+     * get Work Unit   *
+     * @return \Illuminate\Http\Response
+     */
+    public function getWorkUnit()
+    {
+        $workUnit = WorkUnit::all();
+        return response()->json([
+            'success' => 'disposition-workUnit-received', 
+            'data'    => $workUnit
+        ]);
+
     }
 
     /**
@@ -151,12 +202,6 @@ class APIIncoming extends Controller
      */
     public function store(Request $request)
     {
-        /*$input_date = $_POST['input_date'];
-        return response()->json([
-            'success' => 'incoming added',
-            'uuid'    => $input_date
-            ]);*/
-        // Validate the request...
         
         $type = $request->type;
 
@@ -230,14 +275,68 @@ class APIIncoming extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Store Disposition
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function storeDisposition(Request $request)
     {
-        //
+        $userID                     = $request->userID;
+        $receiver                   = $request->receiver;
+        $disposition_trait_id       = $request->disposition_trait_id;
+        $disposition_degree_id      = $request->disposition_degree_id;
+        $disposition_instruction_id = $request->disposition_instruction_id;
+        $note                       = $request->note;
+
+        if(!empty($request->receiver)) {
+            
+            
+            $users = DB::table('users')
+                     ->select('id')
+                     ->where('workUnitsID', '=', $receiver)
+                     ->get();
+
+            $instruction = DB::table('disposition_instruction')
+                            ->select('id','instruction')
+                            ->where('id', '=', $disposition_instruction_id)
+                            ->first();
+
+            $instructArr = array(
+                $instruction->id => $instruction->instruction
+                );
+            //print_r($instructArr);die();
+                if(!empty($users)) {
+
+                    foreach ($users as $usr) {
+                      $time = date("Y-m-d H:i:s");
+
+                        DB::table('disposition')->insert([
+                            [
+                                'uuid'                    => Uuid::uuid4(),
+                                'incoming_activities_id'  => $request->incoming_id, 
+                                'userID'                  => $userID,
+                                'receiver_user_id'        => $usr->id,
+                                'disposition_trait_id'    => $disposition_trait_id,
+                                'disposition_degree_id'   => $disposition_degree_id,
+                                'disposition_instruction' => json_encode($instructArr, JSON_FORCE_OBJECT),
+                                'note'                    => $note,
+                                'read'                    => 0,
+                                'dateSend'                => $time,
+                                'report'                  => NULL
+                            ]
+                        ]);
+
+                    }
+
+                }     
+                
+
+            return response()->json([
+                'success' => 'add-disposition-success'
+            ]);
+        }
+
     }
 
     /**

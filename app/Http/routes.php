@@ -148,6 +148,11 @@ Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api', 'middleware' =>
   Route::post('/add-attachment-incoming/{uuid?}', 'Tnde\APIIncoming@uploadattachment');
   Route::get('/receiver-incoming/{uuid?}', 'Tnde\APIIncoming@receiver');
   Route::post('/receiver-incoming/{uuid?}', 'Tnde\APIIncoming@storereceiver');
+  Route::get('/get-disposition-degree', 'Tnde\APIIncoming@getDispositionDegree');
+  Route::get('/get-disposition-instruction', 'Tnde\APIIncoming@getDispositionInstruction');
+  Route::get('/get-disposition-trait', 'Tnde\APIIncoming@getDispositionTrait');
+  Route::get('/get-work-unit', 'Tnde\APIIncoming@getWorkUnit');
+  Route::post('/add-disposition/{id?}', 'Tnde\APIIncoming@storeDisposition');
 });
 
 Route::group(['middleware' => 'cors'], function () {
