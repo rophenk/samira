@@ -183,7 +183,10 @@ class IncomingController extends Controller
 
          $incoming = Incoming::where('uuid', $request->uuid)
                                     ->get();
-        return view('tnde.incoming-attribute-add', ['user' => $user, 'incoming' => $incoming]);
+        return view('tnde.incoming-attribute-add', [
+            'user' => $user, 
+            'incoming' => $incoming
+        ]);
 
     }
 
@@ -211,7 +214,11 @@ class IncomingController extends Controller
         $attachment = AttachmentIncoming::where('incoming_uuid', $request->uuid)
                                     ->get();
 
-        return view('tnde.incoming-attachment', ['user' => $user, 'incoming' => $incoming, 'attachment' => $attachment]);
+        return view('tnde.incoming-attachment', [
+            'user' => $user, 
+            'incoming' => $incoming, 
+            'attachment' => $attachment
+        ]);
     }
 
     public function attachmentlist(Request $request)
@@ -224,7 +231,11 @@ class IncomingController extends Controller
         $attachment = AttachmentIncoming::where('incoming_uuid', $request->uuid)
                                     ->get();
 
-        return view('tnde.incoming-attachment-list', ['user' => $user, 'incoming' => $incoming, 'attachment' => $attachment]);
+        return view('tnde.incoming-attachment-list', [
+            'user' => $user, 
+            'incoming' => $incoming, 
+            'attachment' => $attachment
+        ]);
     }
 
     public function uploadattachment(Request $request)
@@ -260,11 +271,16 @@ class IncomingController extends Controller
     {
         $user       = $request->user();
         $attachment = AttachmentIncoming::where('uuid', $request->uuid)
-                                    ->first();
+                      ->first();
         $incoming = Incoming::where('uuid', $attachment->incoming_uuid)
-                                    ->first();
+                    ->first();
         $storagePath  = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
-        return view('tnde.incoming-attachment-show', ['user' => $user, 'attachment' => $attachment, 'incoming' => $incoming, 'file' => $storagePath]);                          
+        return view('tnde.incoming-attachment-show', [
+            'user' => $user, 
+            'attachment' => $attachment, 
+            'incoming' => $incoming, 
+            'file' => $storagePath
+        ]);                          
     }
 
     public function attachmentdelete(Request $request)

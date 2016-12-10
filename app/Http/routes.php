@@ -85,6 +85,9 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('/add-users', 'Tnde\UserController@store');
   Route::get('/edit-users/{id?}', 'Tnde\UserController@edit');
   Route::post('/edit-users', 'Tnde\UserController@update');
+  Route::get('/avatar-users/{id?}', 'Tnde\UserController@showAvatar');
+  Route::post('/avatar-users', 'Tnde\UserController@uploadAvatar');
+  Route::get('/avatar-users-list/{id?}', 'Tnde\UserController@listAvatar');
 
   /* End Of Route For User Management */
 

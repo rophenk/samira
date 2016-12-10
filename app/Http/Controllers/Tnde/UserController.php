@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\Tnde;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
+use Validator;
+use Response;
+use Input;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -31,7 +37,10 @@ class UserController extends Controller
                  ->select('users.*', 'roles.name AS role_name', 'workUnits.name AS satker')
                  ->get();
         //return $users;
-        return view('tnde.users-list', ['user' => $user, 'users' => $users]);
+        return view('tnde.users-list', [
+            'user' => $user, 
+            'users' => $users
+        ]);
     }
 
     /**
@@ -54,7 +63,7 @@ class UserController extends Controller
             'satker'  => $workunit_options, 
             'roles'   => $role_options, 
             'user'    => $user
-            ]);
+        ]);
     }
 
     /**
@@ -65,7 +74,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $url = config('app.url');
+
         // Simpan data ke database
+        
         $user = new Users;
         $user->name        = $request->name;
         $user->email       = $request->email;
@@ -77,6 +89,16 @@ class UserController extends Controller
         $user->api_token   = str_random(60);
         $user->modules     = 'tnde';
         $user->save();
+
+        // copy default logo sebagai avatar
+        Storage::disk('tnde')->copy('logo.png','avatar/'.$user->id.'/logo.png');
+
+        // update avatar dengan default
+        Users::where('id',$user->id)
+            ->update([
+                'avatar' => $url.'/tnde/avatar/'.$user->id.'/logo.png'
+                ]);
+        
         return redirect("/list-users");
     }
 
@@ -86,9 +108,64 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showAvatar(Request $request)
     {
-        //
+        $user       = $request->user();
+
+        // Tampilkan data User Database
+        $userdb = Users::where('id', $request->id)
+                  ->first();
+
+        // Tampilkan Avatar User
+        return view('tnde.users-avatar', [
+            'userdb'  => $userdb,
+            'user'    => $user
+        ]);
+    }
+
+    public function uploadAvatar(Request $request)
+    {
+        $user       = $request->user();
+
+        $userdb = Users::where('id', $request->id)
+                  ->first();
+
+        if($userdb->avatar != null) {
+
+            $old_avatar = $userdb->avatar;
+            Storage::disk('tnde')->delete('avatar/'.$request->id.'/'.basename($old_avatar));
+
+        }
+        $files = $request->file('file');
+
+        $url = config('app.url');
+        if(!empty($files)) {
+            foreach ($files as $file) {
+                Storage::disk('tnde')->put("avatar/".$request->id."/".$file->getClientOriginalName(), file_get_contents($file));
+                Users::where('id',$request->id)
+                ->update([
+                    'avatar' => $url."/tnde/avatar/".$request->id."/".$file->getClientOriginalName()
+                    ]);
+            }
+        }
+
+        return Response::json(array('success' => true));
+
+    }
+
+    public function listAvatar(Request $request)
+    {
+        $user       = $request->user();
+
+        // Tampilkan data User Database
+        $userdb = Users::where('id', $request->id)
+                  ->first();
+
+        // Tampilkan Avatar User
+        return view('tnde.users-avatar-list', [
+            'userdb'  => $userdb,
+            'user'    => $user
+        ]);
     }
 
     /**
@@ -117,7 +194,7 @@ class UserController extends Controller
             'roles'   => $role_options,
             'userdb'  => $userdb,
             'user'    => $user
-            ]);
+        ]);
     }
 
     /**

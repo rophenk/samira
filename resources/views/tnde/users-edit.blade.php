@@ -39,7 +39,7 @@
                                                     <span class="caption-subject bold uppercase"> Detail Pengguna</span>
                                                 </div>
                                                 <div class="actions">
-                                                    <a class="btn btn-circle btn-icon-only blue" href="javascript:;">
+                                                    <a class="btn btn-circle btn-icon-only blue" href="/avatar-users/{{ $userdb->id }}">
                                                         <i class="icon-cloud-upload"></i>
                                                     </a>
                                                     <a class="btn btn-circle btn-icon-only green" href="javascript:;">

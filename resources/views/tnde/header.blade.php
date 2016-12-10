@@ -228,14 +228,14 @@
                         $ehaltab = '';
                         if($routes == "dashboard" || $routes == "") {
                             $dashboard = ' active open selected';
-                        } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing" || $routes == "list-workunit" || $routes == "list-users" || $routes == "add-users" || $routes == "edit-users" || $routes == "receiver-incoming" || $routes == "receiver-outgoing" || $routes == "list-inbox" || $routes == "list-inbox-view" || $routes == "list-disposition" || $routes == "receiver-disposition" || $routes == "list-disposition-view" || $routes == "list-template" ) {
+                        } elseif($routes == "add-incoming" || $routes == "list-incoming" || $routes == "edit-incoming" || $routes == "attribute-incoming" || $routes == "attachment-incoming" || $routes == "attachment-show-incoming" || $routes == "list-outgoing" || $routes == "add-outgoing" || $routes == "edit-outgoing" || $routes == "attribute-outgoing" || $routes == "attachment-outgoing" || $routes == "attachment-show-outgoing" || $routes == "list-workunit" || $routes == "list-users" || $routes == "add-users" || $routes == "edit-users" || $routes == "avatar-users" || $routes == "receiver-incoming" || $routes == "receiver-outgoing" || $routes == "list-inbox" || $routes == "list-inbox-view" || $routes == "list-disposition" || $routes == "receiver-disposition" || $routes == "list-disposition-view" || $routes == "list-template" ) {
                             $tndetab = ' active open selected';
                         } elseif($routes == "events-list" || $routes == "events-timeline") {
                             $evicentertab = ' active open selected';
                         } elseif($routes == "speakers-list" || $routes == "speaker-view" || $routes == "workmeeting-list" || $routes == "workmeeting-view" || $routes == "workmeeting-questions" || $routes == "add-workmeeting" || $routes == "attachment-workmeeting") {
                             $ehaltab = ' active open selected';
                         }else {
-
+                            $tndetab = ' active open selected';
                         }
                         
                         ?>
