@@ -1,5 +1,5 @@
 @extends('tnde.master')
-@section('title', 'Ubah Satuan Kerja' )
+@section('title', 'Tambah Satuan Kerja' )
 
 @section('pagestyle')
         <link href="../assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
@@ -9,7 +9,7 @@
 @section('breadcrumb')
 
                         <li>
-                            <a href="#" class="active">Ubah Satuan Kerja</a>
+                            <a href="#" class="active">Tambah Satuan Kerja</a>
                         </li>
 @endsection
 
@@ -35,20 +35,36 @@
                                                     </a>
                                                     <a class="btn btn-circle btn-icon-only green" href="javascript:;">
                                                         <i class="icon-wrench"></i>
-                                                    </a>-->
-                                                    <a class="btn btn-circle btn-icon-only red" href="/delete-workunit/{{ $satker->uuid }}" onclick="confirmDelete()">
-                                                        <i class="icon-trash"></i>
                                                     </a>
+                                                    <a class="btn btn-circle btn-icon-only red" href="javascript:;">
+                                                        <i class="icon-trash"></i>
+                                                    </a>-->
                                                     <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
                                                 </div>
                                             </div>
                                             <div class="portlet-body form">
-                                                <form role="form" class="form-horizontal" action="/edit-workunit" method="post">
+                                                <form role="form" class="form-horizontal" action="/add-workunit" method="post">
                                                     <div class="form-body">
+                                                        <div id="internal-sender">    
+                                                            <div class="form-group form-md-line-input">
+                                                                <label class="col-md-2 control-label" for="form_control_1">Parent</label>
+                                                                <div class="col-md-10">
+                                                                    <!--<input type="text" name="sender" class="form-control" id="form_control_1" placeholder="Nama / Institusi Pengirim">
+                                                                    <div class="form-control-focus"> </div>
+                                                                    <span class="help-block">Internal Sender...</span>-->
+                                                                    <select id="parent" name="parent_id" class="form-control select2">
+                                                                        @forelse ($satker as $workunit)
+                                                                            <option value="{{ $workunit->id }}">{{ $workunit->name }}</option>
+                                                                        @empty
+                                                                        @endforelse
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div class="form-group form-md-line-input">
                                                             <label class="col-md-2 control-label" for="form_control_1">Satuan Kerja</label>
                                                             <div class="col-md-10">
-                                                                <input type="text" name="name" class="form-control" id="form_control_1" placeholder="Satuan Kerja" value="{{ $satker->name }}">
+                                                                <input type="text" name="name" class="form-control" id="form_control_1" placeholder="Isi nama Satuan Kerja">
                                                                 <div class="form-control-focus"> </div>
                                                             </div>
                                                         </div>
@@ -58,7 +74,6 @@
                                                             <div class="col-md-offset-2 col-md-10">
                                                                 <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                                                                 <input type="hidden" name="user_id" value="{{ $user->id }}" />
-                                                                <input type="hidden" name="uuid" value="{{ $satker->uuid }}" />
                                                                 <button type="reset" class="btn default">Cancel</button>
                                                                 <button type="submit" class="btn blue">Submit</button>
                                                             </div>

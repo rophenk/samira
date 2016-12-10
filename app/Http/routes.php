@@ -75,9 +75,12 @@ Route::group(['middleware' => ['web']], function () {
 
   Route::get('/test-workunit', 'Tnde\WorkUnitsController@test');
   Route::get('/list-workunit', 'Tnde\WorkUnitsController@index');
+  Route::get('/add-workunit', 'Tnde\WorkUnitsController@create');
+  Route::post('/add-workunit', 'Tnde\WorkUnitsController@store');
   Route::get('/select-workunit', 'Tnde\WorkUnitsController@select');
   Route::get('/edit-workunit/{uuid?}', 'Tnde\WorkUnitsController@edit');
   Route::post('/edit-workunit', 'Tnde\WorkUnitsController@update');
+  Route::get('/delete-workunit/{uuid?}', 'Tnde\WorkUnitsController@destroy');
 
   Route::get('/list-template', 'Tnde\TemplateController@index');
 

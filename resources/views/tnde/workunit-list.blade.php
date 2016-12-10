@@ -31,10 +31,15 @@
                                                 </div>
                                                 <div class="actions">
                                                     <div class="btn-group btn-group-devided" data-toggle="buttons">
-                                                        <label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
-                                                            <input type="radio" name="options" class="toggle" id="option1">New</label>
+                                                        <a href="/add-workunit">
+                                                          <button id="sample_editable_1_new" class="btn sbold green" onclick="window.location.href='/add-workunit'"> Add New
+                                                            <i class="fa fa-plus"></i>
+                                                          </button>
+                                                        </a>
+                                                        <!--<label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
+                                                            <input type="radio" name="options" class="toggle" id="option1" onclick="window.location.href='/add-workunit'">New</label>
                                                         <label class="btn btn-transparent grey-salsa btn-circle btn-sm">
-                                                            <input type="radio" name="options" class="toggle" id="option2">Returning</label>
+                                                            <input type="radio" name="options" class="toggle" id="option2">Returning</label>-->
                                                     </div>
                                                 </div>
                                             </div>

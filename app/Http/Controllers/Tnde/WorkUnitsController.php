@@ -315,6 +315,7 @@ class WorkUnitsController extends Controller
         $user       = $request->user();
         $root = WorkUnit::where('parent_id', '=', NULL)->first();
         $satker = WorkUnit::where('parent_id', '=', NULL)->first()->getDescendantsAndSelf()->toHierarchy();
+        
         /*$this->layout->content = View::make('satker.index', ['satker' => $satker]);*/
 
         return view('tnde.workunit-list', [
@@ -330,7 +331,18 @@ class WorkUnitsController extends Controller
      */
     public function create(Request $request)
     {
-        //
+        $user       = $request->user();
+        $root = WorkUnit::where('parent_id', '=', NULL)->first();
+        $satker = WorkUnit::where('parent_id', '=', NULL)->first()->getDescendantsAndSelf()->toHierarchy();
+        $satkerSelect = DB::table('workUnits')
+                        ->select('id', 'name')
+                        ->get();
+        /*$this->layout->content = View::make('satker.index', ['satker' => $satker]);*/
+
+        return view('tnde.workunit-add', [
+            'user' => $user, 
+            'satker' => $satkerSelect
+        ]);
     }
 
     /**
@@ -341,7 +353,12 @@ class WorkUnitsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newWorkUnit = WorkUnit::create([
+                        'uuid' => Uuid::uuid4(),
+                        'name' => $request->name
+                       ]);
+        $newWorkUnit->makeChildOf($request->parent_id);
+        return redirect("/list-workunit");
     }
 
     /**
@@ -365,10 +382,8 @@ class WorkUnitsController extends Controller
     {
         $user       = $request->user();
         $root = WorkUnit::where('parent_id', '=', NULL)->first();
-        /*$satker = WorkUnit::where('uuid', '=', $request->uuid)->first()->getDescendantsAndSelf()->toHierarchy();*/
         $satker = WorkUnit::where('uuid', '=', $request->uuid)
                   ->first();
-        /*$this->layout->content = View::make('satker.index', ['satker' => $satker]);*/
 
         return view('tnde.workunit-edit', [
             'user' => $user, 
@@ -398,8 +413,11 @@ class WorkUnitsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $satker = WorkUnit::where('uuid', '=', $request->uuid)
+                  ->first();    
+        $satker->delete();
+        return redirect("/list-workunit");
     }
 }
