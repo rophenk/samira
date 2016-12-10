@@ -28,12 +28,17 @@
                             <!-- BEGIN TOPBAR ACTIONS -->
                             <div class="topbar-actions">
                                 <!-- BEGIN GROUP NOTIFICATION -->
-                                <!--<div class="btn-group-notification btn-group" id="header_notification_bar">
-                                    <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                        <i class="icon-bell"></i>
-                                        <span class="badge">7</span>
+                                <div class="btn-group-notification btn-group" id="header_notification_bar">
+                                    <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" onclick="window.location.href='/list-inbox'">
+                                        <i class="icon-envelope"></i>
+                                        <span class="badge">
+                                        <?php
+                                        $MyFuncs = new \App\Helpers\MyFunctions;
+                                        echo $MyFuncs->getUnreadInbox($user->id);
+                                        ?>
+                                        </span>
                                     </button>
-                                    <ul class="dropdown-menu-v2">
+                                    <!--<ul class="dropdown-menu-v2">
                                         <li class="external">
                                             <h3>
                                                 <span class="bold">12 pending</span> notifications</h3>
@@ -124,8 +129,19 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                    </ul>
-                                </div>-->
+                                    </ul>-->
+                                </div>&nbsp;&nbsp;
+                                <div class="btn-group-notification btn-group" id="header_notification_bar">
+                                    <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" onclick="window.location.href='/list-disposition'">
+                                        <i class="icon-note"></i>
+                                        <span class="badge">
+                                        <?php
+                                        $MyFuncs = new \App\Helpers\MyFunctions;
+                                        echo $MyFuncs->getUnreadDisposition($user->id);
+                                        ?>
+                                        </span>
+                                    </button>
+                                </div>
                                 <!-- END GROUP NOTIFICATION -->
                                 <!-- BEGIN GROUP INFORMATION -->
                                 <?php
@@ -136,10 +152,10 @@
                                         <i class="fa fa-plus"></i>
                                     </button>
                                     <ul class="dropdown-menu-v2" role="menu">
-                                        <!--<li class="active">
+                                        <li class="active">
                                             <a href="/add-incoming">Tambah Surat Masuk</a>
                                         </li>
-                                        <li>
+                                        <!--<li>
                                             <a href="#">New Comment</a>
                                         </li>
                                         <li>

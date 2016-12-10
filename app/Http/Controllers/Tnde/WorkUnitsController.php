@@ -317,7 +317,10 @@ class WorkUnitsController extends Controller
         $satker = WorkUnit::where('parent_id', '=', NULL)->first()->getDescendantsAndSelf()->toHierarchy();
         /*$this->layout->content = View::make('satker.index', ['satker' => $satker]);*/
 
-        return view('tnde.workunit-list', ['user' => $user, 'satker' => $satker]);
+        return view('tnde.workunit-list', [
+            'user' => $user, 
+            'satker' => $satker
+        ]);
     }
 
     /**
@@ -325,7 +328,7 @@ class WorkUnitsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
     }
@@ -358,9 +361,19 @@ class WorkUnitsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $user       = $request->user();
+        $root = WorkUnit::where('parent_id', '=', NULL)->first();
+        /*$satker = WorkUnit::where('uuid', '=', $request->uuid)->first()->getDescendantsAndSelf()->toHierarchy();*/
+        $satker = WorkUnit::where('uuid', '=', $request->uuid)
+                  ->first();
+        /*$this->layout->content = View::make('satker.index', ['satker' => $satker]);*/
+
+        return view('tnde.workunit-edit', [
+            'user' => $user, 
+            'satker' => $satker
+        ]);
     }
 
     /**
@@ -370,9 +383,13 @@ class WorkUnitsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        WorkUnit::where('uuid' ,$request->uuid)
+        ->update([
+            'name' => $request->name
+            ]);
+        return redirect("/list-workunit");
     }
 
     /**
