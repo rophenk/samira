@@ -161,6 +161,7 @@ Route::group(['prefix' => '/api/v1', 'middleware' => 'auth.api', 'middleware' =>
   Route::get('/get-disposition-trait', 'Tnde\APIIncoming@getDispositionTrait');
   Route::get('/get-work-unit', 'Tnde\APIIncoming@getWorkUnit');
   Route::post('/add-disposition/{id?}', 'Tnde\APIIncoming@storeDisposition');
+  Route::get('/get-template', 'Tnde\APIIncoming@getTemplate');
 });
 
 Route::group(['middleware' => 'cors'], function () {

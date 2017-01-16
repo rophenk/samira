@@ -22,6 +22,7 @@ use App\DispositionDegree;
 use App\DispositionInstruction;
 use App\DispositionTrait;
 use App\WorkUnit;
+use App\Template;
 use DB;
 
 class APIIncoming extends Controller
@@ -432,5 +433,15 @@ class APIIncoming extends Controller
             'success' => 'success_add_receiver'
             ]);
 
+    }
+
+    public function getTemplate()
+    {
+        $template = Template::all();
+
+        return response()->json([
+            'success'  => 'template-list',
+            'template' => $template 
+            ]);
     }
 }
