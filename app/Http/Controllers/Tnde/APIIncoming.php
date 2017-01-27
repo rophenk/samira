@@ -56,9 +56,9 @@ class APIIncoming extends Controller
                     ->leftJoin('incoming', 'incoming.id', '=', 'incomingActivities.incomingID')
                     ->leftJoin('users', 'users.id', '=', 'incomingActivities.userID')
                     ->leftJoin('workUnits', 'workUnits.id', '=', 'users.workUnitsID')
-                    ->select('incomingActivities.*', DB::raw("DATE_FORMAT(dateSend, '%d-%m-%Y %H:%i:%s') AS dateSend"), 'incoming.sender', 'incoming.receiver', 'incoming.subject', 'incoming.description', 'incoming.attachment_count', 'workUnits.name AS satker')
+                    ->select('incomingActivities.*', 'dateSend AS date', DB::raw("DATE_FORMAT(dateSend, '%d-%m-%Y %H:%i:%s') AS dateSend"), 'incoming.sender', 'incoming.receiver', 'incoming.subject', 'incoming.description', 'incoming.attachment_count', 'workUnits.name AS satker')
                     ->where('userID', '=', $user_id)
-                    ->orderBy('dateSend', 'desc')
+                    ->orderBy('date', 'desc')
                     ->simplePaginate(10);
 
         $myFuncs = new \App\Helpers\MyFunctions;
