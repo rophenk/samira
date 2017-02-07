@@ -34,6 +34,7 @@ $options = [
 Route::group(['middleware' => ['web']], function () {
   
   Route::get('/', 'HomeController@index');
+  Route::get('/count', 'HomeController@showCount');
   Route::auth();
   
   Route::get('/dashboard', 'HomeController@index');
