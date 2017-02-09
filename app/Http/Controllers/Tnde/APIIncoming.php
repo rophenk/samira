@@ -444,4 +444,18 @@ class APIIncoming extends Controller
             'template' => $template 
             ]);
     }
+
+    public function users()
+    {
+
+        // Tampilkan semua Pengguna
+        $users = DB::table('users')
+                 ->leftJoin('workUnits', 'users.workUnitsID', '=', 'workUnits.id')
+                 ->select('users.name', 'users.email', 'users.avatar', 'workUnits.name AS satker')
+                 ->get();
+        return response()->json([
+            'success' => 'user-list',
+            'data'    => $users 
+            ]);
+    }
 }
